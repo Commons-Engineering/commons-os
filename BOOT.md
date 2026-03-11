@@ -1,6 +1,15 @@
 # Boot Sequence — Commons OS Instance Setup
 
-**Run this once after forking.** The Purpose Agent will guide you through setting up your instance. Nothing is executed until you approve the plan.
+**Run this once after creating your instance.** The Purpose Agent will guide you through setup. Nothing is executed until you approve the plan.
+
+### How did you get here?
+
+| Method | Visibility | Upstream sync |
+|---|---|---|
+| **Fork** (click "Fork" on GitHub) | Always public | Automatic PRs via GitHub Action |
+| **Template** (click "Use this template") | Public or private | Manual — agent sets up upstream remote during boot |
+
+> **Private instances** (companies, personal commons): use "Use this template" — GitHub doesn't allow private forks of public repos.
 
 To start: open this repo in Claude Code and say **"Boot this instance"**.
 
@@ -34,7 +43,7 @@ Based on your answers, the Purpose Agent will generate a **boot plan** covering:
 - [ ] Enable Issues (required for board and tracking)
 - [ ] Enable Projects (required for board)
 - [ ] Disable Wikis (not needed — docs live in the repo)
-- [ ] Configure upstream remote for sync
+- [ ] Configure upstream remote for sync (especially for template copies — forks have this automatically)
 
 ### GitHub Project Setup
 - [ ] Create project board with columns: Backlog | In Progress | Review | Done

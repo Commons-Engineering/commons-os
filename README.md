@@ -19,20 +19,18 @@ Every Commons OS instance ships with a **four-agent board** — Purpose, Partici
 
 ## How to use
 
-### Fork it
+### 1. Create your instance
 
-```bash
-# Fork this repo into your organisation
-# Then clone your fork
-git clone https://github.com/your-org/your-instance-os.git
-cd your-instance-os
+Choose the path that fits your needs:
 
-# Copy the template and fill in your identity
-cp CLAUDE.md.template CLAUDE.md
-# Edit CLAUDE.md with your instance's purpose, domain, and conventions
-```
+| Path | Visibility | How | Best for |
+|---|---|---|---|
+| **Fork** | Public | Click "Fork" on GitHub | Open communities, cities, public initiatives |
+| **Template** | Public or Private | Click "Use this template" on GitHub | Companies, personal commons, private instances |
 
-### Name it
+> **Rule of thumb:** If your instance should be private, use "Use this template" — GitHub doesn't allow private forks of public repos.
+
+### 2. Name it
 
 Follow the convention: `[purpose]-os`
 
@@ -40,9 +38,15 @@ Follow the convention: `[purpose]-os`
 - `draeger-os` — an enterprise commons
 - `me-os` — a personal commons
 
-### Run it
+### 3. Boot it
 
-Open your fork in Claude Code (or any AI coding tool). The `CLAUDE.md` makes the Purpose Agent immediately operational. Start with Definition & Purpose (D1) — the agent will guide you through setting up your commons.
+Open your instance in Claude Code and say **"Boot this instance"**. The Purpose Agent will walk you through setup — see `BOOT.md` for details.
+
+Or manually: copy `CLAUDE.md.template` to `CLAUDE.md` and fill in your identity.
+
+### 4. Run it
+
+The `CLAUDE.md` makes the Purpose Agent immediately operational. Start with Definition & Purpose (D1) — the agent will guide you through building your commons.
 
 ## What's included
 
@@ -60,11 +64,21 @@ The full pattern library (54,000+ patterns across Life, Business, Urban, and Eco
 
 ## Receiving updates
 
-When Commons Engineering publishes improvements to specs, manifests, or core patterns, your fork can receive them:
+When Commons Engineering publishes improvements to specs, manifests, or core patterns, your instance can receive them:
 
-1. **Automatic PRs** — a GitHub Action creates pull requests from upstream
-2. **You decide** — review, merge what fits, reject what doesn't
-3. **Your `_local/` folder is never touched** — sovereignty by convention
+| Instance type | How updates arrive |
+|---|---|
+| **Fork** | Automatic PRs via GitHub Action (weekly) — review and merge |
+| **Template copy** | Add upstream remote manually, then pull when ready |
+
+For template copies, the Purpose Agent will set up upstream tracking during boot:
+
+```bash
+git remote add upstream https://github.com/Commons-Engineering/commons-os.git
+git fetch upstream
+```
+
+In both cases: **your `_local/` folder and `CLAUDE.md` are never touched** — sovereignty by convention.
 
 ## Architecture
 
