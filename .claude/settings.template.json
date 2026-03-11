@@ -10,11 +10,14 @@
   },
   "mcpServers": {
     "commons-engineering": {
-      "//": "Framework MCP — shared pattern intelligence from Commons Engineering",
-      "//": "Uncomment and configure when the Commons MCP server is available",
-      "command": "",
-      "args": [],
-      "env": {}
+      "//": "Framework MCP — Commons Engineering knowledge service (Tier 0 OPEN)",
+      "//": "Clone https://github.com/Commons-Engineering/commons-mcp.git alongside this repo",
+      "//": "Adjust paths below to match your local setup",
+      "command": "python",
+      "args": ["../commons-mcp/server.py"],
+      "env": {
+        "COMMONS_CONTENT_ROOT": "../commons-os"
+      }
     }
   }
 }
