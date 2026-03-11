@@ -1,0 +1,91 @@
+# Sync Upstream — Commons OS
+#
+# This workflow runs in FORKS of commons-os, not in the upstream repo itself.
+# It creates a PR whenever the upstream (commons-engineering/commons-os) has new commits.
+#
+# Forks should enable this workflow after forking. The PR lets the fork maintainer
+# review upstream changes before merging — sovereignty by design.
+#
+# To enable in your fork:
+# 1. Go to your fork's Settings > Actions > General
+# 2. Enable "Allow all actions and reusable workflows"
+# 3. The workflow runs weekly and can be triggered manually
+
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 09:00 UTC
+  workflow_dispatch:       # Manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    # Only run in forks, not in the upstream repo itself
+    if: github.repository != 'Commons-Engineering/commons-os'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure upstream
+        run: |
+          git remote add upstream https://github.com/Commons-Engineering/commons-os.git || true
+          git fetch upstream main
+
+      - name: Check for upstream changes
+        id: check
+        run: |
+          BEHIND=$(git rev-list HEAD..upstream/main --count)
+          echo "commits_behind=$BEHIND" >> $GITHUB_OUTPUT
+          if [ "$BEHIND" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create sync branch
+        if: steps.check.outputs.has_changes == 'true'
+        run: |
+          BRANCH="sync-upstream/$(date +%Y-%m-%d)"
+          git checkout -b "$BRANCH"
+          git merge upstream/main --no-edit || true
+          git push origin "$BRANCH"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        if: steps.check.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Sync upstream: ${{ steps.check.outputs.commits_behind }} new commits from Commons OS" \
+            --body "$(cat <<'EOF'
+          ## Upstream Sync
+
+          Commons Engineering has published **${{ steps.check.outputs.commits_behind }}** new commit(s) to [commons-os](https://github.com/Commons-Engineering/commons-os).
+
+          ### What to do
+
+          1. Review the changes below
+          2. Merge what fits your instance
+          3. Resolve any conflicts (typically none if you keep local changes in `_local/`)
+
+          ### What's safe
+
+          - Your `_local/` folder is **never touched** by upstream
+          - Your `CLAUDE.md` is **never touched** by upstream
+          - Upstream only updates: `_manifests/`, `_specifications/`, `_patterns/_core/`, `_templates/`
+
+          ---
+          *Automated by Commons OS sync workflow*
+          EOF
+          )" \
+            --base main \
+            --head "$BRANCH"

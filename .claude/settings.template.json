@@ -1,0 +1,20 @@
+{
+  "//": "Commons OS — MCP Server Configuration Template",
+  "//": "Copy this to settings.json and configure for your instance",
+  "//": "See _specifications/COMMONS_MCP_ARCHITECTURE_SPEC.md for details",
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(gh *)"
+    ]
+  },
+  "mcpServers": {
+    "commons-engineering": {
+      "//": "Framework MCP — shared pattern intelligence from Commons Engineering",
+      "//": "Uncomment and configure when the Commons MCP server is available",
+      "command": "",
+      "args": [],
+      "env": {}
+    }
+  }
+}
