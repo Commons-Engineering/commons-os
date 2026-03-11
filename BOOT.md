@@ -30,7 +30,13 @@ Based on your answers, the Purpose Agent will generate a **boot plan** covering:
 - [ ] Generate `CLAUDE.md` from template with your identity
 - [ ] Configure `_local/` structure for your domain
 
-### GitHub Setup
+### GitHub Repo Settings
+- [ ] Enable Issues (required for board and tracking)
+- [ ] Enable Projects (required for board)
+- [ ] Disable Wikis (not needed — docs live in the repo)
+- [ ] Configure upstream remote for sync
+
+### GitHub Project Setup
 - [ ] Create project board with columns: Backlog | In Progress | Review | Done
 - [ ] Create dimension labels: `definition`, `participation`, `proposition`, `production`
 - [ ] Create type labels: `decision`, `build`, `spec`, `deliberation`
