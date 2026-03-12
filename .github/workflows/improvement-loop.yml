@@ -1,0 +1,105 @@
+# Commons OS — Recursive Self-Improvement Loop
+#
+# SENSE → ASSESS → PROPOSE → REVIEW → ACT → LEARN
+#
+# This workflow runs on a schedule and proposes improvements
+# to the commons by creating issues on the board.
+#
+# The human reviews and prioritises. Nothing is committed automatically.
+#
+# To enable: uncomment the schedule trigger below.
+
+name: Improvement Loop
+
+on:
+  # schedule:
+  #   - cron: '0 8 * * 1'  # Every Monday at 08:00 UTC — adjust to your rhythm
+  workflow_dispatch:         # Manual trigger always available
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sense-and-propose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: SENSE — Read current state
+        id: sense
+        run: |
+          echo "Checking commons health..."
+
+          # Check blueprint completion
+          BLUEPRINT_TOTAL=9
+          BLUEPRINT_DONE=0
+          for f in blueprint/L*.md; do
+            if [ -f "$f" ] && ! grep -q "Not yet written" "$f" 2>/dev/null; then
+              BLUEPRINT_DONE=$((BLUEPRINT_DONE + 1))
+            fi
+          done
+          echo "blueprint_done=$BLUEPRINT_DONE" >> $GITHUB_OUTPUT
+          echo "blueprint_total=$BLUEPRINT_TOTAL" >> $GITHUB_OUTPUT
+
+          # Check identity
+          if grep -q '\[purpose\]' .commons/identity.yml 2>/dev/null; then
+            echo "identity_set=false" >> $GITHUB_OUTPUT
+          else
+            echo "identity_set=true" >> $GITHUB_OUTPUT
+          fi
+
+          # Check entity count
+          ENTITY_COUNT=$(find inventory/entities -name "*.md" 2>/dev/null | wc -l)
+          echo "entity_count=$ENTITY_COUNT" >> $GITHUB_OUTPUT
+
+          # Check ALIGN.md status
+          if grep -q "Not yet" ALIGN.md 2>/dev/null || grep -q "\[date\]" ALIGN.md 2>/dev/null; then
+            echo "alignment_checked=false" >> $GITHUB_OUTPUT
+          else
+            echo "alignment_checked=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: ASSESS + PROPOSE — Create improvement issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Assessing gaps and proposing improvements..."
+
+          # Propose: Identity not set
+          if [ "${{ steps.sense.outputs.identity_set }}" = "false" ]; then
+            gh issue create \
+              --title "[Improvement] Complete .commons/identity.yml" \
+              --body "The identity file still contains placeholders. Run the boot sequence to define this commons' identity." \
+              --label "definition,build" 2>/dev/null || true
+          fi
+
+          # Propose: Blueprint incomplete
+          DONE=${{ steps.sense.outputs.blueprint_done }}
+          TOTAL=${{ steps.sense.outputs.blueprint_total }}
+          if [ "$DONE" -lt "$TOTAL" ]; then
+            gh issue create \
+              --title "[Improvement] Blueprint progress: $DONE/$TOTAL layers completed" \
+              --body "The Living Blueprint has $DONE of $TOTAL layers populated. Consider working on the next unpopulated layer to strengthen the commons' foundation." \
+              --label "definition,build" 2>/dev/null || true
+          fi
+
+          # Propose: No entities seeded
+          if [ "${{ steps.sense.outputs.entity_count }}" -eq "0" ]; then
+            gh issue create \
+              --title "[Improvement] Seed first entities in inventory/" \
+              --body "The entity directory is empty. Consider adding the self-lighthouse (the commons itself) and first external entities." \
+              --label "proposition,build" 2>/dev/null || true
+          fi
+
+          # Propose: Alignment not checked
+          if [ "${{ steps.sense.outputs.alignment_checked }}" = "false" ]; then
+            gh issue create \
+              --title "[Improvement] Run first alignment check (ALIGN.md)" \
+              --body "ALIGN.md has not been populated yet. Ask the agent to run an alignment check to assess the commons' structural health." \
+              --label "definition,build" 2>/dev/null || true
+          fi
+
+          echo "Improvement proposals created. Check the issue board."

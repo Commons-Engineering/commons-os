@@ -1,0 +1,52 @@
+# Commons OS Configuration
+commons_os_version: "0.1"
+forked_from: "commons-engineering/commons-os"
+
+# MCP Connections
+mcp:
+  commons:
+    endpoint: "https://mcp.commons.engineering/mcp"
+    tier: OPEN                         # OPEN | PEER | TEAM | ENTERPRISE
+    # api_key: "ce_pk_..."            # Only for PEER+ (store in GitHub Secrets, not here)
+
+  organisation: []                     # Organisation MCPs (CRM, ERP, etc.)
+    # - name: "Internal KB"
+    #   endpoint: "https://..."
+
+# Publishing
+publishing:
+  intranet:
+    enabled: true
+    platform: github-pages             # github-pages | hugo | jekyll
+    domain: null                       # Custom domain, e.g., "team.[purpose]-os.de"
+    branch: gh-pages-intranet
+    visibility: private                # private (requires GitHub auth) | internal (org-visible)
+
+  extranet:
+    enabled: true
+    platform: github-pages
+    domain: null                       # Custom domain, e.g., "[purpose]-os.de"
+    branch: gh-pages
+    visibility: public
+
+# Value Stream Families — activate per domain
+# These are the Business-domain defaults. Adapt to your domain during boot.
+valuestream_families:
+  definition-purpose:
+    - definition-and-purpose:       active
+    - purpose-to-portfolio:         active
+    - value-to-profit:              active
+    - portfolio-to-systems:         active
+  participation-relationship:
+    - participants-to-community:    active
+    - collaboration-to-automation:  active
+    - hire-to-retire:               active
+    - welcome-to-transition:        active
+  proposition-exchange:
+    - discover-to-usage:            active
+    - lead-to-user:                 active
+    - distribute-to-market:         active
+  production-resilience:
+    - acquire-to-retire:            active
+    - plan-to-fulfill:              active
+    - source-to-pay:                active

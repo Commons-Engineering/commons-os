@@ -1,0 +1,38 @@
+# Commons OS — Pre-configured Labels
+# Applied via .commons/setup.sh or manually
+
+# Dimensions
+- name: definition
+  color: "0075CA"
+  description: "Definition & Purpose (D1)"
+- name: participation
+  color: "E4E669"
+  description: "Participation & Relationship (D2)"
+- name: proposition
+  color: "A2EEEF"
+  description: "Proposition & Exchange (D3)"
+- name: production
+  color: "F9D0C4"
+  description: "Production & Resilience (D4)"
+
+# Types
+- name: deliberation
+  color: "D876E3"
+  description: "Open deliberation"
+- name: decision
+  color: "5319E7"
+  description: "Architectural or design decision"
+- name: build
+  color: "0E8A16"
+  description: "Build task"
+
+# Priority
+- name: critical
+  color: "B60205"
+  description: "Critical priority"
+- name: high
+  color: "FF9F1C"
+  description: "High priority"
+- name: normal
+  color: "C5DEF5"
+  description: "Normal priority"

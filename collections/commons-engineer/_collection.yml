@@ -1,0 +1,8 @@
+# Commons Engineer Collection
+name: "Commons Engineer"
+description: "Patterns for practitioner development — skills, learning, qualification, the 7Cs arc"
+version: "0.1"
+orbit_range: [0, 1]
+pattern_count: 0
+source: "commons-engineering/commons-os"
+sync: upstream

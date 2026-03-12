@@ -1,0 +1,5 @@
+# Jekyll configuration — Extranet
+title: "[purpose]-os"
+description: "A commons built on Commons OS"
+theme: minima
+baseurl: ""

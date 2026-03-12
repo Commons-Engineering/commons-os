@@ -1,0 +1,68 @@
+# Commons OS — Validation on PR
+#
+# Checks structural integrity of the commons workspace on every pull request.
+
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files exist
+        run: |
+          ERRORS=0
+
+          for f in AGENT.md ALIGN.md .commons/identity.yml .commons/config.yml; do
+            if [ ! -f "$f" ]; then
+              echo "❌ Missing: $f"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Found: $f"
+            fi
+          done
+
+          for i in 1 2 3 4 5 6 7 8 9; do
+            LAYER=$(ls blueprint/L${i}-*.md 2>/dev/null | head -1)
+            if [ -z "$LAYER" ]; then
+              echo "❌ Missing: blueprint/L${i}-*.md"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Found: $LAYER"
+            fi
+          done
+
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "❌ $ERRORS required files missing"
+            exit 1
+          else
+            echo "✅ All required files present"
+          fi
+
+      - name: Check identity.yml is valid YAML
+        run: |
+          python3 -c "
+          import yaml, sys
+          try:
+              with open('.commons/identity.yml') as f:
+                  data = yaml.safe_load(f)
+              print('✅ identity.yml is valid YAML')
+          except Exception as e:
+              print(f'❌ identity.yml parse error: {e}')
+              sys.exit(1)
+          "
+
+      - name: Check AGENT.md is agent-neutral
+        run: |
+          if grep -qi "claude\|openai\|gpt\|gemini\|llama" AGENT.md; then
+            echo "⚠️ AGENT.md contains product-specific references — should be agent-neutral"
+          else
+            echo "✅ AGENT.md is agent-neutral"
+          fi

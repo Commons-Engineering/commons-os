@@ -1,0 +1,8 @@
+# Commons OS Collection
+name: "Commons OS"
+description: "Patterns for operating a commons — governance, economics, community, infrastructure"
+version: "0.1"
+orbit_range: [0, 1]
+pattern_count: 0
+source: "commons-engineering/commons-os"
+sync: upstream

@@ -1,0 +1,13 @@
+# Jekyll configuration — Intranet
+title: "[purpose]-os — Intranet"
+description: "Internal community site"
+theme: minima
+baseurl: "/intranet"
+
+# Auto-include workspace content
+include:
+  - blueprint
+  - inventory
+  - valuestreams
+  - operations
+  - collections

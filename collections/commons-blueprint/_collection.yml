@@ -1,0 +1,11 @@
+# Commons Blueprint Collection
+name: "Commons Blueprint"
+description: "Core patterns for designing living systems — the design language of Commons Engineering"
+version: "0.1"
+orbit_range: [0, 1]                    # Orbit 0 (Singularity) + Orbit 1 (Principle)
+pattern_count: 0                       # Updated as patterns are added
+source: "commons-engineering/commons-os"
+sync: upstream                         # Patterns sync from upstream template
+
+# Higher-orbit patterns (Orbit 2-5) are resolved via Commons MCP on demand.
+# This collection carries only the gravitational core.

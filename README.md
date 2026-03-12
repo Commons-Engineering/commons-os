@@ -2,92 +2,95 @@
 
 **The forkable operating system for living systems.**
 
-Commons OS is a framework, pattern library, and agent architecture for organisations, cities, and ecosystems. It provides the structural foundation for running any commons — from a neighbourhood initiative to a multinational enterprise — as a living system.
+Commons OS provides everything you need to operate a commons — from a personal growth system to a neighbourhood initiative to a multinational enterprise. Fork it. Boot it. Run it.
 
 ## What is this?
 
-Commons OS is built on the **Orbital Architecture** (v8.2) with six layers from Singularity (Orbit 0) to Edge (Orbit 5), and four **Universal Dimensions** that govern every living system:
+An operating system for **commons-based organisation**, built on four Universal Dimensions:
 
-| Dimension | Paired Name | What it governs |
-|---|---|---|
-| D1 | Definition & Purpose | Direction, architecture, governance, impact |
-| D2 | Participation & Relationship | Community, stakeholders, workforce |
-| D3 | Proposition & Exchange | What we offer, value exchange, go-to-market |
-| D4 | Production & Resilience | Infrastructure, production lines, delivery |
+| Dimension | What it governs |
+|---|---|
+| **D1 — Definition & Purpose** | Direction, architecture, governance, impact |
+| **D2 — Participation & Relationship** | Community, stakeholders, workforce |
+| **D3 — Proposition & Exchange** | Value creation, value exchange |
+| **D4 — Production & Resilience** | Infrastructure, production, delivery |
 
-Every Commons OS instance ships with a **four-agent board** — Purpose, Participation, Proposition, Production — that can be operated by humans, AI agents, or both.
+Every instance ships with a **four-agent board** — Purpose, Participation, Proposition, Production — that operates as a team of humans and AI agents from day one.
 
-## How to use
+## Quick Start
 
 ### 1. Create your instance
 
-Choose the path that fits your needs:
+Click **"Use this template"** on GitHub → name it `[purpose]-os` → choose **Private**.
 
-| Path | Visibility | How | Best for |
-|---|---|---|---|
-| **Fork** | Public | Click "Fork" on GitHub | Open communities, cities, public initiatives |
-| **Template** | Public or Private | Click "Use this template" on GitHub | Companies, personal commons, private instances |
+### 2. Set up the workspace
 
-> **Rule of thumb:** If your instance should be private, use "Use this template" — GitHub doesn't allow private forks of public repos.
+```bash
+cd [purpose]-os
+chmod +x .commons/setup.sh
+.commons/setup.sh
+```
 
-### 2. Name it
-
-Follow the convention: `[purpose]-os`
-
-- `luebeck-os` — a city commons
-- `draeger-os` — an enterprise commons
-- `me-os` — a personal commons
+This creates labels, project board, milestones, and upstream remote.
 
 ### 3. Boot it
 
-Open your instance in Claude Code and say **"Boot this instance"**. The Purpose Agent will walk you through setup — see `BOOT.md` for details.
+Open your instance in an AI agent (Claude Code, Cursor, or any MCP-capable tool) and say:
 
-Or manually: copy `CLAUDE.md.template` to `CLAUDE.md` and fill in your identity.
+> **"Boot this instance"**
 
-### 4. Run it
-
-The `CLAUDE.md` makes the Purpose Agent immediately operational. Start with Definition & Purpose (D1) — the agent will guide you through building your commons.
+The agent guides you through 10 phases — from identity to operating commons. See `BOOT.md` for details.
 
 ## What's included
 
-| Folder | Contents |
+| Folder | What it is |
 |---|---|
-| `_manifests/` | Governance documents — agent architecture, body of knowledge, taxonomy |
-| `_specifications/` | Technical specs — pattern format, lighthouse format, MCP architecture |
-| `_patterns/_core/` | 26 core patterns that define the four dimensions |
-| `_templates/` | Templates for creating patterns and lighthouses |
-| `_local/` | Your sovereign space — upstream never touches this folder |
+| `AGENT.md` | Agent-neutral AI configuration |
+| `ALIGN.md` | Alignment service check |
+| `.commons/` | Identity, config, setup script |
+| `blueprint/` | Living Blueprint — L1 to L9 layers |
+| `inventory/` | Entities, relationships, communities |
+| `valuestreams/` | Organised by the four dimensions |
+| `collections/` | Three core pattern collections |
+| `templates/` | Blueprint templates (me-os + commons-os) |
+| `operations/` | Rhythms and economic model |
+| `site/` | Intranet + extranet (GitHub Pages ready) |
+| `.github/` | Issue templates, workflows, improvement loop |
 
 ## What's NOT included (by design)
 
-The full pattern library (54,000+ patterns across Life, Business, Urban, and Ecology) and lighthouse intelligence are delivered via **MCP (Model Context Protocol)**, not bundled in this repo. This keeps the OS lean and the intelligence live.
+The full pattern library (100,000+ patterns) and lighthouse intelligence are delivered via **MCP** (Model Context Protocol), not bundled here. This keeps the OS lean and the intelligence live.
 
-## Receiving updates
+## Human-Agent Teams
 
-When Commons Engineering publishes improvements to specs, manifests, or core patterns, your instance can receive them:
+From the moment of fork, you operate with a full board:
 
-| Instance type | How updates arrive |
-|---|---|
-| **Fork** | Automatic PRs via GitHub Action (weekly) — review and merge |
-| **Template copy** | Add upstream remote manually, then pull when ready |
-
-For template copies, the Purpose Agent will set up upstream tracking during boot:
-
-```bash
-git remote add upstream https://github.com/Commons-Engineering/commons-os.git
-git fetch upstream
+```
+Solo founder  →  1 human + 4 agents  =  operating team of 5
+Growing       →  N humans + 4 agents + specialised agents
+Mature        →  many humans + many agents = the commons as organism
 ```
 
-In both cases: **your `_local/` folder and `CLAUDE.md` are never touched** — sovereignty by convention.
+The **issue board** is the primary alignment surface. Both humans and agents see the same priorities. If it's not on the board, it doesn't exist.
+
+## Self-Improvement
+
+Enable the improvement loop (`.github/workflows/improvement-loop.yml`) to get structured improvement proposals on your board automatically. SENSE → ASSESS → PROPOSE → REVIEW → ACT → LEARN.
+
+## Receiving Updates
+
+| Method | How updates arrive |
+|---|---|
+| **Template copy** | Upstream remote configured during boot — pull when ready |
+| **Fork** | Automatic PRs via GitHub Action (weekly) — review and merge |
+
+Your `.commons/`, `blueprint/`, `inventory/`, and `AGENT.md` are **never touched** by upstream — sovereignty by convention.
 
 ## Architecture
 
-For the full architecture, see:
-
-- `_manifests/COMMONS_OS_MANIFEST` — the operating system design
-- `_manifests/COMMONS_AGENT_MANIFEST.md` — the four-agent board
-- `_manifests/COMMONS_ENGINEERING_ARCHITECTURE.md` — the system architecture
-- `_specifications/COMMONS_MCP_ARCHITECTURE_SPEC.md` — how intelligence flows
+- [Commons OS Manifest](https://github.com/commons-engineering/workshop) — what IS a commons OS
+- [Commons OS Spec](https://github.com/commons-engineering/workshop) — how to BUILD a commons OS
+- [Commons MCP Architecture](https://github.com/commons-engineering/workshop) — the knowledge service
 
 ## Community
 
@@ -95,4 +98,4 @@ Commons OS is maintained by [Commons Engineering](https://github.com/Commons-Eng
 
 ## License
 
-Content: CC-BY-SA 4.0 | Code: MIT (see LICENSE)
+Content: CC-BY-SA 4.0 | Code: MIT — see [LICENSE](LICENSE)

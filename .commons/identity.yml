@@ -1,0 +1,21 @@
+# Commons Identity
+locale: en                             # Primary language — FIRST question during boot
+                                       # ISO 639-1: de, en, fr, es, pt, ja, ko, zh, ar, ...
+                                       # Determines: blueprint language, pattern descriptions,
+                                       #   intranet/extranet UI, agent conversation language
+fallback_locale: en                    # Fallback when MCP patterns aren't available in primary locale
+
+slug: "[purpose]-os"                   # Unique identifier — replace during boot
+name: "[Purpose] Commons"             # Human-readable name
+purpose: "[What this commons exists to do — one sentence]"
+domain: Business                       # Life | Business | Urban | Ecology
+founder: "[github-handle]"            # GitHub handle
+founded: "[YYYY-MM-DD]"
+stage: Fork                            # Fork | Boot | Seed | Active | Gathering | Established | Mature
+
+# Optional: parent commons or incubator
+incubator: null                        # e.g., "cloudsters"
+parent_commons: null                   # e.g., "baltic-hanse-os" if a regional layer exists
+
+# Lighthouse identity (the commons itself as a lighthouse)
+self_lighthouse_slug: null             # Created during Phase 7 (Self-Lighthouse) of boot
