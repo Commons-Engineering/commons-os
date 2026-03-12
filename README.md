@@ -1,6 +1,6 @@
 # Commons OS
 
-**The forkable operating system for living systems.**
+**Commons as Code — the forkable operating system for living systems.**
 
 Commons OS provides everything you need to operate a commons — from a personal growth system to a neighbourhood initiative to a multinational enterprise. Fork it. Boot it. Run it.
 

@@ -53,7 +53,7 @@ The project board is the **primary alignment surface** between you and the found
 
 ## Working Principles
 
-- **Organisation as code:** This commons is run as a living codebase
+- **Commons as Code:** This commons is run as a living codebase — purpose, governance, relationships, and production, all version-controlled and operable by humans and agents together
 - **Tables over lists** in markdown
 - **Human warmth matters.** Non-human participants (AI, species, ecosystems) are included
 - Every idea → an issue. Every decision → a labelled issue
