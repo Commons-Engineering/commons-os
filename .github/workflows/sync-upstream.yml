@@ -1,0 +1,48 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Weekly on Monday at 06:00 UTC
+  workflow_dispatch:       # Manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/commons-engineering/commons-os.git || true
+          git fetch upstream main
+
+      - name: Check for upstream changes
+        id: check
+        run: |
+          DIFF=$(git diff HEAD...upstream/main -- knowledge/manifests/core/ knowledge/specs/core/ knowledge/patterns/core/ knowledge/templates/ .github/ ALIGN.md BOOT.md | wc -l)
+          echo "diff_lines=$DIFF" >> $GITHUB_OUTPUT
+
+      - name: Create sync PR
+        if: steps.check.outputs.diff_lines > 0
+        run: |
+          git checkout -b upstream-sync-$(date +%Y%m%d)
+          git merge upstream/main --no-commit --no-ff || true
+          # Only stage core files — never touch local/
+          git checkout HEAD -- knowledge/manifests/local/ knowledge/specs/local/ knowledge/patterns/local/ knowledge/scripts/local/ knowledge/sources/ registry/ workshop/ .commons/ blueprint.md operations/
+          git add -A
+          git commit -m "Sync upstream core knowledge ($(date +%Y-%m-%d))"
+          git push origin HEAD
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR
+        if: steps.check.outputs.diff_lines > 0
+        run: |
+          gh pr create \
+            --title "Upstream sync — $(date +%Y-%m-%d)" \
+            --body "Automated sync of core knowledge from commons-engineering/commons-os. Review changes to manifests, specs, and core patterns before merging." \
+            --label "production"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

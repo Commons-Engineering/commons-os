@@ -1,0 +1,18 @@
+# Commons Identity
+locale: en                             # Primary language (ISO 639-1: de, en, fr, es, ...)
+fallback_locale: en                    # Fallback when MCP patterns aren't available in primary locale
+
+slug: my-commons                       # Unique identifier — rename after fork
+name: "My Commons"                     # Human-readable name — rename after fork
+purpose: ""                            # One sentence: what this commons exists for
+domain: Business                       # Life | Business | Urban | Ecology
+founder: ""                            # GitHub handle
+founded: 2026-01-01                    # Date of fork
+stage: Fork                            # Fork | Boot | Seed | Active | Gathering | Established | Mature
+
+# Optional: parent commons or incubator
+incubator: null                        # e.g., "cloudsters" if incubated
+parent_commons: null                   # e.g., "baltic-hanse-os" if a regional layer exists
+
+# Self-entity identity (the commons itself as an entity in the registry)
+self_entity_slug: null                 # Links to registry/5_entities/purpose/[slug].md
