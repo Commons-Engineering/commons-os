@@ -21,7 +21,7 @@ Commons OS is a complete operating environment for any commons — an organisati
 1. **Fork** this repository
 2. **Rename** to `[your-commons]-os` (e.g., `luebeck-os`, `my-life`, `acme-commons`)
 3. **Edit** `.commons/identity.yml` — set your slug, purpose, domain, and locale
-4. **Copy** `AGENT.md.template` to `AGENT.md` (or to your AI tool's config, e.g., `CLAUDE.md`)
+4. **Copy** `AGENT.md.template` to `AGENT.md` (this is the OS-standard AI configuration)
 5. **Read** `BOOT.md` — the agent guides you through the rest
 
 ## Architecture

@@ -76,7 +76,7 @@ The file system must match the specification.
 | **Identity valid** | `.commons/identity.yml` must be valid YAML with: slug, name, purpose, domain, locale, stage | Critical |
 | **Config valid** | `.commons/config.yml` must be valid YAML | High |
 | **Blueprint exists** | `blueprint.md` must exist and be non-empty | Critical |
-| **Agent config** | `AGENT.md` (or equivalent) must exist and not reference a specific AI product by name | Normal |
+| **Agent config** | `AGENT.md` must exist (OS-standard AI configuration file) and not reference a specific AI product by name | High |
 | **Core manifests** | `knowledge/manifests/core/` must contain all required manifests | High |
 | **Core specs** | `knowledge/specs/core/` must contain all required specs | High |
 | **Core patterns** | `knowledge/patterns/core/` must contain orbital layers 0-singularity through 2-commons | High |

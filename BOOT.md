@@ -14,7 +14,7 @@ Before you begin:
 |---|---|
 | **Forked repository** | You have forked `commons-engineering/commons-os` and renamed it to `[your-commons]-os` |
 | **AI agent connected** | Any model that speaks MCP — configured with your agent file |
-| **Agent configuration** | You have copied `AGENT.md.template` to your agent's configuration file (e.g., `CLAUDE.md` for Claude Code, or `AGENT.md`) and filled in the placeholders |
+| **Agent configuration** | You have copied `AGENT.md.template` to `AGENT.md` and filled in the placeholders. `AGENT.md` is the OS-standard — how you wire it to your AI tool is up to you |
 | **Time commitment** | Plan 2-4 hours for a thorough boot. This is a founding conversation, not a checkbox exercise |
 
 ---
@@ -119,6 +119,8 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
 ### Phase 3: First Entity
 
 **Goal:** The commons registers itself as its first entity.
+
+> **Note:** We temporarily skip L4 (Journeys) and L5 (Value Streams) in the blueprint to immediately register the commons itself as a living entity. You need a registered actor before you can build value streams. We return to L4-L5 in the Seed stage.
 
 6. **Create the commons entity** in `registry/5_entities/purpose/`
    - The commons itself is its first entity — the self-reference that makes the system alive
