@@ -17,6 +17,18 @@ Before you begin:
 | **Agent configuration** | You have copied `AGENT.md.template` to `AGENT.md` and filled in the placeholders. `AGENT.md` is the OS-standard — how you wire it to your AI tool is up to you |
 | **Time commitment** | Plan 2-4 hours for a thorough boot. This is a founding conversation, not a checkbox exercise |
 
+### Wiring AGENT.md to Your AI Tool
+
+`AGENT.md` is the OS-standard governance file. Your AI tool needs to find it. Create a thin pointer file for your tool that delegates to AGENT.md:
+
+| Tool | Pointer file | Content |
+|---|---|---|
+| Claude Code | `CLAUDE.md` | `Read and follow AGENT.md — this is the governance configuration for this commons.` |
+| Cursor | `.cursorrules` | `Read and follow AGENT.md — this is the governance configuration for this commons.` |
+| Other | As required | Same pattern: point to `AGENT.md` |
+
+The pointer file is **not** part of the OS template — it is tool-specific and created by the founder. Never duplicate governance content into the pointer file.
+
 ---
 
 ## What the Agent Must Do Before Starting
