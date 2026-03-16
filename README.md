@@ -83,4 +83,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute patterns, improveme
 
 ---
 
-*Commons OS is developed by [Commons Engineering](https://commons.engineering) and operated by [cloudsters](https://cloudsters.de).*
+*Commons OS is developed by [Commons Engineering](https://commons.engineering) and operated by [cloudsters](https://cloudsters.net).*
+
+*Commons Engineering is licensed under CC-BY-SA-4.0 — Distributed by cloudsters*

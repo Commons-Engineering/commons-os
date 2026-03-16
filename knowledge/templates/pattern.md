@@ -1,8 +1,17 @@
 ---
 # ═══════════════════════════════════════════════════════════════════
+# GROUP 0: ARCHITECTURAL POSITION (The Gravity Well)
+# ═══════════════════════════════════════════════════════════════════
+id: pat_XXXXXXXXXXXXXXXXXXXXXXXXXX    # Generate via scripts/generate_typeid.py
+orbital_layer: 4                       # 0=Singularity, 1=Principles, 2=Commons, 3=Transversals, 4=Domains, 5=Edge
+sector: "Business"                     # Life | Ecology | Urban | Business | Universal
+gravitational_hubs:                    # Orbit 0-2 patterns this pattern orbits
+  - hub_id: ""                         # TypeID of an Orbit 0-2 pattern
+    influence: 0.5                     # Strength of connection (0.0 - 1.0)
+
+# ═══════════════════════════════════════════════════════════════════
 # GROUP 1: CORE IDENTITY
 # ═══════════════════════════════════════════════════════════════════
-id: pat_XXXXXXXXXXXXXXXXXXXXXXXXXX
 slug: pattern-slug-here
 title: "Pattern Title Here"
 aliases: []
@@ -20,40 +29,36 @@ context_labels:
   tech: "Tech Context Label"
 
 # ═══════════════════════════════════════════════════════════════════
-# GROUP 3: ONTOLOGY & SEARCH OPTIMIZATION (The RAG Fuel)
+# GROUP 3: ONTOLOGY & VITALITY (The RAG Fuel)
 # ═══════════════════════════════════════════════════════════════════
 ontology:
   domain: domain-slug
   cross_domains: []
+  commons_domain:
+    - commons-engineering
   search_hints:
     primary_tension: "Force A vs. Force B"
     vector_keywords: ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"]
-  commons_assessment:
+  commons_vitality:
     stakeholder_architecture: 3.0
-    value_creation: 4.0
-    resilience: 3.5
-    ownership: 3.5
-    autonomy: 3.5
-    composability: 3.0
-    fractal_value: 4.0
-    vitality: 3.5
+    reciprocity: 3.0
+    regenerative_capacity: 3.0
+    emergent_potential: 3.0
+    vitality_score: 3.0
     vitality_reasoning: >-
       Explanation of vitality score in 2-3 sentences. What mechanisms
       create or sustain life? What risks of decay exist?
-    overall_score: 3.6
 
 # ═══════════════════════════════════════════════════════════════════
 # GROUP 4: LIFECYCLE & CONFIDENCE
 # ═══════════════════════════════════════════════════════════════════
 lifecycle:
-  usage_stage: application
-  adoption_stage: growth
-  status: draft
-  version: 0.1
-  confidence: 1
+  status: draft                        # draft | stable | mature | deprecated
+  version: 1.0
+  confidence: 1                        # 1: Experimental, 2: Observed, 3: Proven/Stable
 
 # ═══════════════════════════════════════════════════════════════════
-# GROUP 5: HARD RELATIONSHIPS (Human-Curated Graph)
+# GROUP 5: RELATIONSHIPS (Human-Curated Graph)
 # ═══════════════════════════════════════════════════════════════════
 relationships:
   generalizes_from: []
@@ -62,24 +67,22 @@ relationships:
   requires: []
   alternatives: []
   complementary: []
-  tools: []
 
 # ═══════════════════════════════════════════════════════════════════
 # GROUP 6: GRAPH GARDEN (Machine-Written Graph)
 # ═══════════════════════════════════════════════════════════════════
 graph_garden:
-  last_pruned: 2026-02-19
   entities: []
   communities: []
-  inferred_links: []
+  inferred_links: []                   # Populated by GraphRAG engine
 
 # ═══════════════════════════════════════════════════════════════════
 # GROUP 7: PROVENANCE
 # ═══════════════════════════════════════════════════════════════════
-contributors: ["higgerix", "cloudsters"]
+contributors: []
 sources: []
 license: CC-BY-SA-4.0
-attribution: "commons.engineering by cloudsters, https://cloudsters.net"
+attribution: "commons.engineering by cloudsters"
 ---
 
 > One memorable sentence that captures the essential insight of this pattern.
@@ -93,6 +96,8 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 ### Section 1: Context
 
 *(100–200 words)*
+
+> **Lineage:** This pattern is a specialized manifestation of [Hub ID/Name], primarily serving the [Sector] domain.
 
 Describe the situation or environment in which this problem arises. Make the
 reader feel the living energy of the context — is this a system that is growing,

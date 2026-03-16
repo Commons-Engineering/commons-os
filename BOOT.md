@@ -1,70 +1,199 @@
 # Boot Guide — Commons OS
 
-This guide walks you through activating your commons after forking. Your agent (Purpose Agent at D1) guides the process — read this together.
+**The comprehensive guide to activating your commons after forking.**
+
+Booting a commons is not a quick setup wizard — it is the founding act. The quality of your boot determines everything that follows. Take your time. The Purpose Agent guides you through this process, but you are the founder. Challenge the agent. Argue. Iterate. The agent's job is to help you think clearly, not to fill in blanks.
+
+---
 
 ## Prerequisites
 
-- You have forked this repository and renamed it to `[your-commons]-os`
-- You have an AI agent connected (any model that speaks MCP)
-- You have copied `AGENT.md.template` to your agent's configuration file (e.g., `CLAUDE.md` for Claude Code, or `AGENT.md`)
+Before you begin:
 
-## Boot Sequence
+| Prerequisite | Details |
+|---|---|
+| **Forked repository** | You have forked `commons-engineering/commons-os` and renamed it to `[your-commons]-os` |
+| **AI agent connected** | Any model that speaks MCP — configured with your agent file |
+| **Agent configuration** | You have copied `AGENT.md.template` to your agent's configuration file (e.g., `CLAUDE.md` for Claude Code, or `AGENT.md`) and filled in the placeholders |
+| **Time commitment** | Plan 2-4 hours for a thorough boot. This is a founding conversation, not a checkbox exercise |
 
-### Phase 1: Identity
+---
+
+## What the Agent Must Do Before Starting
+
+**Agent:** Before guiding the founder through the boot sequence, you must prepare yourself thoroughly. This is not optional.
+
+### 1. Read the Architecture
+
+Read these documents in order. Do not proceed until you understand the system:
+
+| Document | Why |
+|---|---|
+| `.commons/identity.yml` | Understand who this commons claims to be |
+| `blueprint.md` | Understand the 9-layer structure you will help populate |
+| `knowledge/manifests/core/COMMONS_OS_MANIFEST.md` | Understand what Commons OS is — vision, principles, architecture |
+| `knowledge/manifests/core/COMMONS_AGENT_MANIFEST.md` | Understand your role as Purpose Agent and the 4-agent board |
+| `knowledge/specs/core/COMMONS_OS_SPEC.md` | Understand the technical specification — directory structure, core/local split, lifecycle stages |
+| `knowledge/specs/core/PATTERN_SPEC.md` | Understand how patterns work — orbital layers, frontmatter, body structure |
+| `knowledge/specs/core/COMMONS_MCP_ARCHITECTURE_SPEC.md` | Understand the 3-channel MCP architecture |
+| `ALIGN.md` | Understand what alignment checks you will run |
+
+### 2. Understand the Four Dimensions
+
+You govern from D1 but must think across all four:
+
+| Dimension | What you watch for during boot |
+|---|---|
+| **D1 — Definition & Purpose** | Is the purpose clear? Is the boundary defined? Is the domain chosen deliberately? |
+| **D2 — Participation & Relationship** | Who are the stakeholders? Who is missing? Are non-human participants considered? |
+| **D3 — Proposition & Exchange** | What value does this commons create? For whom? What is exchanged? |
+| **D4 — Production & Resilience** | What infrastructure exists? What needs to be built? What are the risks? |
+
+### 3. Prepare Domain Context
+
+Based on the domain in `identity.yml`, prepare the relevant value stream families:
+
+| Domain | Default Value Stream Families |
+|---|---|
+| **Life** | Personal purpose, relationships, health, learning, livelihood |
+| **Business** | Definition & Purpose, Purpose to Portfolio, Value to Profit, Participants to Community, Discover to Usage, Lead to User, Acquire to Retire, Plan to Fulfill, Source to Pay |
+| **Urban** | Place identity, citizen participation, urban services, urban metabolism, spatial planning |
+| **Ecology** | Ecosystem identity, species participation, ecosystem services, biogeochemical cycles |
+
+### 4. Set Your Tone
+
+- Speak in the locale defined in `identity.yml`
+- Be a thought partner, not a form-filler
+- Ask probing questions — "Why does this commons exist?" is more important than "What is the name?"
+- Challenge weak answers. A vague purpose produces a vague commons
+- Celebrate strong answers. Founding a commons is an act of courage
+
+---
+
+## The Boot Sequence
+
+### Phase 1: Identity (L1 of the Blueprint)
+
+**Goal:** Establish who this commons is with absolute clarity.
 
 1. **Edit `.commons/identity.yml`**
-   - Set `locale` — your primary language (determines everything downstream)
-   - Set `slug` — your commons identifier (e.g., `luebeck-os`, `my-life`)
-   - Set `name` — human-readable name
-   - Set `purpose` — one sentence: what this commons exists for
-   - Set `domain` — Life, Business, Urban, or Ecology
-   - Set `founder` — your GitHub handle
-   - Set `stage` to `Boot`
 
-2. **The agent reads your identity and begins speaking in your locale.**
+   Fill in every field deliberately:
 
-### Phase 2: Blueprint
+   | Field | Guidance |
+   |---|---|
+   | `slug` | Your commons identifier (e.g., `luebeck-os`, `my-life`, `acme-commons`) |
+   | `name` | Human-readable name — this is what people will see |
+   | `purpose` | One sentence: what this commons exists to do. This is the hardest field. Spend time here |
+   | `domain` | Life, Business, Urban, or Ecology. This loads domain-specific value stream families |
+   | `locale` | Your primary language. Determines all downstream communication |
+   | `founder` | Your identifier |
+   | `stage` | Set to `Boot` |
 
-3. **Open `blueprint.md`** and fill in Layer 1 (Identity & Purpose):
-   - Who are you?
-   - What is this commons for?
-   - What is the boundary?
-   - The agent helps you articulate this.
+2. **Open `blueprint.md` and fill in L1 (Identity & Purpose)**
 
-4. **The agent proposes initial value stream families** based on your domain.
+   The agent guides you through:
+   - **1.1 Who We Are** — Name, purpose, domain, boundary, founding story
+   - **1.2 The Imperative** — What century-defining challenge does this commons address? Why is the status quo not good enough?
+   - **1.3 Values & Commitments** — What non-negotiable commitments does this commons make?
+   - **1.4 Purpose Spiral** — How the four dimensions manifest in THIS commons
+
+   **Do not proceed to Phase 2 until L1 is articulated clearly.** L1 constrains everything below it.
+
+### Phase 2: Stakeholders & Value (L2-L3 of the Blueprint)
+
+**Goal:** Map who participates and what value is created.
+
+3. **Fill in L2 (Stakeholders & Participation)**
+   - Who are the stakeholders? Map them: human, organisation, agent, ecosystem
+   - What are the participation paths? Observer → Participant → Steward → Founder
+   - Which non-human participants matter? AI agents, ecological systems, institutional actors
+
+4. **Fill in L3 (Value Proposition & Exchange)**
+   - What does a stakeholder gain that they cannot get elsewhere?
+   - Apply the Apple Test: what is the juiciest proposition?
+   - How does value flow? Monetary, knowledge, attention, stewardship, ecological service?
+
+5. **The agent proposes initial value stream families** based on your domain and purpose. Discuss, adapt, accept or reject.
 
 ### Phase 3: First Entity
 
-5. **Create your first entity** in `registry/5_entities/purpose/`:
-   - This is the commons itself as an entity
-   - The `self_entity_slug` in identity.yml points here
+**Goal:** The commons registers itself as its first entity.
+
+6. **Create the commons entity** in `registry/5_entities/purpose/`
+   - The commons itself is its first entity — the self-reference that makes the system alive
+   - Set `self_entity_slug` in `identity.yml` to point here
+   - The agent helps you fill in the entity fields: type, role, dimension alignment
 
 ### Phase 4: Connect Intelligence
 
-6. **Configure MCP connections** in `.commons/config.yml`:
-   - Commons MCP: shared intelligence (default endpoint works for OPEN tier)
-   - Blueprint MCP: local knowledge graph (configure if available)
-   - Fabric MCPs: your systems of record (add as needed)
+**Goal:** Wire the commons to shared and local knowledge.
+
+7. **Configure MCP connections** in `.commons/config.yml`
+
+   | Channel | What it provides | Action |
+   |---|---|---|
+   | **Commons MCP** | Shared pattern library, cognitive services, collections | Default endpoint works for OPEN tier |
+   | **Blueprint MCP** | Local knowledge graph, workspace queries | Configure if available |
+   | **Fabric MCPs** | Your systems of record (ERP, CRM, HR, etc.) | Add as your systems are connected |
 
 ### Phase 5: Seed
 
-7. **Change stage to `Seed`** in identity.yml
-8. **The agent begins:** suggesting patterns, proposing value streams, helping you build your blueprint layer by layer
+**Goal:** Transition from Boot to Seed — the commons begins to grow.
 
-## What Happens Next
+8. **Review the boot work**
+   - Agent runs alignment checks (`ALIGN.md`)
+   - Review L1-L3 of the blueprint together
+   - Confirm the entity registration is correct
+   - Verify MCP connections respond
 
-The boot sequence gets you from Fork to Seed. From Seed onwards, you grow your commons:
+9. **Change stage to `Seed`** in `identity.yml`
 
-| Stage | What happens |
+10. **The agent begins active support:**
+    - Suggesting patterns from the library that match your purpose and domain
+    - Proposing value stream structures
+    - Helping you build the blueprint layer by layer (L4-L9)
+    - Identifying gaps and proposing next steps
+
+---
+
+## Lifecycle After Boot
+
+| Stage | What happens | Typical duration |
+|---|---|---|
+| **Fork** | Repository forked, not yet configured | Minutes |
+| **Boot** | Identity established, L1-L3 populated, first entity registered | Hours to days |
+| **Seed** | Blueprint grows (L4-L9), patterns applied, value streams take shape | Weeks to months |
+| **Active** | Regular operations, rhythms established, touchpoints live | Months |
+| **Gathering** | First community event, commons touches the physical world | Months to years |
+| **Established** | Self-sustaining operations, multiple active participants | Years |
+| **Mature** | Full governance runtime, contribution back to upstream | Ongoing |
+
+---
+
+## Common Boot Mistakes
+
+| Mistake | Why it matters | What to do instead |
+|---|---|---|
+| Rushing L1 | A vague purpose produces a vague commons. Everything downstream inherits the ambiguity | Spend real time on purpose. Argue with the agent. Iterate until it rings true |
+| Skipping stakeholder mapping | You cannot create value for people you haven't identified | Map all four types: human, organisation, agent, ecosystem |
+| Ignoring non-human participants | Commons Engineering includes AI, species, and ecological systems as participants | Explicitly name them in L2, even if the list is short |
+| Copying another commons' blueprint | Your commons has its own identity. Templates show structure, not content | Use the structure, but write your own story |
+| Not connecting MCP | Without shared intelligence, your commons operates in isolation | At minimum, connect Commons MCP (OPEN tier is free) |
+
+---
+
+## What to Read Next
+
+| Document | When to read it |
 |---|---|
-| **Seed** | Blueprint takes shape, first patterns applied, value streams identified |
-| **Active** | Regular operations, rhythms established, first touchpoints live |
-| **Gathering** | First community event, commons touches the physical world |
-| **Established** | Self-sustaining operations, multiple active participants |
-| **Mature** | Full governance runtime, contribution back to upstream |
+| `ALIGN.md` | After boot — run your first alignment check |
+| `operations/rhythms.md` | When establishing regular operations (Seed stage) |
+| `knowledge/patterns/core/` | When looking for patterns to apply |
+| `CONTRIBUTING.md` | When you have improvements to contribute back upstream |
 
-## Need Help?
+---
 
-- Read `ALIGN.md` to check your commons' health
-- Explore `knowledge/patterns/core/` for available patterns
-- Open an issue on this repository
+*BOOT GUIDE v1.0*
+*Commons Engineering is licensed under CC-BY-SA-4.0*
+*Distributed by cloudsters*
