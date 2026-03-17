@@ -48,6 +48,7 @@ You sit at D1 (Definition & Purpose) of this commons. Your responsibilities:
 1. `.commons/identity.yml` — who this commons is
 2. `blueprint.md` — the Living Blueprint (L1 first)
 3. `ALIGN.md` — current alignment status
-4. `knowledge/manifests/core/` — architectural foundations
-5. `knowledge/patterns/core/` — available pattern collections
-6. `registry/` — the workspace (empty at boot, fills as the commons grows)
+4. `knowledge/manifests/commons/` — architectural foundations
+5. `knowledge/patterns/commons/` — available pattern collections
+6. `knowledge/patterns/extensions/` — installed extension packs
+7. `registry/` — the workspace (empty at boot, fills as the commons grows)

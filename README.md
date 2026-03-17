@@ -9,7 +9,7 @@ Commons OS is a complete operating environment for any commons — an organisati
 | Component | What it does |
 |---|---|
 | **Registry** | Your workspace — journeys, touchpoints, value streams, capabilities, entities |
-| **Knowledge** | Core patterns (152+), manifests, specifications, templates — with upstream sync |
+| **Knowledge** | Commons patterns (152+), manifests, specifications, templates — with upstream sync. Extensions from any provider. Instance patterns of your own |
 | **Portals** | Intranet and extranet configuration for static site generation |
 | **Workshop** | Your forge — experiments, drafts, work in progress |
 | **Agent Configuration** | AI-ready governance with 4-agent board architecture |
@@ -47,28 +47,31 @@ Each dimension has an **agent** (conversational governance) and may have **engin
 ├── blueprint.md               Living Blueprint (L1-L9)
 ├── .commons/                  Identity and configuration
 ├── registry/                  THE WORKSPACE — local instances & state
-├── knowledge/                 THE LIBRARY — core (upstream) + local
+├── knowledge/                 THE LIBRARY — commons (upstream) + extensions (packs) + instance (yours)
 ├── portals/                   Portal configuration & themes
 └── workshop/                  THE FORGE — experiments, drafts, WIP
 ```
 
-## Core vs. Local
+## Commons / Extensions / Instance
 
-| Path | Who owns it | Sync behaviour |
-|---|---|---|
-| `knowledge/*/core/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
-| `knowledge/*/local/` | Your commons | Yours entirely — upstream never touches it |
-| `registry/` | Your commons | Operational data — always local |
-| `workshop/` | Your commons | Your forge — always local |
+Every `knowledge/` subdirectory (patterns, specs, manifests, templates, scripts) uses three layers:
+
+| Layer | Path | Who owns it | Sync behaviour |
+|---|---|---|---|
+| **Commons** | `knowledge/*/commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Extensions** | `knowledge/*/extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
+| **Instance** | `knowledge/*/instance/` | Your commons | Yours entirely — upstream never touches it |
+
+`registry/` and `workshop/` are always instance-level — they contain your operational data and work in progress.
 
 ## Documentation
 
 | Document | What it covers |
 |---|---|
-| `knowledge/manifests/core/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
-| `knowledge/specs/core/COMMONS_OS_SPEC.md` | How to build, fork, boot, and operate a Commons OS instance |
-| `knowledge/manifests/core/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
-| `knowledge/specs/core/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
+| `knowledge/manifests/commons/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
+| `knowledge/specs/commons/COMMONS_OS_SPEC.md` | How to build, fork, boot, and operate a Commons OS instance |
+| `knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
+| `knowledge/specs/commons/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
 
 ## License
 

@@ -62,10 +62,10 @@ The commons must follow current specifications.
 | Spec | Expected version | What to check |
 |---|---|---|
 | **PATTERN_SPEC** | v8.2 | All patterns in `knowledge/patterns/` must conform — 8 frontmatter groups, 8 body sections |
-| **COMMONS_OS_SPEC** | v1.0 | Directory structure, core/local split, identity.yml schema |
+| **COMMONS_OS_SPEC** | v1.0 | Directory structure, commons/extensions/instance layers, identity.yml schema |
 | **COMMONS_MCP_ARCHITECTURE_SPEC** | v1.0 | 3-channel MCP configuration in `.commons/config.yml` |
 
-Agent compares local `knowledge/specs/core/` versions against Commons MCP latest (when connected).
+Agent compares local `knowledge/specs/commons/` versions against Commons MCP latest (when connected).
 
 ## §6 Structural Checks
 
@@ -77,9 +77,9 @@ The file system must match the specification.
 | **Config valid** | `.commons/config.yml` must be valid YAML | High |
 | **Blueprint exists** | `blueprint.md` must exist and be non-empty | Critical |
 | **Agent config** | `AGENT.md` must exist (OS-standard AI configuration file) and not reference a specific AI product by name | High |
-| **Core manifests** | `knowledge/manifests/core/` must contain all required manifests | High |
-| **Core specs** | `knowledge/specs/core/` must contain all required specs | High |
-| **Core patterns** | `knowledge/patterns/core/` must contain orbital layers 0-singularity through 2-commons | High |
+| **Commons manifests** | `knowledge/manifests/commons/` must contain all required manifests | High |
+| **Commons specs** | `knowledge/specs/commons/` must contain all required specs | High |
+| **Commons patterns** | `knowledge/patterns/commons/` must contain orbital layers 0-singularity through 2-commons | High |
 | **Registry structure** | `registry/` must contain `1_journeys/`, `2_touchpoints/`, `3_valuestreams/`, `4_capabilities/`, `5_entities/` | High |
 | **Workshop exists** | `workshop/` directory must exist | Normal |
 | **Portals exists** | `portals/` directory must exist | Normal |
@@ -103,8 +103,8 @@ Forks must stay connected to upstream evolution.
 | Check | Rule | Severity |
 |---|---|---|
 | **Sync workflow** | `.github/workflows/sync-upstream.yml` must exist and be active | Normal |
-| **Core untouched** | Files in `knowledge/*/core/` must not be locally modified (check via git diff against upstream) | High |
-| **Local sovereign** | Upstream sync must never touch `knowledge/*/local/`, `registry/`, `workshop/`, or `blueprint.md` | Critical |
+| **Commons untouched** | Files in `knowledge/*/commons/` must not be locally modified (check via git diff against upstream) | High |
+| **Instance sovereign** | Upstream sync must never touch `knowledge/*/instance/`, `knowledge/*/extensions/`, `registry/`, `workshop/`, or `blueprint.md` | Critical |
 
 ---
 

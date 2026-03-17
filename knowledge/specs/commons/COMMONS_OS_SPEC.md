@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Status:** Specification
-**Companion:** COMMONS_OS_MANIFEST (the "why/what"), COMMONS_MCP_ARCHITECTURE_SPEC.md (the knowledge service), PATTERN_SPEC.md (v8.2), LIGHTHOUSE_BUSINESS_SPEC.md (v1.2)
+**Companion:** COMMONS_OS_MANIFEST (the "why/what"), COMMONS_MCP_ARCHITECTURE_SPEC.md (the knowledge service), PATTERN_SPEC.md (v8.2)
 
 ---
 
@@ -40,8 +40,7 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   └── config.yml                    # 3-MCP configuration, publishing, value streams (§5)
 │
 ├── operations/                       # Day-to-day operations
-│   ├── rhythms.md                    # Operating rhythms
-│   └── economics.md                  # Economic model
+│   └── rhythms.md                    # Operating rhythms
 │
 ├── registry/                         # THE WORKSPACE — local instances & state
 │   ├── 1_journeys/.keep              # OUTSIDE-IN: stakeholder journeys
@@ -58,9 +57,9 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │       ├── proposition/.keep
 │       └── production/.keep
 │
-├── knowledge/                        # THE LIBRARY — core = read-only, local = read-write
+├── knowledge/                        # THE LIBRARY — commons = read-only, instance = read-write
 │   ├── manifests/
-│   │   ├── core/                     # Upstream manifests (read-only on sync)
+│   │   ├── commons/                  # Upstream manifests (read-only on sync)
 │   │   │   ├── COMMONS_OS_MANIFEST.md
 │   │   │   ├── COMMONS_AGENT_MANIFEST.md
 │   │   │   ├── COMMONS_ENGINEERING_MANIFEST.md
@@ -71,28 +70,36 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   │   │   ├── COMMONS_TAXONOMY_MANIFEST.md
 │   │   │   ├── COMMONS_ENGINEERING_BOK.md
 │   │   │   └── COMMONS_ENGINEERING_ARCHITECTURE.md
-│   │   └── local/.keep               # Fork-specific manifests
+│   │   ├── extensions/.keep          # Extension packs from providers
+│   │   └── instance/.keep            # Instance-specific manifests
 │   │
 │   ├── specs/
-│   │   ├── core/                     # Upstream specs (read-only on sync)
+│   │   ├── commons/                  # Upstream specs (read-only on sync)
 │   │   │   ├── COMMONS_OS_SPEC.md
 │   │   │   ├── PATTERN_SPEC.md
-│   │   │   ├── LIGHTHOUSE_BUSINESS_SPEC.md
 │   │   │   ├── LIGHTHOUSE_URBAN_SPEC.md
 │   │   │   ├── ENGAGEMENT_GRAPH_SPEC.md
 │   │   │   └── COMMONS_MCP_ARCHITECTURE_SPEC.md
-│   │   └── local/.keep              # Fork-specific specs
+│   │   ├── extensions/.keep          # Extension packs from providers
+│   │   └── instance/.keep            # Instance-specific specs
 │   │
 │   ├── patterns/
-│   │   ├── core/                     # Upstream patterns (read-only on sync)
+│   │   ├── commons/                  # Upstream patterns (read-only on sync)
 │   │   │   ├── 0_collections/        # Meta: Singularity, Principles, collection masters
 │   │   │   ├── 1_journeys/           # Journey pattern archetypes
 │   │   │   ├── 2_touchpoints/        # Touchpoint pattern archetypes
 │   │   │   ├── 3_valuestreams/       # Value stream pattern archetypes
 │   │   │   ├── 4_capabilities/       # Capability pattern archetypes
 │   │   │   └── 5_entities/           # Entity pattern archetypes
-│   │   └── local/                    # Fork-created patterns (read-write)
-│   │       ├── 0_collections/.keep   # Fork-specific collections
+│   │   ├── extensions/               # Extension pack patterns
+│   │   │   ├── 0_collections/.keep
+│   │   │   ├── 1_journeys/.keep
+│   │   │   ├── 2_touchpoints/.keep
+│   │   │   ├── 3_valuestreams/.keep
+│   │   │   ├── 4_capabilities/.keep
+│   │   │   └── 5_entities/.keep
+│   │   └── instance/                 # Instance-created patterns (read-write)
+│   │       ├── 0_collections/.keep   # Instance-specific collections
 │   │       ├── 1_journeys/.keep
 │   │       ├── 2_touchpoints/.keep
 │   │       ├── 3_valuestreams/.keep
@@ -100,8 +107,9 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   │       └── 5_entities/.keep
 │   │
 │   ├── scripts/
-│   │   ├── core/.keep                # Validation, alignment, portal-build (ships with template)
-│   │   └── local/.keep               # Instance-specific production scripts
+│   │   ├── commons/.keep             # Validation, alignment, portal-build (ships with template)
+│   │   ├── extensions/.keep          # Extension pack scripts
+│   │   └── instance/.keep            # Instance-specific production scripts
 │   │
 │   ├── sources/.keep                  # Reference material, taxonomies, external data (always local)
 │   │
@@ -159,11 +167,11 @@ The numbered directories follow the BEN Flow — from stakeholder experience to 
 
 #### Pattern ↔ Instance Mirror
 
-The same 1-5 cascade in both spaces creates a deliberate mirror. `knowledge/patterns/core/3_valuestreams/source-to-pay.md` is the archetype (reusable). `registry/3_valuestreams/source-to-pay.md` is the local instance (concrete, this commons' version). The archetype says *what*; the instance says *how this commons runs it*; the agent bridges between them.
+The same 1-5 cascade in both spaces creates a deliberate mirror. `knowledge/patterns/commons/3_valuestreams/source-to-pay.md` is the archetype (reusable). `registry/3_valuestreams/source-to-pay.md` is the local instance (concrete, this commons' version). The archetype says *what*; the instance says *how this commons runs it*; the agent bridges between them.
 
-#### The core/local Split
+#### The Commons/Extensions/Instance Layers
 
-Every `knowledge/` subdirectory splits into `core/` (read-only, synced from upstream) and `local/` (read-write, fork-specific). Upstream sync updates `core/` cleanly; fork additions live in `local/` and are never touched by upstream.
+Every `knowledge/` subdirectory splits into three layers: `commons/` (read-only, synced from upstream), `extensions/` (read-only, provided by extension packs), and `instance/` (read-write, fork-specific). Upstream sync updates `commons/` cleanly; extension providers update `extensions/`; fork additions live in `instance/` and are never touched by upstream.
 
 #### The .keep Convention
 
@@ -181,9 +189,9 @@ Git does not version empty directories. Every empty delivery folder in the templ
 | **CI workflows** | Validate, publish-intranet, publish-extranet, improvement-loop | Automated quality + instant visibility |
 | **AGENT.md** | Agent-neutral, MCP-connected | Any AI partner can guide the commons |
 | **ALIGN.md** | Alignment check template | Ongoing fit-check with commons blueprint |
-| **Four curated collections** | Commons Blueprint, Commons Engineer, Commons OS, Commons Place in `knowledge/patterns/core/0_collections/` | Core knowledge ships with the fork |
-| **All domain value stream collections** | Business (13), Urban (21), Life (18), Ecology (16) value stream patterns in `knowledge/patterns/core/3_valuestreams/` | Operational backbone — shipped as pattern files, all domains |
-| **All manifests and specifications** | Complete intellectual infrastructure in `knowledge/manifests/core/` and `knowledge/specs/core/` | Self-sufficient knowledge base |
+| **Four curated collections** | Commons Blueprint, Commons Engineer, Commons OS, Commons Place in `knowledge/patterns/commons/0_collections/` | Core knowledge ships with the fork |
+| **All domain value stream collections** | Business (13), Urban (21), Life (18), Ecology (16) value stream patterns in `knowledge/patterns/commons/3_valuestreams/` | Operational backbone — shipped as pattern files, all domains |
+| **All manifests and specifications** | Complete intellectual infrastructure in `knowledge/manifests/commons/` and `knowledge/specs/commons/` | Self-sufficient knowledge base |
 | **Registry structure** | Empty 1-5 cascade ready for instances | THE WORKSPACE — ready from day one |
 | **Blueprint template** | Single-document L1-L9 blueprint with domain-appropriate prompts | One commons, one blueprint — the heart of the OS |
 
@@ -333,8 +341,8 @@ You sit at D1 (Definition & Purpose) of this commons. Your responsibilities:
 1. `.commons/identity.yml` — who this commons is
 2. `blueprint.md` — the Living Blueprint (L1 first)
 3. `ALIGN.md` — current alignment status
-4. `knowledge/manifests/core/` — architectural foundations
-5. `knowledge/patterns/core/` — available pattern collections
+4. `knowledge/manifests/commons/` — architectural foundations
+5. `knowledge/patterns/commons/` — available pattern collections
 6. `registry/` — the workspace (empty at boot, fills as the commons grows)
 ```
 
@@ -386,11 +394,11 @@ This file defines WHAT to check. Results are posted as GitHub Issues
 | LIGHTHOUSE_BUSINESS_SPEC | v1.2 |
 | COMMONS_OS_SPEC | v0.2 |
 
-Agent compares local knowledge/specs/core/ versions against Commons MCP latest.
+Agent compares local knowledge/specs/commons/ versions against Commons MCP latest.
 
 ## §3 Collection Sync
 
-Agent compares local knowledge/patterns/core/ counts against Commons MCP library_stats().
+Agent compares local knowledge/patterns/commons/ counts against Commons MCP library_stats().
 
 ## §4 Structural Checks
 
@@ -400,9 +408,9 @@ Agent compares local knowledge/patterns/core/ counts against Commons MCP library
 | .commons/identity.yml | Must be valid YAML with slug, purpose, domain |
 | .commons/config.yml | Must have 3-MCP endpoints defined |
 | AGENT.md | Must not reference a specific AI product by name |
-| knowledge/manifests/core/ | Must contain all required manifests |
-| knowledge/specs/core/ | Must contain all required specs |
-| knowledge/patterns/core/ | Must contain 0_collections/ through 5_entities/ |
+| knowledge/manifests/commons/ | Must contain all required manifests |
+| knowledge/specs/commons/ | Must contain all required specs |
+| knowledge/patterns/commons/ | Must contain 0_collections/ through 5_entities/ |
 | registry/ | Must contain 1_journeys/ through 5_entities/ |
 
 ## §5 Reporting
@@ -520,7 +528,7 @@ publishing:
 # Domain Activation — NOT configured here.
 # The domain is declared once in identity.yml (Single Source of Truth).
 # Active value streams are determined purely by file existence:
-#   - knowledge/patterns/core/3_valuestreams/ → available archetypes (from upstream)
+#   - knowledge/patterns/commons/3_valuestreams/ → available archetypes (from upstream)
 #   - registry/3_valuestreams/ → active streams (local decision)
 # If a file exists in registry/3_valuestreams/, the stream is active. No list needed.
 ```
@@ -753,10 +761,10 @@ The agent interprets value stream patterns and translates them against connected
 
 ### §7.3 Pattern Resolution
 
-Shipped patterns in `knowledge/patterns/core/` cover the gravitational core: `0_collections/` (Singularity, Principles, collection masters), plus archetypes across the 1-5 cascade. These patterns carry `relationships` (Group 5) that reference patterns at higher orbits. Those referenced patterns are resolved via Commons MCP on demand.
+Shipped patterns in `knowledge/patterns/commons/` cover the gravitational core: `0_collections/` (Singularity, Principles, collection masters), plus archetypes across the 1-5 cascade. These patterns carry `relationships` (Group 5) that reference patterns at higher orbits. Those referenced patterns are resolved via Commons MCP on demand.
 
 ```
-Local (in knowledge/patterns/core/)       Remote (via Commons MCP)
+Local (in knowledge/patterns/commons/)       Remote (via Commons MCP)
 ===================================       ========================
 
 0_collections/: Singularity,              (all Orbit 0-1 patterns)
@@ -769,7 +777,7 @@ Local (in knowledge/patterns/core/)       Remote (via Commons MCP)
 5_entities/                               MCP: entity archetypes at scale
 ```
 
-Fork-created patterns live in `knowledge/patterns/local/` — same cascade, never touched by upstream sync.
+Fork-created patterns live in `knowledge/patterns/instance/` — same cascade, never touched by upstream sync.
 
 **The principle:** Core patterns travel with the fork. The full library is always one MCP call away. Offline, you have the design language and operational backbone. Online, you have the universe.
 
@@ -778,14 +786,14 @@ Fork-created patterns live in `knowledge/patterns/local/` — same cascade, neve
 A pattern can belong to multiple collections. Collection membership is declared in the pattern's frontmatter metadata:
 
 ```yaml
-# In a pattern file (knowledge/patterns/core/4_capabilities/operational-resilience.md)
+# In a pattern file (knowledge/patterns/commons/4_capabilities/operational-resilience.md)
 collections:
   - commons-blueprint
   - business-production
   - urban-infrastructure
 ```
 
-The file system organises patterns by cascade position (the physical location). Collections are views assembled from tags — their master-patterns live in `knowledge/patterns/core/0_collections/`. This allows a single pattern to participate in the Commons Blueprint collection AND a domain-specific value stream collection without duplication.
+The file system organises patterns by cascade position (the physical location). Collections are views assembled from tags — their master-patterns live in `knowledge/patterns/commons/0_collections/`. This allows a single pattern to participate in the Commons Blueprint collection AND a domain-specific value stream collection without duplication.
 
 ### §7.5 Knowledge Sync
 
@@ -793,11 +801,11 @@ Knowledge can be updated from the Commons MCP or directly from the upstream temp
 
 | Method | When | How | Scope |
 |---|---|---|---|
-| **MCP sync** | Agent detects newer versions via `library_stats()` | Agent downloads updated patterns, human reviews PR | Updates `knowledge/*/core/` only |
-| **Git upstream** | Manual or periodic fetch from upstream template | `git fetch upstream` → selective merge | Updates `knowledge/*/core/` only |
-| **ALIGN.md check** | Alignment service flags knowledge drift | Agent compares local vs remote counts and versions | Reads both `core/` and `local/` |
+| **MCP sync** | Agent detects newer versions via `library_stats()` | Agent downloads updated patterns, human reviews PR | Updates `knowledge/*/commons/` only |
+| **Git upstream** | Manual or periodic fetch from upstream template | `git fetch upstream` → selective merge | Updates `knowledge/*/commons/` only |
+| **ALIGN.md check** | Alignment service flags knowledge drift | Agent compares local vs remote counts and versions | Reads both `commons/` and `instance/` |
 
-The core/local split ensures upstream sync never touches fork-specific content. `knowledge/*/core/` is the upstream channel; `knowledge/*/local/` is sovereign. The `workshop/` directory at the top level is the universal sovereign space — every commons has it from the moment of fork. Where `knowledge/*/local/` holds mature fork-specific knowledge, `workshop/` holds what is not yet ready: experiments, drafts, scratch work, work in progress. Together they form the complete local sovereignty layer.
+The commons/extensions/instance layers ensure upstream sync never touches fork-specific content. `knowledge/*/commons/` is the upstream channel; `knowledge/*/instance/` is sovereign. The `workshop/` directory at the top level is the universal sovereign space — every commons has it from the moment of fork. Where `knowledge/*/instance/` holds mature fork-specific knowledge, `workshop/` holds what is not yet ready: experiments, drafts, scratch work, work in progress. Together they form the complete local sovereignty layer.
 
 ---
 
@@ -840,7 +848,7 @@ entities:                              # ← downward link to layer 5
 
 **The graph works in both directions.** A journey references its touchpoints; a touchpoint references its value streams; a value stream references its capabilities and entities. The agent can traverse the graph in any direction — "Which entities support this value stream?" or "Which journeys does this touchpoint belong to?"
 
-**Pattern archetypes mirror this structure.** Files in `knowledge/patterns/core/` use the same frontmatter references. When the agent instantiates an archetype into `registry/`, it resolves the links to local instances.
+**Pattern archetypes mirror this structure.** Files in `knowledge/patterns/commons/` use the same frontmatter references. When the agent instantiates an archetype into `registry/`, it resolves the links to local instances.
 
 **The Blueprint MCP makes the graph queryable.** While the YAML files are the source of truth, the Blueprint MCP (when deployed) indexes these references into a queryable graph — enabling questions like "Show me all capabilities that have no entity assigned" or "Which value streams touch the customer onboarding journey?"
 
@@ -917,7 +925,7 @@ Every commons connects to intelligence through three MCP channels (see COMMONS_M
 ```
 Agent receives a task: "Check our supplier qualification status"
 
-1. Agent reads the value stream pattern "Source to Pay" (knowledge/patterns/core/3_valuestreams/)
+1. Agent reads the value stream pattern "Source to Pay" (knowledge/patterns/commons/3_valuestreams/)
    → Pattern says: "Verify supplier qualification before order"
 
 2. Agent queries Blueprint MCP (or reads registry/ directly)
@@ -1042,9 +1050,9 @@ Mature commons     → many humans + many agents       = the commons as organism
 - [ ] Write ALIGN.md template (§4)
 - [ ] Configure .commons/ with identity.yml and config.yml templates
 - [ ] Create `blueprint.md` stub with L1-L9 sections
-- [ ] Populate `knowledge/manifests/core/` with all manifests
-- [ ] Populate `knowledge/specs/core/` with all specifications
-- [ ] Populate `knowledge/patterns/core/` with patterns across 0-5 cascade from all 4 core collections
+- [ ] Populate `knowledge/manifests/commons/` with all manifests
+- [ ] Populate `knowledge/specs/commons/` with all specifications
+- [ ] Populate `knowledge/patterns/commons/` with patterns across 0-5 cascade from all 4 core collections
 - [ ] Populate `knowledge/templates/` with blueprint, pattern, and organisation templates
 - [ ] Build `portals/intranet/` with default theme + auto-generation
 - [ ] Build `portals/extranet/` with default theme + landing page

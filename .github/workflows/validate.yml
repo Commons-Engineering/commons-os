@@ -18,10 +18,10 @@ jobs:
             ".commons/config.yml" \
             "blueprint.md" \
             "ALIGN.md" \
-            "knowledge/manifests/core/COMMONS_OS_MANIFEST.md" \
-            "knowledge/manifests/core/COMMONS_AGENT_MANIFEST.md" \
-            "knowledge/specs/core/COMMONS_OS_SPEC.md" \
-            "knowledge/specs/core/PATTERN_SPEC.md"; do
+            "knowledge/manifests/commons/COMMONS_OS_MANIFEST.md" \
+            "knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md" \
+            "knowledge/specs/commons/COMMONS_OS_SPEC.md" \
+            "knowledge/specs/commons/PATTERN_SPEC.md"; do
             if [ ! -f "$f" ]; then
               echo "MISSING: $f"
               MISSING=$((MISSING + 1))
@@ -41,12 +41,15 @@ jobs:
             "registry/3_valuestreams" \
             "registry/4_capabilities" \
             "registry/5_entities" \
-            "knowledge/manifests/core" \
-            "knowledge/manifests/local" \
-            "knowledge/specs/core" \
-            "knowledge/specs/local" \
-            "knowledge/patterns/core" \
-            "knowledge/patterns/local" \
+            "knowledge/manifests/commons" \
+            "knowledge/manifests/extensions" \
+            "knowledge/manifests/instance" \
+            "knowledge/specs/commons" \
+            "knowledge/specs/extensions" \
+            "knowledge/specs/instance" \
+            "knowledge/patterns/commons" \
+            "knowledge/patterns/extensions" \
+            "knowledge/patterns/instance" \
             "portals" \
             "workshop"; do
             if [ ! -d "$d" ]; then

@@ -21,7 +21,7 @@ jobs:
       - name: Check for upstream changes
         id: check
         run: |
-          DIFF=$(git diff HEAD...upstream/main -- knowledge/manifests/core/ knowledge/specs/core/ knowledge/patterns/core/ knowledge/templates/ .github/ ALIGN.md BOOT.md | wc -l)
+          DIFF=$(git diff HEAD...upstream/main -- knowledge/manifests/commons/ knowledge/specs/commons/ knowledge/patterns/commons/ knowledge/templates/ .github/ ALIGN.md BOOT.md | wc -l)
           echo "diff_lines=$DIFF" >> $GITHUB_OUTPUT
 
       - name: Create sync PR
@@ -29,10 +29,10 @@ jobs:
         run: |
           git checkout -b upstream-sync-$(date +%Y%m%d)
           git merge upstream/main --no-commit --no-ff || true
-          # Only stage core files — never touch local/
-          git checkout HEAD -- knowledge/manifests/local/ knowledge/specs/local/ knowledge/patterns/local/ knowledge/scripts/local/ knowledge/sources/ registry/ workshop/ .commons/ blueprint.md operations/
+          # Only stage commons files — never touch instance/, extensions/, or operational data
+          git checkout HEAD -- knowledge/manifests/instance/ knowledge/manifests/extensions/ knowledge/specs/instance/ knowledge/specs/extensions/ knowledge/patterns/instance/ knowledge/patterns/extensions/ knowledge/scripts/instance/ knowledge/scripts/extensions/ knowledge/sources/ registry/ workshop/ .commons/ blueprint.md operations/
           git add -A
-          git commit -m "Sync upstream core knowledge ($(date +%Y-%m-%d))"
+          git commit -m "Sync upstream commons knowledge ($(date +%Y-%m-%d))"
           git push origin HEAD
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,7 +42,7 @@ jobs:
         run: |
           gh pr create \
             --title "Upstream sync — $(date +%Y-%m-%d)" \
-            --body "Automated sync of core knowledge from commons-engineering/commons-os. Review changes to manifests, specs, and core patterns before merging." \
+            --body "Automated sync of commons knowledge from commons-engineering/commons-os. Review changes to manifests, specs, and commons patterns before merging." \
             --label "production"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

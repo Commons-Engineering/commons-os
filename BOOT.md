@@ -43,11 +43,11 @@ Read these documents in order. Do not proceed until you understand the system:
 |---|---|
 | `.commons/identity.yml` | Understand who this commons claims to be |
 | `blueprint.md` | Understand the 9-layer structure you will help populate |
-| `knowledge/manifests/core/COMMONS_OS_MANIFEST.md` | Understand what Commons OS is — vision, principles, architecture |
-| `knowledge/manifests/core/COMMONS_AGENT_MANIFEST.md` | Understand your role as Purpose Agent and the 4-agent board |
-| `knowledge/specs/core/COMMONS_OS_SPEC.md` | Understand the technical specification — directory structure, core/local split, lifecycle stages |
-| `knowledge/specs/core/PATTERN_SPEC.md` | Understand how patterns work — orbital layers, frontmatter, body structure |
-| `knowledge/specs/core/COMMONS_MCP_ARCHITECTURE_SPEC.md` | Understand the 3-channel MCP architecture |
+| `knowledge/manifests/commons/COMMONS_OS_MANIFEST.md` | Understand what Commons OS is — vision, principles, architecture |
+| `knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md` | Understand your role as Purpose Agent and the 4-agent board |
+| `knowledge/specs/commons/COMMONS_OS_SPEC.md` | Understand the technical specification — directory structure, commons/extensions/instance layers, lifecycle stages |
+| `knowledge/specs/commons/PATTERN_SPEC.md` | Understand how patterns work — orbital layers, frontmatter, body structure |
+| `knowledge/specs/commons/COMMONS_MCP_ARCHITECTURE_SPEC.md` | Understand the 3-channel MCP architecture |
 | `ALIGN.md` | Understand what alignment checks you will run |
 
 ### 2. Understand the Four Dimensions
@@ -203,7 +203,7 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
 |---|---|
 | `ALIGN.md` | After boot — run your first alignment check |
 | `operations/rhythms.md` | When establishing regular operations (Seed stage) |
-| `knowledge/patterns/core/` | When looking for patterns to apply |
+| `knowledge/patterns/commons/` | When looking for patterns to apply |
 | `CONTRIBUTING.md` | When you have improvements to contribute back upstream |
 
 ---
