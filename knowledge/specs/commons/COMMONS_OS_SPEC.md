@@ -85,7 +85,7 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   │
 │   ├── patterns/
 │   │   ├── commons/                  # Universal patterns (read-only on sync)
-│   │   │   ├── the-singularity.md    # Orbit 0 — the one pattern
+│   │   │   ├── singularity/          # Orbit 0 — the one pattern
 │   │   │   └── principles/           # Orbit 1 — foundational principles (~25)
 │   │   ├── extensions/               # Extension packs — {provider}/{pack}/
 │   │   │   └── commons-engineering/  # Pre-loaded CE pack (§2.5)
