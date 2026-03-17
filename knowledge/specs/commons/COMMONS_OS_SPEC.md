@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Status:** Specification
-**Companion:** COMMONS_OS_MANIFEST (the "why/what"), COMMONS_MCP_ARCHITECTURE_SPEC.md (the knowledge service), PATTERN_SPEC.md (v8.2)
+**Companion:** COMMONS_OS_MANIFEST (the "why/what"), COMMONS_MCP_ARCHITECTURE_SPEC.md (the knowledge service), PATTERN_SPEC.md (v8.2), LIGHTHOUSE_BUSINESS_SPEC.md (v1.2)
 
 ---
 
@@ -24,7 +24,7 @@ When you fork the Commons OS template, you get a complete operating environment 
 
 ### §2.1 Template Repository Structure
 
-The repository is split into four top-level spaces: the **registry** (THE WORKSPACE — local instances and state), the **knowledge** library (THE LIBRARY — core patterns, manifests, specs), the **portals** (touchpoint configuration and themes), and the **workshop** (THE FORGE — experiments, drafts, work in progress). Registry and knowledge both follow the outside-in cascade (1-5) from the BEN Flow.
+The repository is split into four top-level spaces: the **registry** (THE WORKSPACE — local instances and state), the **knowledge** library (THE LIBRARY — commons, extensions, instance), the **portals** (touchpoint configuration and themes), and the **workshop** (THE FORGE — experiments, drafts, work in progress). The registry follows the outside-in cascade (1-5) from the BEN Flow. The knowledge library uses three layers: **commons** (universal, upstream), **extensions** (provider packs), **instance** (fork-specific).
 
 ```
 [commons]-os/
@@ -37,7 +37,7 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │
 ├── .commons/
 │   ├── identity.yml                  # Commons identity: slug, purpose, domain, founder
-│   └── config.yml                    # 3-MCP configuration, publishing, value streams (§5)
+│   └── config.yml                    # 3-MCP configuration, publishing, extensions (§5)
 │
 ├── operations/                       # Day-to-day operations
 │   └── rhythms.md                    # Operating rhythms
@@ -51,13 +51,15 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   │   ├── participation/.keep
 │   │   ├── proposition/.keep
 │   │   └── production/.keep
-│   └── 5_entities/                   # SUBSTRATE: organisations, people, systems
-│       ├── purpose/.keep
-│       ├── participation/.keep       # Organisations live here
-│       ├── proposition/.keep
-│       └── production/.keep
+│   ├── 5_entities/                   # SUBSTRATE: organisations, people, systems
+│   │   ├── purpose/.keep
+│   │   ├── participation/.keep
+│   │   ├── proposition/.keep
+│   │   └── production/.keep
+│   └── providers/                    # Extension Pack Registry (§2.5)
+│       └── commons-engineering.yml   # Pre-loaded provider profile
 │
-├── knowledge/                        # THE LIBRARY — commons = read-only, instance = read-write
+├── knowledge/                        # THE LIBRARY — three layers (§2.3)
 │   ├── manifests/
 │   │   ├── commons/                  # Upstream manifests (read-only on sync)
 │   │   │   ├── COMMONS_OS_MANIFEST.md
@@ -70,66 +72,49 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   │   │   ├── COMMONS_TAXONOMY_MANIFEST.md
 │   │   │   ├── COMMONS_ENGINEERING_BOK.md
 │   │   │   └── COMMONS_ENGINEERING_ARCHITECTURE.md
-│   │   ├── extensions/.keep          # Extension packs from providers
-│   │   └── instance/.keep            # Instance-specific manifests
+│   │   ├── extensions/.keep          # Extension pack manifests
+│   │   └── instance/.keep            # Fork-specific manifests
 │   │
 │   ├── specs/
 │   │   ├── commons/                  # Upstream specs (read-only on sync)
 │   │   │   ├── COMMONS_OS_SPEC.md
 │   │   │   ├── PATTERN_SPEC.md
-│   │   │   ├── LIGHTHOUSE_URBAN_SPEC.md
-│   │   │   ├── ENGAGEMENT_GRAPH_SPEC.md
 │   │   │   └── COMMONS_MCP_ARCHITECTURE_SPEC.md
-│   │   ├── extensions/.keep          # Extension packs from providers
-│   │   └── instance/.keep            # Instance-specific specs
+│   │   ├── extensions/.keep          # Extension pack specs
+│   │   └── instance/.keep            # Fork-specific specs
 │   │
 │   ├── patterns/
-│   │   ├── commons/                  # Upstream patterns (read-only on sync)
-│   │   │   ├── 0_collections/        # Meta: Singularity, Principles, collection masters
-│   │   │   ├── 1_journeys/           # Journey pattern archetypes
-│   │   │   ├── 2_touchpoints/        # Touchpoint pattern archetypes
-│   │   │   ├── 3_valuestreams/       # Value stream pattern archetypes
-│   │   │   ├── 4_capabilities/       # Capability pattern archetypes
-│   │   │   └── 5_entities/           # Entity pattern archetypes
-│   │   ├── extensions/               # Extension pack patterns
-│   │   │   ├── 0_collections/.keep
-│   │   │   ├── 1_journeys/.keep
-│   │   │   ├── 2_touchpoints/.keep
-│   │   │   ├── 3_valuestreams/.keep
-│   │   │   ├── 4_capabilities/.keep
-│   │   │   └── 5_entities/.keep
-│   │   └── instance/                 # Instance-created patterns (read-write)
-│   │       ├── 0_collections/.keep   # Instance-specific collections
-│   │       ├── 1_journeys/.keep
-│   │       ├── 2_touchpoints/.keep
-│   │       ├── 3_valuestreams/.keep
-│   │       ├── 4_capabilities/.keep
-│   │       └── 5_entities/.keep
+│   │   ├── commons/                  # Universal patterns (read-only on sync)
+│   │   │   ├── the-singularity.md    # Orbit 0 — the one pattern
+│   │   │   └── principles/           # Orbit 1 — foundational principles (~25)
+│   │   ├── extensions/               # Extension packs — {provider}/{pack}/
+│   │   │   └── commons-engineering/  # Pre-loaded CE pack (§2.5)
+│   │   │       ├── base/             # Collections: Blueprint, Engineer, Place, OS
+│   │   │       ├── business/         # 13 VS Families, L3 Capabilities
+│   │   │       ├── life/             # Life value streams & patterns
+│   │   │       ├── urban/            # Urban value streams & patterns
+│   │   │       └── ecology/          # Ecology value streams & patterns
+│   │   └── instance/.keep            # Fork-created patterns
 │   │
 │   ├── scripts/
-│   │   ├── commons/.keep             # Validation, alignment, portal-build (ships with template)
+│   │   ├── commons/.keep             # Validation, alignment, portal-build
 │   │   ├── extensions/.keep          # Extension pack scripts
-│   │   └── instance/.keep            # Instance-specific production scripts
+│   │   └── instance/.keep            # Instance-specific scripts
 │   │
-│   ├── sources/.keep                  # Reference material, taxonomies, external data (always local)
+│   ├── sources/.keep                 # Reference material (always instance-level)
 │   │
 │   └── templates/
-│       ├── blueprint-business.md     # Blueprint template — Business domain
-│       ├── blueprint-urban.md        # Blueprint template — Urban domain
-│       ├── blueprint-life.md         # Blueprint template — Life domain
-│       ├── blueprint-ecology.md      # Blueprint template — Ecology domain
-│       ├── pattern.md                # Pattern template (per PATTERN_SPEC)
-│       └── organisation.md           # Organisation entity template
+│       ├── commons/                  # Upstream templates
+│       │   ├── blueprint-me.md       # Blueprint template — Life/personal domain
+│       │   ├── blueprint-venture.md  # Blueprint template — Business/venture domain
+│       │   ├── pattern.md            # Pattern template (per PATTERN_SPEC)
+│       │   └── organisation.md       # Organisation entity template
+│       ├── extensions/.keep          # Extension pack templates
+│       └── instance/.keep            # Fork-specific templates
 │
 ├── portals/                          # Portal configuration & themes (NOT output)
-│   ├── intranet/                     # Internal community portal
-│   │   ├── _config.yml               # Static site config
-│   │   ├── theme/                    # CSS, logos, navigation structure
-│   │   └── index.md                  # Community landing page template
-│   └── extranet/                     # Public-facing portal
-│       ├── _config.yml               # Separate config for public site
-│       ├── theme/                    # CSS, logos, navigation structure
-│       └── index.md                  # Public landing page template
+│   ├── intranet/.keep                # Internal community portal
+│   └── extranet/.keep                # Public-facing portal
 │
 ├── workshop/                         # The forge — experiments, drafts, work in progress
 │   └── .keep
@@ -141,6 +126,7 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 │   │   └── build.md                  # Build task template
 │   ├── workflows/
 │   │   ├── validate.yml              # Spec conformance on PR
+│   │   ├── sync-upstream.yml         # Weekly upstream sync
 │   │   ├── publish-intranet.yml      # Build + deploy intranet portal
 │   │   ├── publish-extranet.yml      # Build + deploy extranet portal
 │   │   └── improvement-loop.yml      # Recursive self-improvement (§10.2)
@@ -152,26 +138,43 @@ The repository is split into four top-level spaces: the **registry** (THE WORKSP
 
 The root directory name follows the pattern `[commons]-os` where **both parts are replaceable**. `[commons]` is the identity slug (e.g., `luebeck`, `draeger`, `me`). `-os` is the conventional suffix but not mandatory — an organisation may choose `-commons`, `-hub`, or drop the suffix entirely. Examples: `luebeck-os`, `draeger-os`, `me-os`, `berlin-commons`. The slug is set in `.commons/identity.yml` during boot.
 
-#### The Outside-In Cascade
+#### The Outside-In Cascade (Registry)
 
-The numbered directories follow the BEN Flow — from stakeholder experience to substrate:
+The numbered directories in `registry/` follow the BEN Flow — from stakeholder experience to substrate:
 
-| # | Name | Role | Registry (instances) | Knowledge (archetypes) |
-|---|---|---|---|---|
-| **0** | Collections | META | — | Singularity, Principles, collection masters |
-| **1** | Journeys | OUTSIDE-IN | Concrete stakeholder journeys | Journey pattern archetypes |
-| **2** | Touchpoints | MEMBRANE | Where this commons meets the world | Touchpoint pattern archetypes |
-| **3** | Value Streams | INSIDE-FLOW | Active value stream instances | Value stream pattern archetypes |
-| **4** | Capabilities | MOTOR | Baseline/Target capability map (D1-D4) | Capability pattern archetypes |
-| **5** | Entities | SUBSTRATE | Organisations, people, systems | Entity pattern archetypes |
+| # | Name | Role | What lives here |
+|---|---|---|---|
+| **1** | Journeys | OUTSIDE-IN | Concrete stakeholder journeys |
+| **2** | Touchpoints | MEMBRANE | Where this commons meets the world |
+| **3** | Value Streams | INSIDE-FLOW | Active value stream instances |
+| **4** | Capabilities | MOTOR | Baseline/Target capability map (D1-D4) |
+| **5** | Entities | SUBSTRATE | Organisations, people, systems |
 
-#### Pattern ↔ Instance Mirror
+The registry is always instance-level — it contains this commons' operational data, not archetypes.
 
-The same 1-5 cascade in both spaces creates a deliberate mirror. `knowledge/patterns/commons/3_valuestreams/source-to-pay.md` is the archetype (reusable). `registry/3_valuestreams/source-to-pay.md` is the local instance (concrete, this commons' version). The archetype says *what*; the instance says *how this commons runs it*; the agent bridges between them.
+#### Pattern Architecture (Knowledge)
 
-#### The Commons/Extensions/Instance Layers
+Patterns in `knowledge/patterns/` are organised **flat** within each layer. The orbital layer and domain membership live in the pattern's frontmatter, not in the folder structure. Collections are **YAML index files** that curate patterns by theme — they reference patterns by path, never duplicate them.
 
-Every `knowledge/` subdirectory splits into three layers: `commons/` (read-only, synced from upstream), `extensions/` (read-only, provided by extension packs), and `instance/` (read-write, fork-specific). Upstream sync updates `commons/` cleanly; extension providers update `extensions/`; fork additions live in `instance/` and are never touched by upstream.
+| Layer | What it contains | Organisation |
+|---|---|---|
+| `commons/` | Singularity (1 pattern) + Principles (~25 patterns) | Flat. These are the universals that every commons needs |
+| `extensions/{provider}/{pack}/` | Extension packs from any Commons Incubator | Internal structure defined by the pack provider |
+| `instance/` | Fork-created patterns | Flat. Frontmatter is the truth |
+
+Collections (Blueprint, Engineer, Place, OS) are delivered as part of the pre-loaded `commons-engineering/base` extension pack. Each collection is a YAML index file that references patterns across all layers.
+
+#### The Three Knowledge Layers
+
+Every `knowledge/` subdirectory (manifests, specs, patterns, scripts, templates) uses three layers:
+
+| Layer | Path | Owner | Sync behaviour |
+|---|---|---|---|
+| **Commons** | `knowledge/*/commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Extensions** | `knowledge/*/extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
+| **Instance** | `knowledge/*/instance/` | This commons | Sovereign — upstream never touches it |
+
+Upstream sync updates `commons/` only. Extensions are managed by the fork owner (install, update, remove). Instance content is fully sovereign.
 
 #### The .keep Convention
 
@@ -189,8 +192,8 @@ Git does not version empty directories. Every empty delivery folder in the templ
 | **CI workflows** | Validate, publish-intranet, publish-extranet, improvement-loop | Automated quality + instant visibility |
 | **AGENT.md** | Agent-neutral, MCP-connected | Any AI partner can guide the commons |
 | **ALIGN.md** | Alignment check template | Ongoing fit-check with commons blueprint |
-| **Four curated collections** | Commons Blueprint, Commons Engineer, Commons OS, Commons Place in `knowledge/patterns/commons/0_collections/` | Core knowledge ships with the fork |
-| **All domain value stream collections** | Business (13), Urban (21), Life (18), Ecology (16) value stream patterns in `knowledge/patterns/commons/3_valuestreams/` | Operational backbone — shipped as pattern files, all domains |
+| **Pre-loaded extension pack** | `commons-engineering/base` with four curated collections (Blueprint, Engineer, Place, OS) in `knowledge/patterns/extensions/commons-engineering/base/` | Core knowledge ships with the fork as an extension |
+| **Four domain packs** | Business (13 VS), Urban (21 VS), Life (18 VS), Ecology (16 VS) in `knowledge/patterns/extensions/commons-engineering/{domain}/` | Operational backbone — all domains pre-loaded |
 | **All manifests and specifications** | Complete intellectual infrastructure in `knowledge/manifests/commons/` and `knowledge/specs/commons/` | Self-sufficient knowledge base |
 | **Registry structure** | Empty 1-5 cascade ready for instances | THE WORKSPACE — ready from day one |
 | **Blueprint template** | Single-document L1-L9 blueprint with domain-appropriate prompts | One commons, one blueprint — the heart of the OS |
@@ -281,6 +284,119 @@ For cases where the script can't run (permissions, GitHub plan limitations, etc.
 | **7. Secrets** | Add MCP API key (if PEER+ tier) | Settings → Secrets → `COMMONS_MCP_API_KEY` | ❌ Manual |
 | **8. Upstream remote** | Set upstream for knowledge sync | `git remote add upstream ...` | ✅ Script |
 | **9. Collaborators** | Invite team members | Settings → Collaborators | ❌ Manual |
+
+### §2.5 Extension Pack Architecture
+
+Extension packs are the primary mechanism for delivering domain-specific knowledge to a commons. Any Commons Incubator can build and publish packs. The Commons OS defines the interface; the packs provide the content.
+
+#### Pack Structure
+
+Every extension pack lives under `knowledge/*/extensions/{provider}/{pack}/`. The provider namespace prevents naming collisions. Internal structure is defined by the pack provider — the OS does not prescribe it.
+
+```
+knowledge/patterns/extensions/
+  commons-engineering/              # Provider: Commons Engineering
+    base/                           # Pack: core collections (Blueprint, Engineer, Place, OS)
+      manifest.yml                  # Required: pack catalogue
+      collections/                  # Collection index files (YAML)
+        blueprint.yml
+        engineer.yml
+        place.yml
+      patterns/                     # Actual pattern files
+    business/                       # Pack: Business domain
+      manifest.yml
+      valuestreams/
+      capabilities/
+    life/                           # Pack: Life domain
+    urban/                          # Pack: Urban domain
+    ecology/                        # Pack: Ecology domain
+  healthtech-hamburg/               # Provider: HealthTech Hamburg
+    clinical-pathways/              # Pack: Clinical pathway patterns
+      manifest.yml
+      ...
+```
+
+#### Pack Manifest (`manifest.yml`)
+
+Every pack must contain a `manifest.yml` at its root. This is the only structural requirement the OS imposes:
+
+```yaml
+pack: base
+provider: commons-engineering
+version: 1.0.0
+title: "Commons Engineering Base Collections"
+description: "Blueprint, Engineer, Place, and OS pattern collections"
+domains: [life, business, urban, ecology]
+dependencies: []                     # Other packs this pack requires
+patterns: 152                        # Total pattern count
+collections:
+  - id: blueprint
+    title: "Commons Blueprint"
+    description: "Patterns for building any commons blueprint"
+  - id: engineer
+    title: "Commons Engineer"
+    description: "Patterns for practitioner development"
+```
+
+#### Collection Index Files
+
+Collections are YAML indices that reference patterns by path. They do not contain patterns — they curate them:
+
+```yaml
+# collections/blueprint.yml
+collection: blueprint
+title: "Commons Blueprint Collection"
+description: "Patterns for building any commons blueprint, L1-L9"
+patterns:
+  - ../patterns/purpose-spiral.md
+  - ../patterns/stakeholder-architecture.md
+  - ../../commons-engineering/business/valuestreams/purpose-to-portfolio.md
+  # Cross-pack references are valid
+```
+
+#### Provider Registry
+
+Providers register themselves in `registry/providers/` via YAML profiles. In the commons-os template, these profiles are curated via Pull Request. The Commons MCP indexes them for discoverability.
+
+```yaml
+# registry/providers/commons-engineering.yml
+provider: commons-engineering
+name: "Commons Engineering"
+url: https://commons.engineering
+mcp_endpoint: https://mcp.commons.engineering/v1
+verified: true
+packs:
+  - name: base
+    version: 1.0.0
+    domains: [life, business, urban, ecology]
+    description: "Core collections: Blueprint, Engineer, Place, OS"
+    patterns: 152
+  - name: business
+    version: 1.0.0
+    domains: [business]
+    description: "13 Value Stream Families, L3 Capabilities"
+    patterns: 85
+  - name: urban
+    version: 1.0.0
+    domains: [urban]
+    description: "Urban value streams and settlement patterns"
+    patterns: 72
+```
+
+#### Pre-loaded Packs
+
+The commons-os template ships with the `commons-engineering` packs pre-loaded in `extensions/`. This ensures the OS is immediately functional without MCP connectivity ("batteries included"). The Commons MCP keeps packs current and provides additional packs from other providers on demand.
+
+#### How Packs Are Loaded
+
+```
+1. Agent reads registry/providers/ → knows what providers exist
+2. Agent queries Commons MCP → discovers available packs
+3. Agent recommends packs based on domain and purpose
+4. Founder approves → agent loads pack into extensions/{provider}/{pack}/
+5. Pack manifest is cached locally → works offline
+6. Agent navigates via manifest and collection indices → loads patterns on demand
+```
 
 ---
 
@@ -731,29 +847,30 @@ another-org/                           # Another organisation namespace
 
 ## §7 Knowledge That Ships — Detailed Inventory
 
-### §7.1 The Four Core Collections
+### §7.1 What Ships in Commons (Universal)
 
-Every Commons OS fork ships with four curated pattern collections. These are the core patterns that every commons needs to operate, available offline, version-controlled, locally owned.
+The `knowledge/patterns/commons/` layer contains only the universals — patterns that every commons needs regardless of domain:
 
-| Collection | What it contains | Orbit range | Purpose |
+| Content | Orbit | Count | Purpose |
 |---|---|---|---|
-| **Commons Blueprint** | Patterns for designing living systems | 0-2 | Every commons needs the design vocabulary |
-| **Commons Engineer** | Patterns for practitioner development | 0-2 | Every practitioner needs growth patterns |
-| **Commons OS** | Patterns for operating a commons | 0-2 | Every commons needs operational patterns |
-| **Commons Place** | Patterns for where value creation happens | 0-2 | Every commons needs spatial patterns |
+| **The Singularity** | 0 | 1 | The foundational pattern from which all others derive |
+| **Principles** | 1 | ~25 | First principles that govern all living systems |
 
-### §7.2 Value Stream Collections
+These patterns are read-only in forks and updated via upstream sync. They are the minimum viable knowledge base.
 
-Beyond the four core collections, each domain brings **value stream pattern collections** — curated sets of patterns organised around end-to-end value streams. Each value stream is itself a pattern file (per PATTERN_SPEC v8.2), describing the outside-in flow, its steps, roles, and which other patterns are relevant. Based on APQC PCF lineage, but modeled as value streams, not processes.
+### §7.2 What Ships as Pre-loaded Extensions
 
-| Domain | Value Stream Families | Source | Status |
-|---|---|---|---|
-| **Business** | 13 (4×D1, 4×D2, 3×D3, 3×D4) | LIGHTHOUSE_BUSINESS_SPEC §6 | Defined — pattern files to be reviewed |
-| **Urban** | 21 (5×D1, 6×D2, 7×D3, 3×D4) | LIGHTHOUSE_URBAN_SPEC §6 | Defined — pattern files to be reviewed |
-| **Life** | 18 (4×D1, 5×D2, 4×D3, 5×D4) | LIFE_ENGINEERING_MANIFEST §3 | Defined as "dimensions" — pattern files pending |
-| **Ecology** | 16 (4×D1, 7×D2, 4×D3, 5×D4) | ECOLOGY_ENGINEERING_MANIFEST §3 | Defined as "dimensions" — pattern files pending |
+The `commons-engineering` extension packs ship pre-loaded in `knowledge/patterns/extensions/commons-engineering/`. This is "batteries included" — the OS works without MCP connectivity from day one.
 
-**All domain collections ship with the fork.** A commons has its full operational vocabulary offline from day one. The Commons MCP enriches these with deeper patterns, cross-domain intelligence, and updates.
+| Pack | Content | Patterns |
+|---|---|---|
+| **base** | Four curated collections: Blueprint, Engineer, Place, OS | ~112 |
+| **business** | 13 Value Stream Families (4×D1, 4×D2, 3×D3, 3×D4), L3 Capabilities | ~85 |
+| **urban** | 21 Urban Value Stream Families, settlement patterns | ~72 |
+| **life** | 18 Life dimensions, personal value streams | ~60 |
+| **ecology** | 16 Ecology dimensions, ecosystem patterns | ~55 |
+
+All four domain packs ship with every fork. A hospital needs urban patterns (city infrastructure). A city needs business patterns (economic activity). A person lives in an ecology. The domains interpenetrate — shipping all four supports the holistic commons approach.
 
 The agent interprets value stream patterns and translates them against connected Fabric MCPs. The pattern says *what* should happen; the Fabric MCP provides access to the system *where* it happens; the agent bridges between them. This is not workflow automation — it is intelligent interpretation.
 
@@ -761,51 +878,61 @@ The agent interprets value stream patterns and translates them against connected
 
 ### §7.3 Pattern Resolution
 
-Shipped patterns in `knowledge/patterns/commons/` cover the gravitational core: `0_collections/` (Singularity, Principles, collection masters), plus archetypes across the 1-5 cascade. These patterns carry `relationships` (Group 5) that reference patterns at higher orbits. Those referenced patterns are resolved via Commons MCP on demand.
+Patterns are resolved across three layers — commons (local), extensions (local cache), and Commons MCP (remote):
 
 ```
-Local (in knowledge/patterns/commons/)       Remote (via Commons MCP)
-===================================       ========================
+Commons (universal)             Extensions (pre-loaded + installed)    Remote (via Commons MCP)
+===================             ===================================    =======================
 
-0_collections/: Singularity,              (all Orbit 0-1 patterns)
-                Principles,
-                collection masters
-1_journeys/                               MCP: full journey library
-2_touchpoints/                            MCP: full touchpoint library
-3_valuestreams/  ─────────────────>       MCP: deeper domain patterns
-4_capabilities/                           MCP: capability patterns at scale
-5_entities/                               MCP: entity archetypes at scale
+the-singularity.md              commons-engineering/base/              MCP: full pattern library
+principles/                     commons-engineering/business/           MCP: deeper domain patterns
+                                commons-engineering/urban/              MCP: cross-domain intelligence
+                                commons-engineering/life/               MCP: L4/L5 capabilities
+                                commons-engineering/ecology/            MCP: on-demand specialisation
+                                healthtech-hamburg/clinical-pathways/   (installed via MCP)
 ```
 
-Fork-created patterns live in `knowledge/patterns/instance/` — same cascade, never touched by upstream sync.
+Fork-created patterns live in `knowledge/patterns/instance/` — sovereign, never touched by upstream sync.
 
-**The principle:** Core patterns travel with the fork. The full library is always one MCP call away. Offline, you have the design language and operational backbone. Online, you have the universe.
+**The principle:** Universal patterns + pre-loaded extensions = immediate functionality. The full library is always one MCP call away. Offline, you have the design language and operational backbone. Online, you have the universe.
 
-### §7.4 Collections Are Tags, Not Folders
+### §7.4 Collections Are YAML Indices
 
-A pattern can belong to multiple collections. Collection membership is declared in the pattern's frontmatter metadata:
+Collections are curated groupings of patterns. They are **not folders** — they are YAML index files that reference patterns by path across all layers. A pattern can belong to multiple collections without duplication.
 
 ```yaml
-# In a pattern file (knowledge/patterns/commons/4_capabilities/operational-resilience.md)
-collections:
-  - commons-blueprint
-  - business-production
-  - urban-infrastructure
+# extensions/commons-engineering/base/collections/blueprint.yml
+collection: blueprint
+title: "Commons Blueprint Collection"
+description: "Patterns for building any commons blueprint, L1-L9"
+patterns:
+  - ../patterns/purpose-spiral.md
+  - ../patterns/stakeholder-architecture.md
+  - ../patterns/commons-governance.md
+  - ../../business/valuestreams/purpose-to-portfolio.md
+  # Cross-pack references are valid — the index curates, not contains
 ```
 
-The file system organises patterns by cascade position (the physical location). Collections are views assembled from tags — their master-patterns live in `knowledge/patterns/commons/0_collections/`. This allows a single pattern to participate in the Commons Blueprint collection AND a domain-specific value stream collection without duplication.
+The folder structure is flat within each pack. The collection index provides the thematic navigation. The orbital layer and domain membership live in each pattern's frontmatter — the folder never duplicates this metadata.
 
 ### §7.5 Knowledge Sync
 
-Knowledge can be updated from the Commons MCP or directly from the upstream template:
+Knowledge is updated through three independent channels:
 
 | Method | When | How | Scope |
 |---|---|---|---|
-| **MCP sync** | Agent detects newer versions via `library_stats()` | Agent downloads updated patterns, human reviews PR | Updates `knowledge/*/commons/` only |
-| **Git upstream** | Manual or periodic fetch from upstream template | `git fetch upstream` → selective merge | Updates `knowledge/*/commons/` only |
-| **ALIGN.md check** | Alignment service flags knowledge drift | Agent compares local vs remote counts and versions | Reads both `commons/` and `instance/` |
+| **Git upstream** | Weekly (automated) or manual | `sync-upstream.yml` workflow → PR for review | Updates `knowledge/*/commons/` only |
+| **Extension pack update** | Agent detects newer pack version via Commons MCP | Agent downloads updated pack, human reviews | Updates `knowledge/*/extensions/{provider}/{pack}/` |
+| **New extension install** | Agent recommends or founder requests | Agent loads pack via Commons MCP into `extensions/` | Adds new `{provider}/{pack}/` directory |
+| **ALIGN.md check** | Periodic | Agent compares local vs remote counts and versions | Reads all three layers |
 
-The commons/extensions/instance layers ensure upstream sync never touches fork-specific content. `knowledge/*/commons/` is the upstream channel; `knowledge/*/instance/` is sovereign. The `workshop/` directory at the top level is the universal sovereign space — every commons has it from the moment of fork. Where `knowledge/*/instance/` holds mature fork-specific knowledge, `workshop/` holds what is not yet ready: experiments, drafts, scratch work, work in progress. Together they form the complete local sovereignty layer.
+**Sovereignty rules:**
+- `knowledge/*/commons/` — updated only via upstream sync. Read-only in forks.
+- `knowledge/*/extensions/` — managed by the fork owner. Install, update, remove at will. Upstream never touches it.
+- `knowledge/*/instance/` — fully sovereign. Upstream never touches it.
+- `registry/`, `workshop/`, `blueprint.md` — always sovereign. Never touched by any sync.
+
+The `workshop/` directory is the universal scratch space — experiments, drafts, work in progress. Where `instance/` holds mature fork-specific knowledge, `workshop/` holds what is not yet ready.
 
 ---
 
