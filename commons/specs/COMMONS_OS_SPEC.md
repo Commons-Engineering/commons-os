@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Status:** Specification
-**Companion:** COMMONS_OS_MANIFEST (the "why/what"), COMMONS_MCP_ARCHITECTURE_SPEC.md (the knowledge service), PATTERN_SPEC.md (v8.2), LIGHTHOUSE_BUSINESS_SPEC.md (v1.2)
+**Companion:** COMMONS_OS_MANIFEST (the "why/what"), COMMONS_MCP_ARCHITECTURE_SPEC.md (the knowledge service), PATTERN_SPEC.md (v8.2)
 
 ---
 
@@ -24,100 +24,99 @@ When you fork the Commons OS template, you get a complete operating environment 
 
 ### §2.1 Template Repository Structure
 
-The repository is split into four top-level spaces: the **registry** (THE WORKSPACE — local instances and state), the **knowledge** library (THE LIBRARY — commons, extensions, instance), the **portals** (touchpoint configuration and themes), and the **workshop** (THE FORGE — experiments, drafts, work in progress). The registry follows the outside-in cascade (1-5) from the BEN Flow. The knowledge library uses three layers: **commons** (universal, upstream), **extensions** (provider packs), **instance** (fork-specific).
+The repository is organised into **three layers** that reflect the ownership model: **commons** (upstream, read-only in forks), **extensions** (provider packs, managed by the fork owner), **instance** (sovereign, upstream never touches it). Everything in the repo belongs to exactly one layer. Root-level files serve Git/GitHub conventions and agent boot configuration.
 
 ```
 [commons]-os/
+│
+├── commons/                          # LAYER 1 — upstream, read-only in forks (§2.3)
+│   ├── manifests/                    # Architectural documents
+│   │   ├── COMMONS_OS_MANIFEST.md
+│   │   ├── COMMONS_AGENT_MANIFEST.md
+│   │   ├── COMMONS_ENGINEERING_MANIFEST.md
+│   │   ├── COMMONS_BLUEPRINT_MANIFEST.md
+│   │   ├── COMMONS_ENGINEER_MANIFEST.md
+│   │   ├── COMMONS_PLACE_MANIFEST.md
+│   │   ├── COMMONS_INCUBATOR_MANIFEST.md
+│   │   ├── COMMONS_TAXONOMY_MANIFEST.md
+│   │   ├── COMMONS_ENGINEERING_BOK.md
+│   │   └── COMMONS_ENGINEERING_ARCHITECTURE.md
+│   ├── specs/                        # Technical specifications
+│   │   ├── COMMONS_OS_SPEC.md
+│   │   ├── PATTERN_SPEC.md
+│   │   ├── PACK_SPEC.md
+│   │   └── COMMONS_MCP_ARCHITECTURE_SPEC.md
+│   ├── patterns/                     # Universal patterns
+│   │   ├── singularity/              # Orbit 0 — the one pattern
+│   │   └── principles/               # Orbit 1 — foundational principles (~25)
+│   ├── templates/                    # Upstream templates
+│   │   ├── blueprint-me.md           # Blueprint template — Life/personal domain
+│   │   ├── blueprint-venture.md      # Blueprint template — Business/venture domain
+│   │   ├── pattern.md                # Pattern template (per PATTERN_SPEC)
+│   │   └── organisation.md           # Organisation entity template
+│   └── scripts/                      # Validation, alignment, portal-build
+│       └── .keep
+│
+├── extensions/                       # LAYER 2 — provider packs (§2.5)
+│   └── commons-engineering/          # Provider: Commons Engineering (pre-loaded)
+│       ├── base/                     # Pack: core collections (Blueprint, Engineer, Place, OS)
+│       │   ├── manifest.yml
+│       │   ├── patterns/
+│       │   └── collections/
+│       ├── business/                 # Pack: 13 VS Families, L3 Capabilities
+│       │   ├── manifest.yml
+│       │   ├── patterns/
+│       │   └── collections/
+│       ├── life/                     # Pack: Life value streams & patterns
+│       ├── urban/                    # Pack: Urban value streams & patterns
+│       └── ecology/                  # Pack: Ecology value streams & patterns
+│
+├── instance/                         # LAYER 3 — sovereign, upstream never touches it
+│   ├── patterns/                     # Fork-created patterns
+│   │   └── .keep
+│   ├── manifests/                    # Fork-specific manifests
+│   │   └── .keep
+│   ├── specs/                        # Fork-specific specs
+│   │   └── .keep
+│   ├── templates/                    # Fork-specific templates
+│   │   └── .keep
+│   ├── scripts/                      # Instance-specific scripts
+│   │   └── .keep
+│   ├── operations/                   # Day-to-day operations
+│   │   └── rhythms.md               # Operating rhythms
+│   ├── portals/                      # Portal configuration & themes (NOT output)
+│   │   ├── intranet/.keep            # Internal community portal
+│   │   └── extranet/.keep            # Public-facing portal
+│   ├── registry/                     # THE WORKSPACE — local instances & state
+│   │   ├── 1_journeys/.keep          # OUTSIDE-IN: stakeholder journeys
+│   │   ├── 2_touchpoints/.keep       # MEMBRANE: where commons meets world
+│   │   ├── 3_valuestreams/.keep      # INSIDE-FLOW: end-to-end value streams
+│   │   ├── 4_capabilities/           # MOTOR: capability baseline/target (D1-D4)
+│   │   │   ├── purpose/.keep
+│   │   │   ├── participation/.keep
+│   │   │   ├── proposition/.keep
+│   │   │   └── production/.keep
+│   │   ├── 5_entities/               # SUBSTRATE: organisations, people, systems
+│   │   │   ├── purpose/.keep
+│   │   │   ├── participation/.keep
+│   │   │   ├── proposition/.keep
+│   │   │   └── production/.keep
+│   │   └── providers/                # Extension Pack Registry (§2.5)
+│   │       └── commons-engineering.yml
+│   └── workshop/                     # The forge — experiments, drafts, WIP
+│       └── .keep
+│
+├── .commons/                         # Identity & configuration (§5)
+│   ├── identity.yml                  # Commons identity: slug, purpose, domain, founder
+│   └── config.yml                    # 3-MCP configuration, publishing, extensions
 │
 ├── AGENT.md                          # Agent configuration (§3)
 ├── BOOT.md                           # Boot guide — how to get started (§6)
 ├── ALIGN.md                          # Alignment service check (§4)
 ├── blueprint.md                      # The Living Blueprint — single document, L1-L9 (§6)
 ├── README.md                         # Onboarding — "Welcome to [commons]-os"
-│
-├── .commons/
-│   ├── identity.yml                  # Commons identity: slug, purpose, domain, founder
-│   └── config.yml                    # 3-MCP configuration, publishing, extensions (§5)
-│
-├── operations/                       # Day-to-day operations
-│   └── rhythms.md                    # Operating rhythms
-│
-├── registry/                         # THE WORKSPACE — local instances & state
-│   ├── 1_journeys/.keep              # OUTSIDE-IN: stakeholder journeys
-│   ├── 2_touchpoints/.keep           # MEMBRANE: where commons meets world
-│   ├── 3_valuestreams/.keep          # INSIDE-FLOW: end-to-end value streams
-│   ├── 4_capabilities/               # MOTOR: capability baseline/target (D1-D4)
-│   │   ├── purpose/.keep
-│   │   ├── participation/.keep
-│   │   ├── proposition/.keep
-│   │   └── production/.keep
-│   ├── 5_entities/                   # SUBSTRATE: organisations, people, systems
-│   │   ├── purpose/.keep
-│   │   ├── participation/.keep
-│   │   ├── proposition/.keep
-│   │   └── production/.keep
-│   └── providers/                    # Extension Pack Registry (§2.5)
-│       └── commons-engineering.yml   # Pre-loaded provider profile
-│
-├── knowledge/                        # THE LIBRARY — three layers (§2.3)
-│   ├── manifests/
-│   │   ├── commons/                  # Upstream manifests (read-only on sync)
-│   │   │   ├── COMMONS_OS_MANIFEST.md
-│   │   │   ├── COMMONS_AGENT_MANIFEST.md
-│   │   │   ├── COMMONS_ENGINEERING_MANIFEST.md
-│   │   │   ├── COMMONS_BLUEPRINT_MANIFEST.md
-│   │   │   ├── COMMONS_ENGINEER_MANIFEST.md
-│   │   │   ├── COMMONS_PLACE_MANIFEST.md
-│   │   │   ├── COMMONS_INCUBATOR_MANIFEST.md
-│   │   │   ├── COMMONS_TAXONOMY_MANIFEST.md
-│   │   │   ├── COMMONS_ENGINEERING_BOK.md
-│   │   │   └── COMMONS_ENGINEERING_ARCHITECTURE.md
-│   │   ├── extensions/.keep          # Extension pack manifests
-│   │   └── instance/.keep            # Fork-specific manifests
-│   │
-│   ├── specs/
-│   │   ├── commons/                  # Upstream specs (read-only on sync)
-│   │   │   ├── COMMONS_OS_SPEC.md
-│   │   │   ├── PATTERN_SPEC.md
-│   │   │   └── COMMONS_MCP_ARCHITECTURE_SPEC.md
-│   │   ├── extensions/.keep          # Extension pack specs
-│   │   └── instance/.keep            # Fork-specific specs
-│   │
-│   ├── patterns/
-│   │   ├── commons/                  # Universal patterns (read-only on sync)
-│   │   │   ├── singularity/          # Orbit 0 — the one pattern
-│   │   │   └── principles/           # Orbit 1 — foundational principles (~25)
-│   │   ├── extensions/               # Extension packs — {provider}/{pack}/
-│   │   │   └── commons-engineering/  # Pre-loaded CE pack (§2.5)
-│   │   │       ├── base/             # Collections: Blueprint, Engineer, Place, OS
-│   │   │       ├── business/         # 13 VS Families, L3 Capabilities
-│   │   │       ├── life/             # Life value streams & patterns
-│   │   │       ├── urban/            # Urban value streams & patterns
-│   │   │       └── ecology/          # Ecology value streams & patterns
-│   │   └── instance/.keep            # Fork-created patterns
-│   │
-│   ├── scripts/
-│   │   ├── commons/.keep             # Validation, alignment, portal-build
-│   │   ├── extensions/.keep          # Extension pack scripts
-│   │   └── instance/.keep            # Instance-specific scripts
-│   │
-│   ├── sources/.keep                 # Reference material (always instance-level)
-│   │
-│   └── templates/
-│       ├── commons/                  # Upstream templates
-│       │   ├── blueprint-me.md       # Blueprint template — Life/personal domain
-│       │   ├── blueprint-venture.md  # Blueprint template — Business/venture domain
-│       │   ├── pattern.md            # Pattern template (per PATTERN_SPEC)
-│       │   └── organisation.md       # Organisation entity template
-│       ├── extensions/.keep          # Extension pack templates
-│       └── instance/.keep            # Fork-specific templates
-│
-├── portals/                          # Portal configuration & themes (NOT output)
-│   ├── intranet/.keep                # Internal community portal
-│   └── extranet/.keep                # Public-facing portal
-│
-├── workshop/                         # The forge — experiments, drafts, work in progress
-│   └── .keep
+├── CONTRIBUTING.md                   # Contribution guidelines
+├── LICENSE                           # CC-BY-SA-4.0
 │
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
@@ -140,7 +139,7 @@ The root directory name follows the pattern `[commons]-os` where **both parts ar
 
 #### The Outside-In Cascade (Registry)
 
-The numbered directories in `registry/` follow the BEN Flow — from stakeholder experience to substrate:
+The numbered directories in `instance/registry/` follow the BEN Flow — from stakeholder experience to substrate:
 
 | # | Name | Role | What lives here |
 |---|---|---|---|
@@ -152,27 +151,27 @@ The numbered directories in `registry/` follow the BEN Flow — from stakeholder
 
 The registry is always instance-level — it contains this commons' operational data, not archetypes.
 
-#### Pattern Architecture (Knowledge)
+#### Pattern Architecture
 
-Patterns in `knowledge/patterns/` are organised **flat** within each layer. The orbital layer and domain membership live in the pattern's frontmatter, not in the folder structure. Collections are **YAML index files** that curate patterns by theme — they reference patterns by path, never duplicate them.
+Patterns are organised **flat** within each layer. The orbital layer and domain membership live in the pattern's frontmatter, not in the folder structure. Collections are **YAML index files** that curate patterns by theme — they reference patterns by path, never duplicate them.
 
-| Layer | What it contains | Organisation |
-|---|---|---|
-| `commons/` | Singularity (1 pattern) + Principles (~25 patterns) | Flat. These are the universals that every commons needs |
-| `extensions/{provider}/{pack}/` | Extension packs from any Commons Incubator | Internal structure defined by the pack provider |
-| `instance/` | Fork-created patterns | Flat. Frontmatter is the truth |
+| Layer | Path | What it contains | Organisation |
+|---|---|---|---|
+| **Commons** | `commons/patterns/` | Singularity (1 pattern) + Principles (~25 patterns) | Flat. These are the universals that every commons needs |
+| **Extensions** | `extensions/{provider}/{pack}/patterns/` | Extension packs from any Commons Incubator | Internal structure defined by the pack provider |
+| **Instance** | `instance/patterns/` | Fork-created patterns | Flat. Frontmatter is the truth |
 
 Collections (Blueprint, Engineer, Place, OS) are delivered as part of the pre-loaded `commons-engineering/base` extension pack. Each collection is a YAML index file that references patterns across all layers.
 
-#### The Three Knowledge Layers
+#### The Three Layers
 
-Every `knowledge/` subdirectory (manifests, specs, patterns, scripts, templates) uses three layers:
+The three top-level directories **are** the three layers. Everything in the repo belongs to exactly one:
 
 | Layer | Path | Owner | Sync behaviour |
 |---|---|---|---|
-| **Commons** | `knowledge/*/commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
-| **Extensions** | `knowledge/*/extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
-| **Instance** | `knowledge/*/instance/` | This commons | Sovereign — upstream never touches it |
+| **Commons** | `commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Extensions** | `extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
+| **Instance** | `instance/` | This commons | Sovereign — upstream never touches it |
 
 Upstream sync updates `commons/` only. Extensions are managed by the fork owner (install, update, remove). Instance content is fully sovereign.
 
@@ -192,9 +191,9 @@ Git does not version empty directories. Every empty delivery folder in the templ
 | **CI workflows** | Validate, publish-intranet, publish-extranet, improvement-loop | Automated quality + instant visibility |
 | **AGENT.md** | Agent-neutral, MCP-connected | Any AI partner can guide the commons |
 | **ALIGN.md** | Alignment check template | Ongoing fit-check with commons blueprint |
-| **Pre-loaded extension pack** | `commons-engineering/base` with four curated collections (Blueprint, Engineer, Place, OS) in `knowledge/patterns/extensions/commons-engineering/base/` | Core knowledge ships with the fork as an extension |
-| **Four domain packs** | Business (13 VS), Urban (21 VS), Life (18 VS), Ecology (16 VS) in `knowledge/patterns/extensions/commons-engineering/{domain}/` | Operational backbone — all domains pre-loaded |
-| **All manifests and specifications** | Complete intellectual infrastructure in `knowledge/manifests/commons/` and `knowledge/specs/commons/` | Self-sufficient knowledge base |
+| **Pre-loaded extension pack** | `commons-engineering/base` with four curated collections (Blueprint, Engineer, Place, OS) in `extensions/commons-engineering/base/` | Core knowledge ships with the fork as an extension |
+| **Four domain packs** | Business (13 VS), Urban (21 VS), Life (18 VS), Ecology (16 VS) in `extensions/commons-engineering/{domain}/` | Operational backbone — all domains pre-loaded |
+| **All manifests and specifications** | Complete intellectual infrastructure in `commons/manifests/` and `commons/specs/` | Self-sufficient knowledge base |
 | **Registry structure** | Empty 1-5 cascade ready for instances | THE WORKSPACE — ready from day one |
 | **Blueprint template** | Single-document L1-L9 blueprint with domain-appropriate prompts | One commons, one blueprint — the heart of the OS |
 
@@ -291,10 +290,10 @@ Extension packs are the primary mechanism for delivering domain-specific knowled
 
 #### Pack Structure
 
-Every extension pack lives under `knowledge/*/extensions/{provider}/{pack}/`. The provider namespace prevents naming collisions. Internal structure is defined by the pack provider — the OS does not prescribe it.
+Every extension pack lives under `extensions/{provider}/{pack}/`. The provider namespace prevents naming collisions. Internal structure is defined by the pack provider — the OS does not prescribe it. A pack is an **atomic unit** — all its content (patterns, collections, specs, templates) lives in one directory.
 
 ```
-knowledge/patterns/extensions/
+extensions/
   commons-engineering/              # Provider: Commons Engineering
     base/                           # Pack: core collections (Blueprint, Engineer, Place, OS)
       manifest.yml                  # Required: pack catalogue
@@ -305,8 +304,8 @@ knowledge/patterns/extensions/
       patterns/                     # Actual pattern files
     business/                       # Pack: Business domain
       manifest.yml
-      valuestreams/
-      capabilities/
+      patterns/
+      collections/
     life/                           # Pack: Life domain
     urban/                          # Pack: Urban domain
     ecology/                        # Pack: Ecology domain
@@ -356,10 +355,10 @@ patterns:
 
 #### Provider Registry
 
-Providers register themselves in `registry/providers/` via YAML profiles. In the commons-os template, these profiles are curated via Pull Request. The Commons MCP indexes them for discoverability.
+Providers register themselves in `instance/registry/providers/` via YAML profiles. In the commons-os template, these profiles are curated via Pull Request. The Commons MCP indexes them for discoverability.
 
 ```yaml
-# registry/providers/commons-engineering.yml
+# instance/registry/providers/commons-engineering.yml
 provider: commons-engineering
 name: "Commons Engineering"
 url: https://commons.engineering
@@ -385,18 +384,22 @@ packs:
 
 #### Pre-loaded Packs
 
-The commons-os template ships with the `commons-engineering` packs pre-loaded in `extensions/`. This ensures the OS is immediately functional without MCP connectivity ("batteries included"). The Commons MCP keeps packs current and provides additional packs from other providers on demand.
+The commons-os template ships with the `commons-engineering` packs pre-loaded in `extensions/commons-engineering/`. This ensures the OS is immediately functional without MCP connectivity ("batteries included"). The Commons MCP keeps packs current and provides additional packs from other providers on demand.
 
 #### How Packs Are Loaded
 
 ```
-1. Agent reads registry/providers/ → knows what providers exist
-2. Agent queries Commons MCP → discovers available packs
+1. Agent reads instance/registry/providers/ → knows what providers exist
+2. Agent queries Commons MCP (list_packs, list_providers) → discovers available packs
 3. Agent recommends packs based on domain and purpose
-4. Founder approves → agent loads pack into extensions/{provider}/{pack}/
-5. Pack manifest is cached locally → works offline
-6. Agent navigates via manifest and collection indices → loads patterns on demand
+4. Founder approves → agent calls download_pack() on Commons MCP → receives payload
+5. Agent resolves dependencies recursively (download_pack for each unmet dependency)
+6. Agent writes files locally to extensions/{provider}/{pack}/
+7. Agent validates manifest → pack works offline from this point
+8. Agent navigates via manifest and collection indices → loads patterns on demand
 ```
+
+> **Remote/local separation:** The Commons MCP is a remote server — it serves pack payloads but cannot write to the local filesystem. The agent acts as the installer: it downloads from the registry and writes locally, exactly like `npm install` or `apt-get`. See PACK_SPEC §4.4 for the full installation sequence.
 
 ---
 
@@ -457,9 +460,9 @@ You sit at D1 (Definition & Purpose) of this commons. Your responsibilities:
 1. `.commons/identity.yml` — who this commons is
 2. `blueprint.md` — the Living Blueprint (L1 first)
 3. `ALIGN.md` — current alignment status
-4. `knowledge/manifests/commons/` — architectural foundations
-5. `knowledge/patterns/commons/` — available pattern collections
-6. `registry/` — the workspace (empty at boot, fills as the commons grows)
+4. `commons/manifests/` — architectural foundations
+5. `commons/patterns/` — universal patterns, `extensions/` — domain packs
+6. `instance/registry/` — the workspace (empty at boot, fills as the commons grows)
 ```
 
 ### §3.2 Agent Neutrality Principle
@@ -498,23 +501,22 @@ This file defines WHAT to check. Results are posted as GitHub Issues
 | Check | Rule |
 |---|---|
 | D1 (Purpose) | blueprint.md L1 must be populated |
-| D2 (Participation) | registry/5_entities/participation/ must contain at least one entity |
-| D3 (Proposition) | registry/3_valuestreams/ must contain at least one active stream |
-| D4 (Production) | operations/ must contain rhythms.md or economics.md |
+| D2 (Participation) | instance/registry/5_entities/participation/ must contain at least one entity |
+| D3 (Proposition) | instance/registry/3_valuestreams/ must contain at least one active stream |
+| D4 (Production) | instance/operations/ must contain rhythms.md or economics.md |
 
 ## §2 Specification Conformance
 
 | Spec | Expected version |
 |---|---|
 | PATTERN_SPEC | v8.2 |
-| LIGHTHOUSE_BUSINESS_SPEC | v1.2 |
 | COMMONS_OS_SPEC | v0.2 |
 
-Agent compares local knowledge/specs/commons/ versions against Commons MCP latest.
+Agent compares local commons/specs/ versions against Commons MCP latest.
 
 ## §3 Collection Sync
 
-Agent compares local knowledge/patterns/commons/ counts against Commons MCP library_stats().
+Agent compares local commons/patterns/ counts against Commons MCP library_stats().
 
 ## §4 Structural Checks
 
@@ -524,10 +526,10 @@ Agent compares local knowledge/patterns/commons/ counts against Commons MCP libr
 | .commons/identity.yml | Must be valid YAML with slug, purpose, domain |
 | .commons/config.yml | Must have 3-MCP endpoints defined |
 | AGENT.md | Must not reference a specific AI product by name |
-| knowledge/manifests/commons/ | Must contain all required manifests |
-| knowledge/specs/commons/ | Must contain all required specs |
-| knowledge/patterns/commons/ | Must contain 0_collections/ through 5_entities/ |
-| registry/ | Must contain 1_journeys/ through 5_entities/ |
+| commons/manifests/ | Must contain all required manifests |
+| commons/specs/ | Must contain all required specs |
+| commons/patterns/ | Must contain singularity/ and principles/ |
+| instance/registry/ | Must contain 1_journeys/ through 5_entities/ |
 
 ## §5 Reporting
 
@@ -575,7 +577,7 @@ incubator: cloudsters
 parent_commons: null                   # e.g., "baltic-hanse-os" if a regional layer exists
 
 # Self-entity identity (the commons itself as an entity in the registry)
-self_entity_slug: luebeck              # Links to registry/5_entities/purpose/luebeck.md
+self_entity_slug: luebeck              # Links to instance/registry/5_entities/purpose/luebeck.md
 ```
 
 #### Localisation Strategy
@@ -644,9 +646,9 @@ publishing:
 # Domain Activation — NOT configured here.
 # The domain is declared once in identity.yml (Single Source of Truth).
 # Active value streams are determined purely by file existence:
-#   - knowledge/patterns/commons/3_valuestreams/ → available archetypes (from upstream)
-#   - registry/3_valuestreams/ → active streams (local decision)
-# If a file exists in registry/3_valuestreams/, the stream is active. No list needed.
+#   - extensions/{provider}/{pack}/patterns/ → available archetypes (from extension packs)
+#   - instance/registry/3_valuestreams/ → active streams (local decision)
+# If a file exists in instance/registry/3_valuestreams/, the stream is active. No list needed.
 ```
 
 ---
@@ -661,7 +663,7 @@ A forked repository is inert. The boot happens locally — where the founder act
 Founder forks → clones locally (or opens in Codespace/IDE)
     → starts session with local agent (AGENT.md provides context)
     → agent detects empty identity.yml → begins guided boot conversation
-    → agent writes answers into local files (.commons/identity.yml, blueprint.md, registry/)
+    → agent writes answers into local files (.commons/identity.yml, blueprint.md, instance/registry/)
     → founder sees the commons grow live in the editor
     → founder commits and pushes when ready
 ```
@@ -684,12 +686,12 @@ The boot sequence follows the materialisation sequence from the COMMONS_OS_MANIF
 | **6. Governance** | Continue blueprint — L3 (Governance) | Offers governance patterns, suggests operating rhythms | Decides how decisions are made |
 | **7. Commit & Push** | Founder commits boot results, pushes to remote | — | Reviews local changes, commits (`chore: boot L1-L3`), pushes |
 | **8. Publish** | Enable touchpoints (intranet + extranet), link domain | Runs CI workflow, verifies deployment | Links custom domain (optional) |
-| **9. Self-Entity** | Creates the self-entity (the commons itself) in `registry/5_entities/purpose/` | Guides through organisation template for the commons as entity | Describes the commons itself — the first object in Commons as Code |
+| **9. Self-Entity** | Creates the self-entity (the commons itself) in `instance/registry/5_entities/purpose/` | Guides through organisation template for the commons as entity | Describes the commons itself — the first object in Commons as Code |
 | **10. Full Blueprint** | Completes L4-L9 in the blueprint using patterns from all four collections | Walks through each layer, applying patterns | Writes the Near Future timeslice — not what the commons IS, but what it is BECOMING |
-| **11. Seed** | First external entities in the registry | Guides through organisation template for external entities, maps relationships | Describes first external entities — stakeholders, partners, neighbours in `registry/5_entities/participation/` |
+| **11. Seed** | First external entities in the registry | Guides through organisation template for external entities, maps relationships | Describes first external entities — stakeholders, partners, neighbours in `instance/registry/5_entities/participation/` |
 | **12. Operate** | Regular rhythms, issue tracker active, engagement conversations | Monitors, suggests, alerts | Runs the commons |
 
-> **Note on `workshop/`:** The workshop directory exists from the moment the template is forked — it ships as an empty directory with a `.keep` file. It needs no special boot phase. The founder and agent use it freely from day one for experiments, drafts, scratch work, and anything not yet ready for the registry or knowledge library. It is the universal forge that every commons has.
+> **Note on `instance/workshop/`:** The workshop directory exists from the moment the template is forked — it ships as an empty directory with a `.keep` file. It needs no special boot phase. The founder and agent use it freely from day one for experiments, drafts, scratch work, and anything not yet ready for the registry or the instance layer. It is the universal forge that every commons has.
 
 ### §6.3 The Living Blueprint Is Forward-Looking
 
@@ -708,7 +710,7 @@ The Living Blueprint is a temporal specification — it describes what the commo
 
 Each commons has exactly one `blueprint.md` — a single markdown file with L1-L9 as sections. The agent selects domain-appropriate prompts based on the domain in `.commons/identity.yml`.
 
-**The Blueprint is the narrative; the Registry is the database.** The blueprint describes the commons in prose — an executive summary that a human reads top-to-bottom. The registry holds the structured data — YAML files that the agent queries and traverses. Where they overlap (e.g., L2 names stakeholders, `registry/5_entities/` lists them), the blueprint *summarises and references* (e.g., "We operate 3 core value streams — see `registry/3_valuestreams/`"), while the registry holds the machine-readable truth. The agent maintains the registry; the human reads the blueprint. No double-entry bookkeeping.
+**The Blueprint is the narrative; the Registry is the database.** The blueprint describes the commons in prose — an executive summary that a human reads top-to-bottom. The registry holds the structured data — YAML files that the agent queries and traverses. Where they overlap (e.g., L2 names stakeholders, `instance/registry/5_entities/` lists them), the blueprint *summarises and references* (e.g., "We operate 3 core value streams — see `instance/registry/3_valuestreams/`"), while the registry holds the machine-readable truth. The agent maintains the registry; the human reads the blueprint. No double-entry bookkeeping.
 
 **commons blueprint template (Business / Urban / Ecology):**
 
@@ -804,8 +806,8 @@ Each commons has exactly one `blueprint.md` — a single markdown file with L1-L
 
 The publishing pipeline ships pre-configured. On fork:
 
-1. **Intranet portal** — CI workflow builds from registry + blueprint + `portals/intranet/` config, deploys to `gh-pages-intranet` branch
-2. **Extranet portal** — CI workflow builds from identity + blueprint + `portals/extranet/` config, deploys to `gh-pages` branch
+1. **Intranet portal** — CI workflow builds from `instance/registry/` + blueprint + `instance/portals/intranet/` config, deploys to `gh-pages-intranet` branch
+2. **Extranet portal** — CI workflow builds from identity + blueprint + `instance/portals/extranet/` config, deploys to `gh-pages` branch
 
 **The goal:** A new commons has a web presence within minutes of forking.
 
@@ -814,9 +816,9 @@ Every commons is fully described through the four dimensions. Both portals follo
 | Dimension | What's visible | Where | Generated from |
 |---|---|---|---|
 | **D1 — Definition & Purpose** | Purpose statement, boundary, stage | Extranet + Intranet | `identity.yml` + blueprint L1 |
-| **D2 — Participation** | Who participates, community structure | Extranet (opted-in) + Intranet | `registry/5_entities/participation/` + engagement graph |
-| **D3 — Proposition** | What this commons offers, value exchange | Extranet + Intranet | Blueprint L2 + `registry/3_valuestreams/` |
-| **D4 — Production** | Value stream overview, operational rhythms | Intranet | Operations + recent activity |
+| **D2 — Participation** | Who participates, community structure | Extranet (opted-in) + Intranet | `instance/registry/5_entities/participation/` + engagement graph |
+| **D3 — Proposition** | What this commons offers, value exchange | Extranet + Intranet | Blueprint L2 + `instance/registry/3_valuestreams/` |
+| **D4 — Production** | Value stream overview, operational rhythms | Intranet | `instance/operations/` + recent activity |
 
 ### §6.7 The Commons Portfolio — Strongly Recommended
 
@@ -849,7 +851,7 @@ another-org/                           # Another organisation namespace
 
 ### §7.1 What Ships in Commons (Universal)
 
-The `knowledge/patterns/commons/` layer contains only the universals — patterns that every commons needs regardless of domain:
+The `commons/patterns/` layer contains only the universals — patterns that every commons needs regardless of domain:
 
 | Content | Orbit | Count | Purpose |
 |---|---|---|---|
@@ -860,7 +862,7 @@ These patterns are read-only in forks and updated via upstream sync. They are th
 
 ### §7.2 What Ships as Pre-loaded Extensions
 
-The `commons-engineering` extension packs ship pre-loaded in `knowledge/patterns/extensions/commons-engineering/`. This is "batteries included" — the OS works without MCP connectivity from day one.
+The `commons-engineering` extension packs ship pre-loaded in `extensions/commons-engineering/`. This is "batteries included" — the OS works without MCP connectivity from day one.
 
 | Pack | Content | Patterns |
 |---|---|---|
@@ -892,7 +894,9 @@ principles/                     commons-engineering/business/           MCP: dee
                                 healthtech-hamburg/clinical-pathways/   (installed via MCP)
 ```
 
-Fork-created patterns live in `knowledge/patterns/instance/` — sovereign, never touched by upstream sync.
+Fork-created patterns live in `instance/patterns/` — sovereign, never touched by upstream sync.
+
+**Load order (shadowing):** If a pattern with the same slug exists in multiple layers, the outermost layer wins: `instance/` overrides `extensions/`, which overrides `commons/`. This allows a fork to refine or replace any upstream pattern without modifying the original. The agent always resolves from outside in: instance first, then extensions, then commons. The shadowed pattern remains on disk — it is not deleted, only deprioritised.
 
 **The principle:** Universal patterns + pre-loaded extensions = immediate functionality. The full library is always one MCP call away. Offline, you have the design language and operational backbone. Online, you have the universe.
 
@@ -901,7 +905,7 @@ Fork-created patterns live in `knowledge/patterns/instance/` — sovereign, neve
 Collections are curated groupings of patterns. They are **not folders** — they are YAML index files that reference patterns by path across all layers. A pattern can belong to multiple collections without duplication.
 
 ```yaml
-# extensions/commons-engineering/base/collections/blueprint.yml
+# [repo-root]/extensions/commons-engineering/base/collections/blueprint.yml
 collection: blueprint
 title: "Commons Blueprint Collection"
 description: "Patterns for building any commons blueprint, L1-L9"
@@ -921,18 +925,18 @@ Knowledge is updated through three independent channels:
 
 | Method | When | How | Scope |
 |---|---|---|---|
-| **Git upstream** | Weekly (automated) or manual | `sync-upstream.yml` workflow → PR for review | Updates `knowledge/*/commons/` only |
-| **Extension pack update** | Agent detects newer pack version via Commons MCP | Agent downloads updated pack, human reviews | Updates `knowledge/*/extensions/{provider}/{pack}/` |
-| **New extension install** | Agent recommends or founder requests | Agent loads pack via Commons MCP into `extensions/` | Adds new `{provider}/{pack}/` directory |
+| **Git upstream** | Weekly (automated) or manual | `sync-upstream.yml` workflow → PR for review | Updates `commons/` only |
+| **Extension pack update** | Agent detects newer pack version via Commons MCP | Agent downloads updated pack, human reviews | Updates `extensions/{provider}/{pack}/` |
+| **New extension install** | Agent recommends or founder requests | Agent downloads pack via Commons MCP | Adds new `extensions/{provider}/{pack}/` directory |
 | **ALIGN.md check** | Periodic | Agent compares local vs remote counts and versions | Reads all three layers |
 
 **Sovereignty rules:**
-- `knowledge/*/commons/` — updated only via upstream sync. Read-only in forks.
-- `knowledge/*/extensions/` — managed by the fork owner. Install, update, remove at will. Upstream never touches it.
-- `knowledge/*/instance/` — fully sovereign. Upstream never touches it.
-- `registry/`, `workshop/`, `blueprint.md` — always sovereign. Never touched by any sync.
+- `commons/` — updated only via upstream sync. Read-only in forks.
+- `extensions/` — managed by the fork owner. Install, update, remove at will. Upstream never touches it.
+- `instance/` — fully sovereign. Upstream never touches it. This includes `registry/`, `workshop/`, `operations/`, `portals/`, and all fork-specific knowledge.
+- `blueprint.md`, `.commons/` — always sovereign. Never touched by any sync.
 
-The `workshop/` directory is the universal scratch space — experiments, drafts, work in progress. Where `instance/` holds mature fork-specific knowledge, `workshop/` holds what is not yet ready.
+The `instance/workshop/` directory is the universal scratch space — experiments, drafts, work in progress. Where `instance/patterns/` holds mature fork-specific patterns, `instance/workshop/` holds what is not yet ready.
 
 ---
 
@@ -940,12 +944,12 @@ The `workshop/` directory is the universal scratch space — experiments, drafts
 
 ### §8.1 Touchpoints — Definition Layer
 
-The OS separates touchpoint **definitions** from publishing **configuration** from publishing **output**. Touchpoint definitions live in `registry/2_touchpoints/`. Portal configuration and themes live in `portals/`. Generated output is pushed to `gh-pages` branches by CI — never into the main branch.
+The OS separates touchpoint **definitions** from publishing **configuration** from publishing **output**. Touchpoint definitions live in `instance/registry/2_touchpoints/`. Portal configuration and themes live in `instance/portals/`. Generated output is pushed to `gh-pages` branches by CI — never into the main branch.
 
 | Layer | Where | What |
 |---|---|---|
-| **Touchpoint definitions** | `registry/2_touchpoints/` | What happens here, who interacts, what value is exchanged |
-| **Portal config & themes** | `portals/intranet/`, `portals/extranet/` | Site config, CSS, logos, navigation, page templates |
+| **Touchpoint definitions** | `instance/registry/2_touchpoints/` | What happens here, who interacts, what value is exchanged |
+| **Portal config & themes** | `instance/portals/intranet/`, `instance/portals/extranet/` | Site config, CSS, logos, navigation, page templates |
 | **Generated output** | `gh-pages` / `gh-pages-intranet` branches | HTML/CSS built by CI from registry + blueprint + portal config. Never in main branch. |
 | **Transaction execution** | Fabric MCPs (ERP, CRM) | Where the actual work happens |
 | **Physical realisation** | Real world (Commons Place patterns) | Workshops, events, gatherings |
@@ -955,27 +959,27 @@ The OS separates touchpoint **definitions** from publishing **configuration** fr
 The five cascade layers (1_journeys through 5_entities) are not isolated silos. They form a **queryable graph** through YAML frontmatter references. Every file in the cascade declares which files in adjacent layers it connects to.
 
 ```yaml
-# registry/3_valuestreams/lead-to-user.yml
+# instance/registry/3_valuestreams/lead-to-user.yml
 ---
 slug: lead-to-user
 title: Lead to User
 dimension: proposition
 journeys:                              # ← upward link to layer 1
-  - registry/1_journeys/customer-acquisition.yml
+  - instance/registry/1_journeys/customer-acquisition.yml
 touchpoints:                           # ← upward link to layer 2
-  - registry/2_touchpoints/website-contact-form.yml
-  - registry/2_touchpoints/initial-consultation.yml
+  - instance/registry/2_touchpoints/website-contact-form.yml
+  - instance/registry/2_touchpoints/initial-consultation.yml
 capabilities:                          # ← downward link to layer 4
-  - registry/4_capabilities/proposition/crm-management.yml
-  - registry/4_capabilities/proposition/sales-process.yml
+  - instance/registry/4_capabilities/proposition/crm-management.yml
+  - instance/registry/4_capabilities/proposition/sales-process.yml
 entities:                              # ← downward link to layer 5
-  - registry/5_entities/participation/sales-team.yml
+  - instance/registry/5_entities/participation/sales-team.yml
 ---
 ```
 
 **The graph works in both directions.** A journey references its touchpoints; a touchpoint references its value streams; a value stream references its capabilities and entities. The agent can traverse the graph in any direction — "Which entities support this value stream?" or "Which journeys does this touchpoint belong to?"
 
-**Pattern archetypes mirror this structure.** Files in `knowledge/patterns/commons/` use the same frontmatter references. When the agent instantiates an archetype into `registry/`, it resolves the links to local instances.
+**Pattern archetypes mirror this structure.** Files in `commons/patterns/` and `extensions/` use the same frontmatter references. When the agent instantiates an archetype into `instance/registry/`, it resolves the links to local instances.
 
 **The Blueprint MCP makes the graph queryable.** While the YAML files are the source of truth, the Blueprint MCP (when deployed) indexes these references into a queryable graph — enabling questions like "Show me all capabilities that have no entity assigned" or "Which value streams touch the customer onboarding journey?"
 
@@ -985,9 +989,9 @@ The intranet portal is the community's internal view. It shows everything the co
 
 | Feature | How it works |
 |---|---|
-| **Auto-generated by CI** | Publishing workflow reads `blueprint.md`, `registry/`, `operations/`, applies `portals/intranet/` config + theme, pushes output to `gh-pages-intranet` branch |
+| **Auto-generated by CI** | Publishing workflow reads `blueprint.md`, `instance/registry/`, `instance/operations/`, applies `instance/portals/intranet/` config + theme, pushes output to `gh-pages-intranet` branch |
 | **Blueprint dashboard** | Shows L1-L9 completion status |
-| **Entity directory** | Generated from `registry/5_entities/` |
+| **Entity directory** | Generated from `instance/registry/5_entities/` |
 | **Activity feed** | Generated from recent commits and closed issues |
 | **Access control** | GitHub Pages with private repo = requires GitHub auth |
 
@@ -1052,12 +1056,12 @@ Every commons connects to intelligence through three MCP channels (see COMMONS_M
 ```
 Agent receives a task: "Check our supplier qualification status"
 
-1. Agent reads the value stream pattern "Source to Pay" (knowledge/patterns/commons/3_valuestreams/)
+1. Agent reads the value stream pattern "Source to Pay" (extensions/commons-engineering/base/patterns/)
    → Pattern says: "Verify supplier qualification before order"
 
-2. Agent queries Blueprint MCP (or reads registry/ directly)
+2. Agent queries Blueprint MCP (or reads instance/registry/ directly)
    → "Which suppliers are in our registry?"
-   → Returns: list of supplier entities from registry/5_entities/production/
+   → Returns: list of supplier entities from instance/registry/5_entities/production/
 
 3. Agent queries Fabric MCP (ERP)
    → "What is the qualification status of supplier [slug]?"
@@ -1068,6 +1072,32 @@ Agent receives a task: "Check our supplier qualification status"
 ```
 
 The agent is the **runtime between pattern and system**. Value stream patterns describe *what*. Fabric MCPs provide *where*. The agent bridges between them. No BPMN needed — the intelligence is in the interpretation.
+
+### §9.3 The Agent as Bridge — Commons Without Blueprint MCP
+
+Not every commons will run a Blueprint MCP from day one. Many forks start with just the local files and a connection to the remote Commons MCP. In this scenario, the agent acts as the bridge between local state and remote intelligence:
+
+```
+Agent receives a task: "Diagnose our commons maturity"
+
+1. Agent reads local files:
+   - .commons/identity.yml          → instance identity, domain, purpose
+   - blueprint.md                   → current blueprint state (L1-L9)
+   - instance/registry/3_valuestreams/  → active value stream files
+   - instance/registry/5_entities/     → registered entities
+
+2. Agent serialises relevant local state into a text summary
+
+3. Agent calls Commons MCP tool:
+   diagnose(context: "<serialised local state>")
+   → The context parameter carries what the Blueprint MCP would have provided
+
+4. Commons MCP returns diagnosis based on pattern intelligence + local context
+
+5. Agent presents findings to human, creates issues on the board
+```
+
+**The principle:** The Commons MCP tools like `diagnose`, `prescribe`, and `navigate` accept a `context` parameter (string). For commons with a Blueprint MCP, this context is populated automatically by querying the local MCP. For commons without one, the agent reads the local `instance/registry/` files, serialises them as text, and passes them as the `context` parameter. The intelligence lives in the Commons MCP; the agent is the adapter that makes local state legible to it.
 
 > **Event-driven, not polling.** Fabric MCPs do not just answer queries; they push events. When a critical state changes in the System of Record (e.g., a certificate expires, a supplier loses qualification, a budget threshold is breached), the Fabric MCP triggers a webhook that opens an Issue on the board. The agent's SENSE phase reacts to the board, not by polling the entire ERP. **The board is the event bus.**
 
@@ -1177,12 +1207,13 @@ Mature commons     → many humans + many agents       = the commons as organism
 - [ ] Write ALIGN.md template (§4)
 - [ ] Configure .commons/ with identity.yml and config.yml templates
 - [ ] Create `blueprint.md` stub with L1-L9 sections
-- [ ] Populate `knowledge/manifests/commons/` with all manifests
-- [ ] Populate `knowledge/specs/commons/` with all specifications
-- [ ] Populate `knowledge/patterns/commons/` with patterns across 0-5 cascade from all 4 core collections
-- [ ] Populate `knowledge/templates/` with blueprint, pattern, and organisation templates
-- [ ] Build `portals/intranet/` with default theme + auto-generation
-- [ ] Build `portals/extranet/` with default theme + landing page
+- [ ] Populate `commons/manifests/` with all manifests
+- [ ] Populate `commons/specs/` with all specifications
+- [ ] Populate `commons/patterns/` with universals (singularity + principles)
+- [ ] Populate `extensions/commons-engineering/` with pre-loaded domain packs
+- [ ] Populate `commons/templates/` with blueprint, pattern, and organisation templates
+- [ ] Build `instance/portals/intranet/` with default theme + auto-generation
+- [ ] Build `instance/portals/extranet/` with default theme + landing page
 - [ ] Create `.github/` with issue templates, labels, workflows
 - [ ] Create `.github/workflows/improvement-loop.yml` (§10.2)
 - [ ] Write README.md with onboarding instructions (agent-neutral)

@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Status:** Specification
-**Companion:** PATTERN_SPEC.md (v8.2), LIGHTHOUSE_BUSINESS_SPEC.md (v1.2), LIGHTHOUSE_URBAN_SPEC.md (v1.0), ENGAGEMENT_GRAPH_SPEC.md (v1.0), COMMONS_AGENT_MANIFEST.md (v1.0)
+**Companion:** PATTERN_SPEC.md (v8.2), ENGAGEMENT_GRAPH_SPEC.md (v1.0), COMMONS_AGENT_MANIFEST.md (v1.0), COMMONS_OS_SPEC.md
 
 ---
 
@@ -702,6 +702,120 @@ get_spec(
 }
 ```
 
+#### 4.4.6 Extension Pack Tools (Tier 0 — OPEN for browse, Tier 1 — PEER for install)
+
+> The extension pack architecture — pack structure, manifest.yml format, provider registry, and loading flow — is defined in COMMONS_OS_SPEC §2.5. This section defines the MCP tools that expose the pack ecosystem to AI agents.
+
+**`list_packs`** — Browse available extension packs in the registry. *(Tier 0 — OPEN)*
+
+```typescript
+list_packs(
+  provider?: string,        // filter by provider
+  domain?: string,          // filter by domain
+  status?: string           // filter: "active" | "beta" | "deprecated" (default: "active")
+) → {
+  packs: [{
+    provider: string,
+    pack: string,
+    version: string,
+    title: string,
+    description: string,
+    domains: string[],
+    patterns: int,
+    status: string
+  }]
+}
+```
+
+**`get_pack_manifest`** — Return the full manifest for a specific extension pack. *(Tier 0 — OPEN)*
+
+```typescript
+get_pack_manifest(
+  provider: string,         // required
+  pack: string              // required
+) → {
+  manifest: { ... }         // Full manifest.yml content
+}
+```
+
+**`list_providers`** — Browse registered extension pack providers. *(Tier 0 — OPEN)*
+
+```typescript
+list_providers() → {
+  providers: [{
+    provider: string,
+    name: string,
+    url: string,
+    verified: boolean,
+    pack_count: int,
+    total_patterns: int
+  }]
+}
+```
+
+**`get_provider`** — Return full provider profile and all packs from that provider. *(Tier 0 — OPEN)*
+
+```typescript
+get_provider(
+  provider: string          // required
+) → {
+  profile: { ... },         // Full provider.yml content
+  packs: [{ ... }]          // All packs from this provider
+}
+```
+
+**`download_pack`** — Download an extension pack payload from the registry. *(Tier 1 — PEER)*
+
+The Commons MCP is a **remote server** — it cannot write files to the local instance. This tool returns the pack contents as a structured payload. The **local agent** is responsible for writing the files to `extensions/{provider}/{pack}/` and validating the manifest. This separation mirrors the npm/apt model: the registry serves packages, the local client installs them.
+
+```typescript
+download_pack(
+  provider: string,         // required
+  pack: string,             // required
+  version?: string,         // optional, defaults to latest
+  include_dependencies?: bool // optional, defaults to true — include dependency manifests in response
+) → {
+  provider: string,
+  pack: string,
+  version: string,
+  manifest: { ... },        // Full manifest.yml content
+  files: [{                 // Pack contents as file tree
+    path: string,           // Relative path within the pack (e.g., "patterns/purpose-spiral.md")
+    content: string         // File content (text) or base64 (binary)
+  }],
+  dependencies: [{          // Dependency manifests (if include_dependencies=true)
+    provider: string,
+    pack: string,
+    version: string,
+    installed: boolean       // Whether this dependency exists in the caller's known installs
+  }]
+}
+```
+
+> **Why not `install_pack`?** A remote MCP server cannot write to a local filesystem. The agent calls `download_pack`, receives the payload, and writes the files locally using its native file access. For commons with a Blueprint MCP, the Blueprint MCP can expose a local `install_pack` tool that wraps this flow. See PACK_SPEC §4.4 for the full local installation sequence.
+
+**`check_pack_updates`** — Compare installed pack versions against the registry. *(Tier 1 — PEER)*
+
+The agent passes its locally known pack versions; the Commons MCP compares them against the registry and returns available updates. No local filesystem access needed — purely informational.
+
+```typescript
+check_pack_updates(
+  installed: [{             // required — agent reads local manifest.yml files
+    provider: string,
+    pack: string,
+    version: string
+  }]
+) → {
+  updates_available: [{
+    provider: string,
+    pack: string,
+    installed_version: string,
+    latest_version: string,
+    changelog_summary?: string
+  }]
+}
+```
+
 ---
 
 ### 4.5 Tool Composition Patterns
@@ -932,6 +1046,12 @@ The existing SQLite index (`commons.db`, 126 MB, 54,266 patterns indexed) remain
 | `library_stats` | Meta | 0 (OPEN) | Library statistics |
 | `get_manifest` | Meta | 0 (OPEN) | Commons manifest document |
 | `get_spec` | Meta | 0 (OPEN) | Commons specification document |
+| `list_packs` | Extension | 0 (OPEN) | Browse available and installed extension packs |
+| `get_pack_manifest` | Extension | 0 (OPEN) | Full manifest for a specific extension pack |
+| `list_providers` | Extension | 0 (OPEN) | Browse registered extension pack providers |
+| `get_provider` | Extension | 0 (OPEN) | Provider profile and all packs |
+| `download_pack` | Extension | 1 (PEER) | Download extension pack payload for local installation |
+| `check_pack_updates` | Extension | 1 (PEER) | Compare installed versions against registry |
 
 ---
 
@@ -941,8 +1061,8 @@ The existing SQLite index (`commons.db`, 126 MB, 54,266 patterns indexed) remain
 
 | Tier | Name | Audience | Price Model | Key Capabilities |
 |:---|:---|:---|:---|:---|
-| **0** | **COMMONS OPEN** | Anyone | Free | Full pattern library, full lighthouse gallery, all navigation tools, graph traversal, lineage, ecosystem analysis, schema access |
-| **1** | **PEER** | Individual practitioner | ~€29-49/month | + Diagnostic tools (diagnose, prescribe), + Engagement tools (personal workspace), + API access |
+| **0** | **COMMONS OPEN** | Anyone | Free | Full pattern library, full lighthouse gallery, all navigation tools, graph traversal, lineage, ecosystem analysis, schema access, extension pack browsing |
+| **1** | **PEER** | Individual practitioner | ~€29-49/month | + Diagnostic tools (diagnose, prescribe), + Engagement tools (personal workspace), + Extension pack download and version checking, + API access |
 | **2** | **TEAM** | Team of practitioners | ~€99-199/month per team | + Shared engagement workspace, + Team analytics, + Collaborative diagnostics |
 | **3** | **ENTERPRISE** | Organisations | Custom pricing | + Blueprint MCP integration, + A2A agent integration, + Custom enrichment, + Dedicated support |
 
@@ -1072,6 +1192,14 @@ TOOL_REGISTRY = {
     "library_stats":                {"tier": 0, "category": "meta"},
     "get_manifest":                 {"tier": 0, "category": "meta"},
     "get_spec":                     {"tier": 0, "category": "meta"},
+
+    # Extension — OPEN (Tier 0) for browsing, PEER (Tier 1) for download
+    "list_packs":                   {"tier": 0, "category": "extension"},
+    "get_pack_manifest":            {"tier": 0, "category": "extension"},
+    "list_providers":               {"tier": 0, "category": "extension"},
+    "get_provider":                 {"tier": 0, "category": "extension"},
+    "download_pack":                {"tier": 1, "category": "extension"},
+    "check_pack_updates":           {"tier": 1, "category": "extension"},
 }
 ```
 

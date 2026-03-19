@@ -1,9 +1,9 @@
 # COMMONS OS MANIFEST
 *The Operating System for Commons-Based Organisation*
 
-**Version:** 1.0
+**Version:** 1.2
 **Status:** Living Document
-**Companion:** COMMONS_AGENT_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_OS_SPEC.md
+**Companion:** COMMONS_AGENT_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_OS_SPEC.md, COMMONS_DOMAINS_MANIFEST.md, COMMONS_GAMES_MANIFEST.md
 
 ---
 
@@ -50,7 +50,7 @@ A commons is a layer, not a territory. Multiple commons can coexist on the same 
 
 All on the same territory. All using commons.engineering frameworks. All autonomous. Not competing — different lenses on the same reality.
 
-This is Set Theory, not territorial exclusivity. Lighthouses can be visible through multiple commons lenses. A lighthouse's `commons` field may reference multiple instances.
+This is Set Theory, not territorial exclusivity. Entities can be visible through multiple commons lenses. An entity's `commons` field may reference multiple instances.
 
 ### §1.3 The Chaordic Principle
 
@@ -63,42 +63,42 @@ Coherence comes from the shared pattern language, not from a central authority. 
 
 ### §1.4 Fractal Architecture
 
-Every commons contains a constellation of lighthouses — entities it illuminates from the inside. And every lighthouse is potentially a commons with its own constellation. This creates a truly fractal system of systems.
+Every commons contains a constellation of entities — organisations, people, and systems it relates to, arranged in orbital layers from the inside out. And every entity is potentially a commons with its own constellation. This creates a truly fractal system of systems.
 
 A small bakery forks the Commons OS. Within its commons:
 
-| Orbit | Lighthouse | Relationship |
+| Orbit | Entity | Relationship |
 |---|---|---|
-| 0 | The bakery itself | Identity (self-lighthouse) |
+| 0 | The bakery itself | Identity (self-entity) |
 | 1 | The flour mill | Key supplier |
 | 1 | The neighbourhood cooperative | Key customer |
 | 2 | The organic certification body | Regulation |
 | 3 | The energy cooperative | Infrastructure |
 | 4 | The grain farmer in the region | Deep supply chain |
 
-Now flip the lens: the flour mill is a commons too. The bakery appears as a lighthouse in the mill's orbital system. Every entity is simultaneously a lighthouse (visible from outside) and a commons (containing its own constellation from inside).
+Now flip the lens: the flour mill is a commons too. The bakery appears as an entity in the mill's orbital system. Every entity is simultaneously visible from outside (through another commons' lens) and a commons from inside (containing its own constellation).
 
-The equivalence: **a commons' stakeholder map IS its lighthouse constellation.** The orbital system IS the relationship map. The vitality of the commons is not about the entity alone — it is about the health of its entire web of relationships.
+The equivalence: **a commons' stakeholder map IS its entity constellation.** The orbital system IS the relationship map. The vitality of the commons is not about the entity alone — it is about the health of its entire web of relationships.
 
 The carpenter's principle: a timber frame is not one beam. It is the joints between all of them.
 
-### §1.5 Lighthouse Multiplicity
+### §1.5 Entity Multiplicity
 
-The same entity can exist as many lighthouse instances across different commons, each with its own orbital layer, depth, and scorer:
+The same entity can exist as many instances across different commons, each with its own orbital layer, depth, and scorer:
 
-| Commons | The same entity as lighthouse | Depth |
+| Commons | The same entity as instance | Depth |
 |---|---|---|
 | Commons.Engineering | Orbit 2, exemplary case | Public data (governance reports, ownership docs) |
 | `[region]-os` | Orbit 1, local neighbour | Supply chain, interviews, ecological impact |
 | `[sector]-os` | Orbit 1, industry peer | Comparison against sector peers |
 
-All three instances use the same four dimensions, the same `commons_vitality` block, the same One Order format. They differ in resolution, orbital position, and scorer expertise. This is cartography: the world map shows coastlines, the regional map shows harbours, the local chart shows every dock. Same reality, different depth, different purpose. The lighthouse format is the projection system that makes all maps legible.
+All three instances use the same four dimensions, the same `commons_vitality` block, the same One Order format. They differ in resolution, orbital position, and scorer expertise. This is cartography: the world map shows coastlines, the regional map shows harbours, the local chart shows every dock. Same reality, different depth, different purpose. The entity format is the projection system that makes all maps legible. Commons Engineering provides an entity briefing spec as an extension pack for Business and Urban domains.
 
-The `slug` is the linking key for cross-instance identity — the underlying entity is one; the instances are many. A commons can fork an exemplary lighthouse from Commons.Engineering as a starting point and enrich it locally.
+The `slug` is the linking key for cross-instance identity — the underlying entity is one; the instances are many. A commons can fork an exemplary entity from Commons.Engineering as a starting point and enrich it locally.
 
 ### §1.6 Resolution Varies
 
-From a global perspective, it may be interesting that a business lighthouse is located within a particular urban lighthouse. But the little SME around the corner — that matters to the local community, and only to them.
+From a global perspective, it may be interesting that a business entity is located within a particular urban entity's territory. But the little SME around the corner — that matters to the local community, and only to them.
 
 Local detail stays local. Only aggregation and learning flow upward. A commons at one scale does not need to burden commons at other scales with its full resolution. The MCP service layer enables this: queries return detail appropriate to the requester's context and tier.
 
@@ -113,7 +113,7 @@ Local detail stays local. Only aggregation and learning flow upward. A commons a
 | **Kernel** | Four core agents — Purpose, Participation, Proposition, Production (§3) |
 | **Extensions** | Domain-specific on-demand agents added per use case (§3.2) |
 | **Package manager** | Pattern library + MCP tiered access (§5) |
-| **File format** | The Living Blueprint (L1-L9) specifies the commons from the inside; the Lighthouse Spec describes entities from the outside. Together they are the file formats of the OS. |
+| **File format** | The Living Blueprint (L1-L9) specifies the commons from the inside. Entity formats (available as extension packs) describe entities from the outside. The blueprint is the core file format of the OS. |
 | **Networking** | Commons-to-commons protocols, engagement graph |
 | **User accounts** | Participation gradient (§6) |
 | **Version control** | Git — every change traced, every decision a commit, lineage preserved across forks |
@@ -126,7 +126,7 @@ Local detail stays local. Only aggregation and learning flow upward. A commons a
 
 ### §2.2 What Makes This an OS, Not a Framework
 
-- The **Living Blueprint** (L1-L9) specifies the commons from the inside — its purpose, architecture, governance, culture, and intelligence. The **Lighthouse Spec** describes entities from the outside — a diagnostic one-order-object for ANY organisation. Together, they are the file formats of the OS: one for intention, one for observation.
+- The **Living Blueprint** (L1-L9) specifies the commons from the inside — its purpose, architecture, governance, culture, and intelligence. This is the core file format of the OS. Entity briefing formats (such as the Business and Urban entity specs available as CE extension packs) describe entities from the outside — a diagnostic one-order-object for ANY organisation. The blueprint is the OS format; entity formats are extensions.
 - The **engagement management system** manages ANY relationship lifecycle. This is the networking stack.
 - The **commons instance** runs ANY commons node. This is the runtime.
 - The **agents** serve intelligence recursively and self-improvingly. These are the services.
@@ -260,9 +260,14 @@ Value stream families are **Curated Pattern Collections** that ship with the for
 
 ## §4 Knowledge That Ships with the Fork
 
-### §4.1 Four Core Collections
+### §4.1 Universal Commons Layer and CE Extension Packs
 
-The Commons Engineering platform is built on four foundational collections. All four are **open source curated pattern collections**, free for anyone to use. cloudsters stewards them; it does not own them.
+The OS ships with a **universal commons layer** — the patterns that define what a commons IS. This layer lives in `commons/patterns/` and contains:
+
+- **Singularity** (Orbit 0) — The Commons Operating Model itself: the four dimensions, the orbital architecture, the participation gradient.
+- **Principles** (Orbit 1) — Universal principles that apply to any living system regardless of domain.
+
+Beyond this universal layer, Commons Engineering provides **four foundational collections** as pre-loaded extension packs. All four are **open source curated pattern collections**, free for anyone to use. cloudsters stewards them; it does not own them.
 
 ```
         COMMONS_BLUEPRINT (patterns)
@@ -275,12 +280,12 @@ The Commons Engineering platform is built on four foundational collections. All 
             (spatial substrate)
 ```
 
-| Collection | What it holds | What it enables |
-|---|---|---|
-| **COMMONS_BLUEPRINT** | Patterns — the knowledge library | The design language for living systems |
-| **COMMONS_ENGINEER** | Practitioners — skills, curriculum, qualification | Practitioner development paths |
-| **COMMONS_OS** | Operating system patterns — governance, operations, economics | Commons creation and operation |
-| **COMMONS_PLACE** | Spatial patterns — where joint value creation happens | Commons place design and governance |
+| Collection | What it holds | What it enables | Ships as |
+|---|---|---|---|
+| **COMMONS_BLUEPRINT** | Patterns — the knowledge library | The design language for living systems | CE base extension pack |
+| **COMMONS_ENGINEER** | Practitioners — skills, curriculum, qualification | Practitioner development paths | CE base extension pack |
+| **COMMONS_OS** | Operating system patterns — governance, operations, economics | Commons creation and operation | CE base extension pack |
+| **COMMONS_PLACE** | Spatial patterns — where joint value creation happens | Commons place design and governance | CE base extension pack |
 
 The relationship:
 - A **pattern** is applied by an **engineer** at a **commons**.
@@ -288,22 +293,22 @@ The relationship:
 - An **engineer** belongs to one or more **commons** and works with **patterns**.
 - A **place** enables joint value creation when the mission requires co-presence.
 
-Everything else — entities, engagements, signals, blueprints — hangs off these four anchors.
+Everything else — entities, engagements, signals, blueprints — hangs off these four anchors. The four collections ship pre-loaded in `extensions/commons-engineering/base/` so every fork has them offline from day one. But they are extensions, not the OS itself — the OS is the universal commons layer plus the workspace structure.
 
-### §4.2 Value Stream Collections
+### §4.2 Value Stream Collections (Domain Extension Packs)
 
-Beyond the four core collections, each domain brings **value stream collections** — curated sets of patterns organised around end-to-end value streams. These are the operational backbone of any commons:
+Beyond the four core collections, each domain brings **value stream collections** — curated sets of patterns organised around end-to-end value streams. These are the operational backbone of any commons, delivered as **CE domain extension packs**:
 
-| Domain | Value Stream Collections (examples) |
-|---|---|
-| **Business** | Definition & Purpose, Purpose to Portfolio, Value to Profit, Portfolio to Systems, Participants to Community, Collaboration to Automation, Hire to Retire, Welcome to Transition, Discover to Usage, Lead to User, Distribute to Market, Acquire to Retire, Plan to Fulfill, Source to Pay |
-| **Urban** | Housing & Habitat, Mobility & Transport, Energy & Grid, Food & Agriculture, Civic Governance, Public Health, Education & Learning |
-| **Life** | Nutrition & Metabolism, Cognition & Learning, Movement & Body, Community & Belonging, Craft & Creation, Finance & Autonomy |
-| **Ecology** | Biodiversity & Habitat, Hydrology & Watershed, Carbon & Climate, Soil & Fertility, Pollination & Reproduction |
+| Domain | Value Stream Collections (examples) | Extension pack |
+|---|---|---|
+| **Business** | Definition & Purpose, Purpose to Portfolio, Value to Profit, Portfolio to Systems, Participants to Community, Collaboration to Automation, Hire to Retire, Welcome to Transition, Discover to Usage, Lead to User, Distribute to Market, Acquire to Retire, Plan to Fulfill, Source to Pay | `extensions/commons-engineering/business/` |
+| **Urban** | Housing & Habitat, Mobility & Transport, Energy & Grid, Food & Agriculture, Civic Governance, Public Health, Education & Learning | `extensions/commons-engineering/urban/` |
+| **Life** | Nutrition & Metabolism, Cognition & Learning, Movement & Body, Community & Belonging, Craft & Creation, Finance & Autonomy | `extensions/commons-engineering/life/` |
+| **Ecology** | Biodiversity & Habitat, Hydrology & Watershed, Carbon & Climate, Soil & Fertility, Pollination & Reproduction | `extensions/commons-engineering/ecology/` |
 
-Value stream collections **ship with the fork** — each value stream is a pattern file that describes the end-to-end flow, its steps, roles, and which other patterns are relevant. All domains ship: Business (13 streams), Urban (21 streams), Life and Ecology (in development). A commons has its full operational vocabulary offline from day one. The Commons MCP enriches these with deeper patterns, cross-domain intelligence, and updates.
+Value stream collections **ship pre-loaded with the fork** — each value stream is a pattern file that describes the end-to-end flow, its steps, roles, and which other patterns are relevant. All domains ship: Business (13 streams), Urban (21 streams), Life and Ecology (in development). A commons has its full operational vocabulary offline from day one. The Commons MCP enriches these with deeper patterns, cross-domain intelligence, and updates.
 
-> **Status note:** Business (13) and Urban (21) value stream families are defined in the Lighthouse Business Spec and Lighthouse Urban Spec respectively. Life and Ecology domain manifests define their equivalent structures as "dimensions." The individual pattern files for all value stream families are being written — Business and Urban are to be critically reviewed.
+> **Status note:** Business (13) and Urban (21) value stream families are defined in CE extension specs (available via extension packs). Life and Ecology domain manifests define their equivalent structures as "dimensions." The individual pattern files for all value stream families are being written — Business and Urban are to be critically reviewed.
 
 Collections are **tags, not folders.** A pattern can belong to multiple collections via its frontmatter metadata. The file system holds patterns; the collections are views assembled from tags.
 
@@ -314,7 +319,8 @@ Every fork ships with the complete intellectual infrastructure needed to operate
 | Category | What ships | Purpose |
 |---|---|---|
 | **Manifests** | COMMONS_OS_MANIFEST, COMMONS_AGENT_MANIFEST, COMMONS_ENGINEERING_MANIFEST, COMMONS_BLUEPRINT_MANIFEST, COMMONS_ENGINEER_MANIFEST, COMMONS_PLACE_MANIFEST, COMMONS_INCUBATOR_MANIFEST, COMMONS_TAXONOMY_MANIFEST, COMMONS_ENGINEERING_BOK, COMMONS_ENGINEERING_ARCHITECTURE | The "why" and "what" — architecture, governance, philosophy |
-| **Specifications** | PATTERN_SPEC, LIGHTHOUSE_BUSINESS_SPEC, LIGHTHOUSE_URBAN_SPEC, ENGAGEMENT_GRAPH_SPEC, COMMONS_OS_SPEC, COMMONS_MCP_ARCHITECTURE_SPEC | The "how" — formats, protocols, build instructions |
+| **Specifications (commons)** | PATTERN_SPEC, ENGAGEMENT_GRAPH_SPEC, COMMONS_OS_SPEC, COMMONS_MCP_ARCHITECTURE_SPEC | The "how" — formats, protocols, build instructions |
+| **Specifications (extensions)** | Provided by extension packs (e.g. CE entity briefing specs for Business and Urban) | Domain-specific formats — not part of the OS, loaded from extensions |
 | **Templates** | Blueprint templates (per domain), pattern template, organisation template | Starter files for creating new content |
 
 **Why ship all of this?** Because a fork must be self-sufficient. If the network goes down, if the MCP server is unreachable, a commons should still be able to read its own architecture, understand its own specifications, and create content that conforms to the standards. The Commons MCP provides *enrichment* — deeper patterns, cross-commons intelligence, latest updates. The fork provides *foundation*.
@@ -323,7 +329,7 @@ Every fork ships with the complete intellectual infrastructure needed to operate
 
 ## §5 The Service Layer: Ambient Intelligence via MCP
 
-A commons does not copy 100,000 patterns into its own workshop. It has the core collections and ambient intelligence — served via MCP, tiered by participation level. The fork ships with the foundation (§4). The MCP provides the universe.
+A commons does not copy 100,000 patterns into its own workshop. It has the universal commons layer, the pre-loaded CE extension packs, and ambient intelligence — served via MCP, tiered by participation level. The fork ships with the foundation (§4). The MCP provides the universe.
 
 ### §5.1 Tiered Access
 
@@ -341,8 +347,8 @@ A commons does not copy 100,000 patterns into its own workshop. It has the core 
 | Purpose and identity | Full pattern library (100,000+ patterns beyond the shipped collections) |
 | Living Blueprint — single document per commons | Pattern graph traversal and vector search |
 | Registry: journeys, touchpoints, value streams, capabilities, entities | Entity gallery (all public entities across all commons) |
-| All manifests and specifications in `knowledge/` (§4.3) | Latest manifest/spec updates and diffs |
-| Four core collections + all domain value stream collections | Cross-domain pattern intelligence and recommendations |
+| All manifests and specifications in `commons/` (§4.3) | Latest manifest/spec updates and diffs |
+| Universal commons layer + pre-loaded CE extension packs (base + domain) | Cross-domain pattern intelligence and recommendations |
 | Templates for blueprints, patterns, organisations | Onboarding and blueprinting guidance |
 | Operating rhythms and economics | Diagnostic tools (Tier 1+) |
 | Touchpoint definitions in `registry/2_touchpoints/` | Engagement tools (Tier 1+) |
@@ -365,6 +371,37 @@ Commons-local entities may contain sensitive detail — internal governance, fin
 This is federated cognition — the same principle as federated learning, but for organisational intelligence. The raw entity data stays within each commons' privacy boundary. The pattern signal flows into CE's cognitive layer and makes the intelligence smarter for everyone.
 
 The carpenter's principle: the grain of each board stays in the board. But the knowledge of how wood behaves — that belongs to the workshop.
+
+### §5.4 Broadcasting: Presence in the Network
+
+Federated Cognition (§5.3) describes how intelligence flows inward — from commons to collective. Broadcasting describes the complementary flow: how a commons announces its **presence, purpose, and propositions** outward to the network.
+
+Every Commons OS instance can broadcast into the shared protocol. The broadcast is continuous and automatic — like AIS (Automatic Identification System) on a ship. Other commons, rendering surfaces (such as commons.domains), and potential participants receive the broadcast and can discover, evaluate, and initiate contact with the broadcasting commons.
+
+**Broadcasting is sovereign.** Each commons configures its own broadcast level in the Blueprint. No external authority can force a commons to broadcast, nor can any external authority prevent it. The commons decides what it sends.
+
+| Broadcast Level | What Is Sent | Use Case |
+|---|---|---|
+| **Dark** | Nothing. The commons is invisible to the network. | Private Life Blueprint, stealth-mode venture, internal corporate commons |
+| **Beacon** | Existence + Purpose (D1). A point of light with a name. | Commons that want to be findable but reveal nothing operational |
+| **Signal** | + Propositions (D3) + Contact Endpoint. What the commons offers and how to reach it. | Commons actively seeking exchange partners, participants, or federation |
+| **Open** | + Capabilities (D4) + Capacities (D2). What the commons can do and what it has available. | Commons participating in the Intent-Driven Fabric — broadcasting offer and need intents for autonomous matching |
+| **Transparent** | + Governance Telemetry + Ecological Parameters. Full operational visibility. | Commons seeking federation trust score, wanting to demonstrate governance quality, or operating under federation transparency obligations |
+
+**What broadcasting enables:**
+
+- **Discovery.** A commons broadcasting at Signal level or above is discoverable by any other commons or rendering surface that listens to the protocol. No registration, no directory, no intermediary. The commons announces itself; the network hears.
+- **Intent Matching.** A commons broadcasting at Open level can participate in the Intent-Driven Fabric: its D3 agents broadcast offer intents ("500 kWh solar surplus"), its D4 agents broadcast need intents ("400 kWh compute energy needed"). The Commons MCP routes these intents — not as a marketplace, but as a DNS-like routing layer that returns endpoints for peer-to-peer negotiation.
+- **Trust Verification.** A commons broadcasting at Transparent level provides the governance telemetry from which federated trust scores are computed. Trust is earned through visible behaviour, not claimed through self-declaration.
+- **Dark Capacity Activation.** Idle resources — a participant's free afternoon, an underused server, surplus materials — can be broadcast as micro-intents at Open level, activating capacity that would otherwise expire unused. This is the long tail of value creation that platform intermediaries cannot reach because their transaction costs are too high.
+
+**What broadcasting does not do:**
+
+Broadcasting does not transmit private data. It transmits what the commons chooses to make visible — structured metadata about purpose, propositions, capabilities, and governance health. The raw data stays local (§5.3). The broadcast is a signal, not a data feed.
+
+Broadcasting does not require a central receiver. The protocol is open. Any surface can render broadcasts — commons.domains is one such surface, but others can exist. The broadcasts are public (for those who choose to broadcast) and the protocol is open (for those who choose to listen).
+
+**Rendering surfaces** — such as commons.domains — visualise the aggregate of all broadcasts as a navigable, layered chart of the commons world. The chart is not a registry. It is a live rendering of what commons are currently sending. When a commons goes dark, it disappears. When a new commons lights its beacon, it appears. The chart is always current because the broadcasts are continuous.
 
 ---
 
@@ -465,81 +502,56 @@ A commons is a forkable workspace — not just a repository, but a complete oper
 
 ### §8.1 Template Structure
 
-The repository is split into two primary spaces: the **registry** (THE WORKSPACE — local instances and state) and the **knowledge** library (THE LIBRARY — core patterns, manifests, specs). The registry follows the outside-in cascade from the BEN Flow; the knowledge library mirrors the same cascade for pattern archetypes.
+The repository is organised into **three top-level ownership layers**: `commons/` (upstream, read-only), `extensions/` (provider packs), and `instance/` (sovereign). The registry acts as the operational workspace within the sovereign instance layer, following the outside-in cascade from the BEN Flow.
 
 The registry is the **Minimum Viable System of Record**. During incubation — when no ERP, no CRM, no enterprise software exists yet — the registry is the working tool: a machine-readable, relational database disguised as markdown files. It replaces dead whiteboard diagrams and disconnected project tickets with structured, queryable data that the agent can traverse from day one. And because the registry develops the same structures that the blueprint designs (journeys, touchpoints, value streams, capabilities, entities), it is internally consistent: what you plan in L2 is what you build in the registry. When the commons matures and connects real Systems of Record via Fabric MCPs, the registry becomes the specification — the blueprint for what those systems need to contain. The registry is not documentation. It is the brain of the organisation, first as operator, then as architect.
 
 ```
 [commons]-[os]/
 │
+├── commons/                          # LAYER 1 — upstream, read-only in forks
+│   ├── manifests/                    # Architectural documents
+│   ├── specs/                        # Technical specifications
+│   ├── patterns/                     # Universal patterns
+│   │   ├── singularity/              # Orbit 0: The Commons Operating Model
+│   │   └── principles/               # Orbit 1: Universal Principles
+│   ├── templates/                    # Blueprint, pattern, entity templates
+│   └── scripts/                      # Validation, alignment
+│
+├── extensions/                       # LAYER 2 — provider packs
+│   └── commons-engineering/          # CE's own packs (pre-loaded)
+│       ├── base/                     # Core patterns + 4 collections (Orbit 2)
+│       ├── business/                 # Business domain pack
+│       ├── life/                     # Life domain pack
+│       ├── urban/                    # Urban domain pack
+│       └── ecology/                  # Ecology domain pack
+│
+├── instance/                         # LAYER 3 — sovereign, upstream never touches
+│   ├── patterns/                     # Fork-created patterns
+│   ├── manifests/                    # Fork-specific manifests
+│   ├── specs/                        # Fork-specific specs
+│   ├── templates/                    # Fork-specific templates
+│   ├── scripts/                      # Instance-specific scripts
+│   ├── operations/                   # Day-to-day operations (rhythms, economics)
+│   ├── portals/                      # Portal config & themes (intranet, extranet)
+│   ├── registry/                     # THE WORKSPACE — local instances & state
+│   │   ├── 1_journeys/              # OUTSIDE-IN: stakeholder journeys
+│   │   ├── 2_touchpoints/           # MEMBRANE: where commons meets world
+│   │   ├── 3_valuestreams/          # INSIDE-FLOW: end-to-end value streams
+│   │   ├── 4_capabilities/          # MOTOR: baseline/target (D1-D4)
+│   │   ├── 5_entities/              # SUBSTRATE: organisations, people, systems
+│   │   └── providers/               # Extension Pack Registry
+│   └── workshop/                     # THE FORGE — experiments, drafts, WIP
+│
+├── .commons/                         # Identity & configuration
+│   ├── identity.yml                  # Slug, purpose, domain, founder
+│   └── config.yml                    # 3-MCP configuration, publishing
+│
 ├── AGENT.md                          # Agent configuration — agent-neutral, MCP-connected
 ├── BOOT.md                           # Boot guide — how to get started
 ├── ALIGN.md                          # Alignment service check
 ├── blueprint.md                      # The Living Blueprint — single document, L1-L9
 ├── README.md                         # Onboarding — "Welcome to [commons]-[os]"
-│
-├── .commons/
-│   ├── identity.yml                  # Commons identity: slug, purpose, domain, founder
-│   └── config.yml                    # 3-MCP configuration, publishing, value streams
-│
-├── operations/                       # Day-to-day operations
-│   ├── rhythms.md                    # Operating rhythms
-│   └── economics.md                  # Economic model
-│
-├── registry/                         # THE WORKSPACE — local instances & state
-│   ├── 1_journeys/                   # OUTSIDE-IN: stakeholder journeys
-│   ├── 2_touchpoints/                # MEMBRANE: where commons meets world
-│   ├── 3_valuestreams/               # INSIDE-FLOW: end-to-end value streams
-│   ├── 4_capabilities/               # MOTOR: capability baseline/target (D1-D4)
-│   │   ├── purpose/
-│   │   ├── participation/
-│   │   ├── proposition/
-│   │   └── production/
-│   └── 5_entities/                   # SUBSTRATE: concrete organisations, people, systems
-│       ├── purpose/
-│       ├── participation/            # Organisations live here
-│       ├── proposition/
-│       └── production/
-│
-├── knowledge/                        # THE LIBRARY — core = read-only, local = read-write
-│   ├── manifests/
-│   │   ├── core/                     # Upstream manifests (read-only on sync)
-│   │   └── local/                    # Fork-specific manifests
-│   ├── specs/
-│   │   ├── core/                     # Upstream specs (read-only on sync)
-│   │   └── local/                    # Fork-specific specs
-│   ├── patterns/
-│   │   ├── core/                     # Upstream patterns (read-only on sync)
-│   │   │   ├── 0_collections/        # Meta: Singularity, Principles, collection masters
-│   │   │   ├── 1_journeys/
-│   │   │   ├── 2_touchpoints/
-│   │   │   ├── 3_valuestreams/
-│   │   │   ├── 4_capabilities/
-│   │   │   └── 5_entities/
-│   │   └── local/                    # Fork-created patterns (read-write)
-│   │       ├── 0_collections/
-│   │       ├── 1_journeys/
-│   │       ├── 2_touchpoints/
-│   │       ├── 3_valuestreams/
-│   │       ├── 4_capabilities/
-│   │       └── 5_entities/
-│   ├── scripts/
-│   │   ├── core/                     # Upstream scripts (read-only on sync)
-│   │   └── local/                    # Fork-specific scripts
-│   ├── sources/                      # Reference material (always local — no core/local split)
-│   └── templates/
-│       ├── blueprint-business.md
-│       ├── blueprint-urban.md
-│       ├── blueprint-life.md
-│       ├── blueprint-ecology.md
-│       ├── pattern.md
-│       └── organisation.md           # Organisation entity template
-│
-├── workshop/                         # THE FORGE — experiments, drafts, work in progress
-│
-├── portals/                          # Portal configuration & themes (output goes to gh-pages branches)
-│   ├── intranet/                     # Internal community portal config + theme
-│   └── extranet/                     # Public-facing portal config + theme
 │
 ├── .github/
 │   ├── ISSUE_TEMPLATE/               # Deliberation, decision, build templates
@@ -550,47 +562,48 @@ The registry is the **Minimum Viable System of Record**. During incubation — w
 
 #### The Outside-In Cascade (BEN Flow)
 
-The numbered directories in both `registry/` and `knowledge/patterns/` follow the outside-in cascade — from stakeholder experience to substrate:
+The numbered directories in `registry/` follow the outside-in cascade — from stakeholder experience to substrate:
 
-| Position | Name | Role | Registry (instances) | Knowledge (archetypes) |
-|---|---|---|---|---|
-| **1** | Journeys | OUTSIDE-IN | Concrete stakeholder journeys | Journey pattern archetypes |
-| **2** | Touchpoints | MEMBRANE | Where this commons meets the world | Touchpoint pattern archetypes |
-| **3** | Value Streams | INSIDE-FLOW | Active value stream instances | Value stream pattern archetypes |
-| **4** | Capabilities | MOTOR | Baseline/Target capability map (D1-D4) | Capability pattern archetypes |
-| **5** | Entities | SUBSTRATE | Organisations, people, systems | Entity pattern archetypes |
+| Position | Name | Role | Registry (instances) |
+|---|---|---|---|
+| **1** | Journeys | OUTSIDE-IN | Concrete stakeholder journeys |
+| **2** | Touchpoints | MEMBRANE | Where this commons meets the world |
+| **3** | Value Streams | INSIDE-FLOW | Active value stream instances |
+| **4** | Capabilities | MOTOR | Baseline/Target capability map (D1-D4) |
+| **5** | Entities | SUBSTRATE | Organisations, people, systems |
 
-Position **0** (`0_collections/`) exists only in `knowledge/patterns/` — it holds the meta-layer: Singularity (Orbit 0), Principles (Orbit 1), and all collection master-patterns. Collections are tags, not folders — the master-pattern holds the tag definition; individual patterns declare membership in frontmatter.
+The cascade lives in `instance/registry/` only — it organises the operational workspace of THIS commons. Pattern archetypes live across the three layers: `commons/patterns/` (universal, upstream read-only), `extensions/{provider}/{pack}/patterns/` (provider packs), and `instance/patterns/` (fork-specific). See §4 for what ships with each layer.
 
-#### Pattern ↔ Instance Mirror
+#### The Three Knowledge Layers
 
-The same 1-5 cascade appears in both spaces, creating a deliberate mirror:
+The repo is organised into three top-level layers that reflect the ownership model:
 
-- `knowledge/patterns/core/3_valuestreams/source-to-pay.md` — the archetype pattern (reusable, upstream)
-- `registry/3_valuestreams/source-to-pay.md` — the local instance (concrete, this commons' version)
+| Layer | Path | Who owns it | Sync behaviour |
+|---|---|---|---|
+| **Commons** | `commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Extensions** | `extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP or pre-loaded |
+| **Instance** | `instance/` | Your commons | Yours entirely — upstream never touches it |
 
-The archetype says *what* a value stream is. The instance says *how this commons runs it*. The agent bridges between them.
+This solves upstream sync without merge conflicts: `git pull upstream` updates `commons/` cleanly; the fork's own additions live in `instance/` and are never touched by upstream. Extension packs occupy a middle layer — they can be updated by their provider, but the fork controls which packs to load.
 
-#### The core/local Split
-
-Every `knowledge/` subdirectory splits into `core/` (read-only, synced from upstream) and `local/` (read-write, fork-specific). This solves upstream sync without merge conflicts: `git pull upstream` updates `core/` cleanly; the fork's own additions live in `local/` and are never touched by upstream.
+**Batteries included:** Commons Engineering extension packs (base, business, life, urban, ecology) ship pre-loaded so the OS works offline from day one. The Commons MCP provides updates, additional packs, and cross-commons intelligence.
 
 #### The Workshop
 
-Every commons needs a workshop — a space for experiments, drafts, and work in progress. The `workshop/` directory is not knowledge (finished, reusable) and not registry (operational data). It is where knowledge is made. For most commons, this space is small. For Commons Engineering itself — which forges patterns, lighthouses, and specifications — the workshop is where most of the daily work happens.
+Every commons needs a workshop — a space for experiments, drafts, and work in progress. The `instance/workshop/` directory is not knowledge (finished, reusable) and not registry (operational data). It is where knowledge is made. For most commons, this space is small. For Commons Engineering itself — which forges patterns and specifications — the workshop is where most of the daily work happens.
 
 ### §8.2 Touchpoints and Portals
 
 The OS separates three layers: touchpoint **definitions**, portal **configuration**, and portal **output**.
 
-- `registry/2_touchpoints/` holds touchpoint **definitions** — what happens here, who interacts, what value is exchanged. These are instances in the workspace, following the cascade.
-- `portals/` holds portal **configuration and themes** — site config, CSS, logos, navigation structure. This is source code, not output.
+- `instance/registry/2_touchpoints/` holds touchpoint **definitions** — what happens here, who interacts, what value is exchanged. These are instances in the workspace, following the cascade.
+- `instance/portals/` holds portal **configuration and themes** — site config, CSS, logos, navigation structure. This is source code, not output.
 - Generated **output** (HTML) is built by CI and pushed to `gh-pages` branches — never into the main branch. The main branch stays clean.
 
 | Layer | Where it lives | What it does |
 |---|---|---|
-| **Touchpoint definitions** | `registry/2_touchpoints/` | Describes each touchpoint: intranet, extranet, CRM, physical |
-| **Portal config & themes** | `portals/intranet/`, `portals/extranet/` | Site config, CSS, logos, page templates |
+| **Touchpoint definitions** | `instance/registry/2_touchpoints/` | Describes each touchpoint: intranet, extranet, CRM, physical |
+| **Portal config & themes** | `instance/portals/intranet/`, `instance/portals/extranet/` | Site config, CSS, logos, page templates |
 | **Generated output** | `gh-pages` branches (built by CI) | HTML/CSS from registry + blueprint + portal config |
 | **CRM touchpoints** | Defined in registry, executed via Fabric MCP | Customer interactions, engagement pipeline |
 | **Physical touchpoints** | Defined in registry, realised via Commons Place | Workshop spaces, events, gatherings |
@@ -706,8 +719,7 @@ The Commons OS Manifest is one node in the manifest constellation. Each manifest
 | **COMMONS_PLACE_MANIFEST** | Defines where joint value creation happens. Place is the fourth pillar — the spatial substrate of the commons. |
 | **COMMONS_INCUBATOR_MANIFEST** | Defines how incubators operate multiple commons. An incubator injects participation into commons workspaces (§6.3). The incubator is the carrier, not a fifth pillar. |
 | **COMMONS_TAXONOMY_MANIFEST** | How patterns are organised in the orbital architecture. |
-| **LIGHTHOUSE_BUSINESS_SPEC** | The commons produces lighthouse briefings conforming to this spec. |
-| **LIGHTHOUSE_URBAN_SPEC** | Urban lighthouses declare their `commons` directly. |
+| **Entity Briefing Specs** | *Not part of the OS.* Available as CE extension packs for Business and Urban domains. The commons loads these via extensions when needed. |
 | **ENGAGEMENT_GRAPH_SPEC** | The commons is the Harbour Master — all engagement entities are produced by a commons. |
 | **PATTERN_SPEC v8.2** | Patterns contributed by commons conform to this spec. Commons contributions enter at Orbit 5 (Edge) via the Clean Room principle. |
 | **COMMONS_MCP_ARCHITECTURE_SPEC** | The 3-MCP architecture — how Commons, Blueprint, and Fabric MCPs connect. |
@@ -727,6 +739,6 @@ Changes to the commons architecture follow the standard Commons Engineering gove
 
 ---
 
-*COMMONS OS MANIFEST v1.0*
+*COMMONS OS MANIFEST v1.1*
 *Commons Engineering is licensed under CC-BY-SA-4.0*
 *Distributed by cloudsters*
