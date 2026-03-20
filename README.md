@@ -8,10 +8,9 @@ Commons OS is a complete operating environment for any commons — an organisati
 
 | Component | What it does |
 |---|---|
-| **Registry** | Your workspace — journeys, touchpoints, value streams, capabilities, entities |
-| **Knowledge** | Commons patterns (152+), manifests, specifications, templates — with upstream sync. Extensions from any provider. Instance patterns of your own |
-| **Portals** | Intranet and extranet configuration for static site generation |
-| **Workshop** | Your forge — experiments, drafts, work in progress |
+| **Commons** | Upstream patterns, manifests, specifications, templates — with upstream sync |
+| **Extensions** | Extension packs from any Commons Incubator provider |
+| **Instance** | Your space — registry (workspace), operations, portals, workshop, and local patterns |
 | **Agent Configuration** | AI-ready governance with 4-agent board architecture |
 | **Living Blueprint** | Single-document, 9-layer architecture for your commons |
 | **MCP Connections** | Shared intelligence (Commons MCP) + local knowledge (Blueprint MCP) + your systems (Fabric MCPs) |
@@ -19,7 +18,7 @@ Commons OS is a complete operating environment for any commons — an organisati
 ## Quick Start
 
 1. **Fork** this repository
-2. **Rename** to `[your-commons]-os` (e.g., `luebeck-os`, `my-life`, `acme-commons`)
+2. **Rename** to `[your-commons]` (e.g., `luebeck-os`, `my-life`, `acme-commons`)
 3. **Edit** `.commons/identity.yml` — set your slug, purpose, domain, and locale
 4. **Copy** `AGENT.md.template` to `AGENT.md` (this is the OS-standard AI configuration)
 5. **Read** `BOOT.md` — the agent guides you through the rest
@@ -40,38 +39,42 @@ Each dimension has an **agent** (conversational governance) and may have **engin
 ## Directory Structure
 
 ```
-[commons]-os/
+[your-commons]/
 ├── AGENT.md.template          Agent configuration (copy to AGENT.md)
 ├── BOOT.md                    Boot guide
 ├── ALIGN.md                   Alignment check rules
 ├── blueprint.md               Living Blueprint (L1-L9)
 ├── .commons/                  Identity and configuration
-├── registry/                  THE WORKSPACE — local instances & state
-├── knowledge/                 THE LIBRARY — commons (upstream) + extensions (packs) + instance (yours)
-├── portals/                   Portal configuration & themes
-└── workshop/                  THE FORGE — experiments, drafts, WIP
+├── commons/                   THE LIBRARY — upstream patterns, manifests, specs, templates
+├── extensions/                EXTENSION PACKS — from any Commons Incubator
+├── instance/                  YOUR SPACE — registry, operations, portals, workshop, local patterns
+│   ├── registry/              THE WORKSPACE — journeys, touchpoints, value streams, capabilities, entities
+│   ├── operations/            Operating rhythms and processes
+│   ├── portals/               Intranet and extranet configuration
+│   └── workshop/              THE FORGE — experiments, drafts, WIP
+└── ...
 ```
 
 ## Commons / Extensions / Instance
 
-Every `knowledge/` subdirectory (patterns, specs, manifests, templates, scripts) uses three layers:
+The repository uses three top-level layers:
 
 | Layer | Path | Who owns it | Sync behaviour |
 |---|---|---|---|
-| **Commons** | `knowledge/*/commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
-| **Extensions** | `knowledge/*/extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
-| **Instance** | `knowledge/*/instance/` | Your commons | Yours entirely — upstream never touches it |
+| **Commons** | `commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Extensions** | `extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
+| **Instance** | `instance/` | Your commons | Yours entirely — upstream never touches it |
 
-`registry/` and `workshop/` are always instance-level — they contain your operational data and work in progress.
+`instance/registry/` and `instance/workshop/` contain your operational data and work in progress.
 
 ## Documentation
 
 | Document | What it covers |
 |---|---|
-| `knowledge/manifests/commons/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
-| `knowledge/specs/commons/COMMONS_OS_SPEC.md` | How to build, fork, boot, and operate a Commons OS instance |
-| `knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
-| `knowledge/specs/commons/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
+| `commons/manifests/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
+| `commons/specs/COMMONS_OS_SPEC.md` | How to build, fork, boot, and operate a Commons OS instance |
+| `commons/manifests/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
+| `commons/specs/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
 
 ## License
 

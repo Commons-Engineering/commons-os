@@ -6,17 +6,17 @@ Commons OS is a shared operating system. Improvements made in any fork can flow 
 
 | Contribution | How |
 |---|---|
-| **Core pattern improvements** | PR against `knowledge/patterns/commons/` |
+| **Core pattern improvements** | PR against `commons/patterns/` |
 | **New core patterns** | PR with pattern following PATTERN_SPEC v8.2 |
-| **Specification fixes** | PR against `knowledge/specs/commons/` |
-| **Manifest updates** | PR against `knowledge/manifests/commons/` |
-| **Template improvements** | PR against `knowledge/templates/` |
+| **Specification fixes** | PR against `commons/specs/` |
+| **Manifest updates** | PR against `commons/manifests/` |
+| **Template improvements** | PR against `commons/templates/` |
 | **Workflow improvements** | PR against `.github/workflows/` |
 | **Bug fixes** | Issue + PR |
 
 ## What Stays Local
 
-Your `instance/` directories, `extensions/`, `registry/`, and `workshop/` are yours. We will never ask you to upstream operational data, extension packs, or instance patterns — those belong to your commons.
+Your `instance/` directory and `extensions/` are yours. We will never ask you to upstream operational data, extension packs, or instance patterns — those belong to your commons.
 
 ## Process
 

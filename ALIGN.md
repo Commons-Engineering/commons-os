@@ -3,7 +3,7 @@
 **Version:** 1.0
 **Status:** Living Document
 
-This file defines the alignment checks that keep a commons healthy. The Purpose Agent runs these checks regularly (see `operations/rhythms.md` for frequency). Results are posted as GitHub Issues with the label `alignment-report`.
+This file defines the alignment checks that keep a commons healthy. The Purpose Agent runs these checks regularly (see `instance/operations/rhythms.md` for frequency). Results are posted as GitHub Issues with the label `alignment-report`.
 
 ---
 
@@ -30,8 +30,8 @@ No commons exists without participants.
 | **Stakeholders mapped** | `blueprint.md` L2.1 must contain at least 3 stakeholders | High |
 | **Participation model** | `blueprint.md` L2.2 must describe how stakeholders join and progress | Normal |
 | **Non-human participants** | `blueprint.md` L2.3 must explicitly address non-human participation (even if "none yet") | Normal |
-| **Entity registration** | `registry/5_entities/` must contain at least one entity (the commons itself) | High |
-| **Founder entity** | At least one entity in `registry/5_entities/` must have the founder role | Normal |
+| **Entity registration** | `instance/registry/5_entities/` must contain at least one entity (the commons itself) | High |
+| **Founder entity** | At least one entity in `instance/registry/5_entities/` must have the founder role | Normal |
 
 ## §3 Value Proposition Alignment
 
@@ -42,7 +42,7 @@ A commons must create value to sustain itself.
 | **Value proposition** | `blueprint.md` L3.1 must articulate what stakeholders gain (min. 50 words) | High |
 | **Offers defined** | `blueprint.md` L3.2 must list at least one offer with status | Normal |
 | **Exchange model** | `blueprint.md` L3.3 must describe how value flows | Normal |
-| **Value streams** | `registry/3_valuestreams/` must contain at least one value stream (after Seed stage) | Normal |
+| **Value streams** | `instance/registry/3_valuestreams/` must contain at least one value stream (after Seed stage) | Normal |
 
 ## §4 Production & Infrastructure Alignment
 
@@ -51,7 +51,7 @@ The commons must have the infrastructure to deliver on its promises.
 | Check | Rule | Severity |
 |---|---|---|
 | **MCP configured** | `.commons/config.yml` must define at least the Commons MCP endpoint | High |
-| **Operating rhythms** | `operations/rhythms.md` must define at least alignment check and board review rhythms | Normal |
+| **Operating rhythms** | `instance/operations/rhythms.md` must define at least alignment check and board review rhythms | Normal |
 | **Blueprint depth** | After Active stage: `blueprint.md` must have content in L4-L6 (not just headers) | Normal |
 | **Resilience assessed** | After Established stage: `blueprint.md` L8.3 must contain a resilience assessment | Normal |
 
@@ -61,11 +61,11 @@ The commons must follow current specifications.
 
 | Spec | Expected version | What to check |
 |---|---|---|
-| **PATTERN_SPEC** | v8.2 | All patterns in `knowledge/patterns/` must conform — 8 frontmatter groups, 8 body sections |
+| **PATTERN_SPEC** | v8.2 | All patterns in `commons/patterns/` and `extensions/` must conform — 8 frontmatter groups, 8 body sections |
 | **COMMONS_OS_SPEC** | v1.0 | Directory structure, commons/extensions/instance layers, identity.yml schema |
 | **COMMONS_MCP_ARCHITECTURE_SPEC** | v1.0 | 3-channel MCP configuration in `.commons/config.yml` |
 
-Agent compares local `knowledge/specs/commons/` versions against Commons MCP latest (when connected).
+Agent compares local `commons/specs/` versions against Commons MCP latest (when connected).
 
 ## §6 Structural Checks
 
@@ -77,12 +77,12 @@ The file system must match the specification.
 | **Config valid** | `.commons/config.yml` must be valid YAML | High |
 | **Blueprint exists** | `blueprint.md` must exist and be non-empty | Critical |
 | **Agent config** | `AGENT.md` must exist (OS-standard AI configuration file) and not reference a specific AI product by name | High |
-| **Commons manifests** | `knowledge/manifests/commons/` must contain all required manifests | High |
-| **Commons specs** | `knowledge/specs/commons/` must contain all required specs | High |
-| **Commons patterns** | `knowledge/patterns/commons/` must contain orbital layers 0-singularity through 2-commons | High |
-| **Registry structure** | `registry/` must contain `1_journeys/`, `2_touchpoints/`, `3_valuestreams/`, `4_capabilities/`, `5_entities/` | High |
-| **Workshop exists** | `workshop/` directory must exist | Normal |
-| **Portals exists** | `portals/` directory must exist | Normal |
+| **Commons manifests** | `commons/manifests/` must contain all required manifests | High |
+| **Commons specs** | `commons/specs/` must contain all required specs | High |
+| **Commons patterns** | `commons/patterns/` must contain orbital layers 0-singularity through 2-commons | High |
+| **Registry structure** | `instance/registry/` must contain `1_journeys/`, `2_touchpoints/`, `3_valuestreams/`, `4_capabilities/`, `5_entities/` | High |
+| **Workshop exists** | `instance/workshop/` directory must exist | Normal |
+| **Portals exists** | `instance/portals/` directory must exist | Normal |
 
 ## §7 Pattern Health
 
@@ -103,8 +103,8 @@ Forks must stay connected to upstream evolution.
 | Check | Rule | Severity |
 |---|---|---|
 | **Sync workflow** | `.github/workflows/sync-upstream.yml` must exist and be active | Normal |
-| **Commons untouched** | Files in `knowledge/*/commons/` must not be locally modified (check via git diff against upstream) | High |
-| **Instance sovereign** | Upstream sync must never touch `knowledge/*/instance/`, `knowledge/*/extensions/`, `registry/`, `workshop/`, or `blueprint.md` | Critical |
+| **Commons untouched** | Files in `commons/` must not be locally modified (check via git diff against upstream) | High |
+| **Instance sovereign** | Upstream sync must never touch `instance/`, `extensions/`, or `blueprint.md` | Critical |
 
 ---
 

@@ -147,7 +147,7 @@ The work of moving between timeslices is **transition engineering**: sensing cur
 
 ### 6.2 Entity Registry
 
-*Key organisations, teams, and systems. These correspond to entries in `registry/5_entities/`.*
+*Key organisations, teams, and systems. These correspond to entries in `instance/registry/5_entities/`.*
 
 | Entity | Type | Role | Dimension |
 |---|---|---|---|

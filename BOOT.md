@@ -12,7 +12,7 @@ Before you begin:
 
 | Prerequisite | Details |
 |---|---|
-| **Forked repository** | You have forked `commons-engineering/commons-os` and renamed it to `[your-commons]-os` |
+| **Forked repository** | You have forked `commons-engineering/commons-os` and renamed it to `[your-commons]` |
 | **AI agent connected** | Any model that speaks MCP — configured with your agent file |
 | **Agent configuration** | You have copied `AGENT.md.template` to `AGENT.md` and filled in the placeholders. `AGENT.md` is the OS-standard — how you wire it to your AI tool is up to you |
 | **Time commitment** | Plan 2-4 hours for a thorough boot. This is a founding conversation, not a checkbox exercise |
@@ -43,11 +43,11 @@ Read these documents in order. Do not proceed until you understand the system:
 |---|---|
 | `.commons/identity.yml` | Understand who this commons claims to be |
 | `blueprint.md` | Understand the 9-layer structure you will help populate |
-| `knowledge/manifests/commons/COMMONS_OS_MANIFEST.md` | Understand what Commons OS is — vision, principles, architecture |
-| `knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md` | Understand your role as Purpose Agent and the 4-agent board |
-| `knowledge/specs/commons/COMMONS_OS_SPEC.md` | Understand the technical specification — directory structure, commons/extensions/instance layers, lifecycle stages |
-| `knowledge/specs/commons/PATTERN_SPEC.md` | Understand how patterns work — orbital layers, frontmatter, body structure |
-| `knowledge/specs/commons/COMMONS_MCP_ARCHITECTURE_SPEC.md` | Understand the 3-channel MCP architecture |
+| `commons/manifests/COMMONS_OS_MANIFEST.md` | Understand what Commons OS is — vision, principles, architecture |
+| `commons/manifests/COMMONS_AGENT_MANIFEST.md` | Understand your role as Purpose Agent and the 4-agent board |
+| `commons/specs/COMMONS_OS_SPEC.md` | Understand the technical specification — directory structure, commons/extensions/instance layers, lifecycle stages |
+| `commons/specs/PATTERN_SPEC.md` | Understand how patterns work — orbital layers, frontmatter, body structure |
+| `commons/specs/COMMONS_MCP_ARCHITECTURE_SPEC.md` | Understand the 3-channel MCP architecture |
 | `ALIGN.md` | Understand what alignment checks you will run |
 
 ### 2. Understand the Four Dimensions
@@ -134,7 +134,7 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
 
 > **Note:** We temporarily skip L4 (Journeys) and L5 (Value Streams) in the blueprint to immediately register the commons itself as a living entity. You need a registered actor before you can build value streams. We return to L4-L5 in the Seed stage.
 
-6. **Create the commons entity** in `registry/5_entities/purpose/`
+6. **Create the commons entity** in `instance/registry/5_entities/purpose/`
    - The commons itself is its first entity — the self-reference that makes the system alive
    - Set `self_entity_slug` in `identity.yml` to point here
    - The agent helps you fill in the entity fields: type, role, dimension alignment
@@ -202,8 +202,8 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
 | Document | When to read it |
 |---|---|
 | `ALIGN.md` | After boot — run your first alignment check |
-| `operations/rhythms.md` | When establishing regular operations (Seed stage) |
-| `knowledge/patterns/commons/` | When looking for patterns to apply |
+| `instance/operations/rhythms.md` | When establishing regular operations (Seed stage) |
+| `commons/patterns/` | When looking for patterns to apply |
 | `CONTRIBUTING.md` | When you have improvements to contribute back upstream |
 
 ---
