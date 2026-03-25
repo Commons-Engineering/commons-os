@@ -1,9 +1,27 @@
 # Alignment Rules — Commons OS
 
-**Version:** 1.0
+**Version:** 1.1
 **Status:** Living Document
 
 This file defines the alignment checks that keep a commons healthy. The Purpose Agent runs these checks regularly (see `instance/operations/rhythms.md` for frequency). Results are posted as GitHub Issues with the label `alignment-report`.
+
+---
+
+## §0 Commons Definition Alignment
+
+The most fundamental check. If this fails, this is not a commons.
+
+> **A commons systematically creates value that is alive, shared, just, and is built to last.**
+
+| Check | Rule | Severity |
+|---|---|---|
+| **Systematically** | Value creation is designed, not accidental. Patterns and governance exist. If value depends on a single hero, this check fails. | Critical |
+| **Alive** | The system regenerates through use. Participants grow. Knowledge compounds. If the system depletes its participants (burnout, extraction, churn), this check fails. | Critical |
+| **Shared** | Value creation belongs to the participants collectively. If one actor captures disproportionate value, this check fails. | Critical |
+| **Just** | The exchange serves all participants fairly — especially those with the least power. If voiceless participants are systematically disadvantaged, this check fails. | Critical |
+| **Built to last** | Stewardship rotates. Knowledge is documented. No single dependency. If the system cannot survive a change of stewardship, this check fails. | Critical |
+
+Source: `commons/patterns/principles/the-commons.md` (Orbit 1)
 
 ---
 

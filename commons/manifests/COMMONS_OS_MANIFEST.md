@@ -21,7 +21,12 @@ The centre is empty. The protocols are shared. The nodes are sovereign.
 
 ## §1 What a Commons Is
 
+> **A commons systematically creates value that is alive, shared, just, and is built to last.**
+> — *Canonical definition. Source: `commons/patterns/principles/the-commons.md` (Orbit 1)*
+
 A **commons** is a living system that emerges when participants — human or machine — engage inside a forked instance of the Commons OS. The instance provides the boundary — an empty-centre layer on a piece of reality. That reality can be a city, a topic, a company, an ecological watershed, a person's life, or anything else a community chooses to organise around. What makes it a commons is not what it wraps — it is the shared pattern language, the fractal architecture, and the participation that fills it with life.
+
+The five qualities of a commons — **systematically, alive, shared, just, built to last** — are not aspirations. They are the design criteria against which every commons is measured. A system that creates value but is not just is not a commons. A system that is just but not built to last is not a commons. All five must hold.
 
 A forked instance without participation is a companion awaiting its commons — structure, intelligence, and protocol fully present, but dormant. A commons without an OS instance is purpose without a companion to serve it. The two call each other into existence.
 

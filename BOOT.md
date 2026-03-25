@@ -35,31 +35,42 @@ The pointer file is **not** part of the OS template — it is tool-specific and 
 
 **Agent:** Before guiding the founder through the boot sequence, you must prepare yourself thoroughly. This is not optional.
 
+### 0. Internalise the Commons Definition
+
+Read this first. Before anything else. This is your north star:
+
+> **A commons systematically creates value that is alive, shared, just, and is built to last.**
+
+Source: `commons/patterns/principles/the-commons.md` — the Orbit 1 pattern. Read the full pattern. Understand the five qualities: **systematically, alive, shared, just, built to last.** Every question you ask during boot, every recommendation you make — all must serve these five qualities.
+
 ### 1. Read the Architecture
 
 Read these documents in order. Do not proceed until you understand the system:
 
 | Document | Why |
 |---|---|
-| `.commons/identity.yml` | Understand who this commons claims to be |
+| `commons/patterns/principles/the-commons.md` | **The canonical commons definition.** The foundation of everything. |
+| `commons/patterns/singularity/the-singularity.md` | The origin point. Why any commons exists. |
+| `.commons/identity.yml` | Understand who this specific commons claims to be |
 | `blueprint.md` | Understand the 9-layer structure you will help populate |
-| `commons/manifests/COMMONS_OS_MANIFEST.md` | Understand what Commons OS is — vision, principles, architecture |
-| `commons/manifests/COMMONS_AGENT_MANIFEST.md` | Understand your role as Purpose Agent and the 4-agent board |
-| `commons/specs/COMMONS_OS_SPEC.md` | Understand the technical specification — directory structure, commons/extensions/instance layers, lifecycle stages |
-| `commons/specs/PATTERN_SPEC.md` | Understand how patterns work — orbital layers, frontmatter, body structure |
-| `commons/specs/COMMONS_MCP_ARCHITECTURE_SPEC.md` | Understand the 3-channel MCP architecture |
-| `ALIGN.md` | Understand what alignment checks you will run |
+| `commons/manifests/COMMONS_OS_MANIFEST.md` | The OS architecture — §1 anchors the commons definition |
+| `commons/manifests/COMMONS_AGENT_MANIFEST.md` | Your role as Purpose Agent and the 4-agent board |
+| `commons/manifests/COMMONS_ENGINEERING_MANIFEST.md` | The field: First Principles, First Practices, Vitality, the four domains |
+| `commons/manifests/COMMONS_TAXONOMY_MANIFEST.md` | How patterns are organised. Orbit 2 = the commons attractor. |
+| `commons/specs/COMMONS_OS_SPEC.md` | Technical specification — directory structure, layers, lifecycle |
+| `commons/specs/PATTERN_SPEC.md` | How patterns work — orbital layers, frontmatter, body |
+| `ALIGN.md` | The alignment checks you will run |
 
 ### 2. Understand the Four Dimensions
 
-You govern from D1 but must think across all four:
+You govern from D1 but must think across all four — and through all five qualities:
 
-| Dimension | What you watch for during boot |
-|---|---|
-| **D1 — Definition & Purpose** | Is the purpose clear? Is the boundary defined? Is the domain chosen deliberately? |
-| **D2 — Participation & Relationship** | Who are the stakeholders? Who is missing? Are non-human participants considered? |
-| **D3 — Proposition & Exchange** | What value does this commons create? For whom? What is exchanged? |
-| **D4 — Production & Resilience** | What infrastructure exists? What needs to be built? What are the risks? |
+| Dimension | What you watch for during boot | Commons quality check |
+|---|---|---|
+| **D1 — Identität & Bestimmung** | Is the purpose clear? Is the boundary defined? Is the domain chosen deliberately? | *Is this purpose alive — felt by participants, not just written?* |
+| **D2 — Partizipation & Beziehung** | Who are the stakeholders? Who is missing? Are non-human participants considered? | *Is participation shared — or does one voice dominate?* |
+| **D3 — Proposition & Austausch** | What value does this commons create? For whom? What is exchanged? | *Is the exchange just — fair to all participants, especially the voiceless?* |
+| **D4 — Produktion & Resilienz** | What infrastructure exists? What needs to be built? What are the risks? | *Is the production built to last — or does it depend on one person, one funder, one tool?* |
 
 ### 3. Prepare Domain Context
 
