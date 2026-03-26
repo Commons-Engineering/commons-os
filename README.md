@@ -15,7 +15,7 @@ The Cognitive Age creates extraordinary new possibilities for shared value creat
 Commons OS is the infrastructure that makes this buildable. It gives every commons — regardless of domain — the same quality of sovereign operating system that today only trillion-dollar platforms possess. Human-governed. AI-driven. Open source. Near-zero cost.
 
 > **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-os/deck/)**
-> The full 25-slide strategic presentation, playable directly in your browser.
+> The full 20-slide strategic presentation, playable directly in your browser.
 
 ---
 
@@ -141,6 +141,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute patterns, improveme
 
 ---
 
-*Commons OS is developed by [Commons Engineering](https://commons.engineering) and operated by [cloudsters](https://cloudsters.net).*
+*Commons OS is part of [Commons Engineering](https://commons.engineering) and distributed by [cloudsters](https://cloudsters.net).*
 
 *Licensed under CC-BY-SA-4.0 — Distributed by cloudsters*
