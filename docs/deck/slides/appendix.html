@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .bg-grid { position: absolute; top:0; left:0; right:0; bottom:0; background-image: linear-gradient(rgba(58,170,220,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(58,170,220,0.03) 1px, transparent 1px); background-size:40px 40px; z-index:1; }
+
+        /* Header */
+        .header {
+            padding-top: 60px; /* must keep this */
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 10;
+        }
+        .slide-number { font-family: 'JetBrains Mono', monospace; color: #3aaadc; font-size: 14px; letter-spacing: 2px; }
+        h1 { font-size: 40px; font-weight: 600; color: #ffffff; letter-spacing: -0.5px; }
+
+        /* Main Content Area - further reduced spacing */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding-top: 8px; /* reduced to save space */
+            padding-left: 80px;
+            padding-right: 80px;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .intro-text {
+            font-size: 20px;
+            color: #e2e8f0;
+            line-height: 1.4;
+            font-weight: 300;
+            max-width: 900px;
+        }
+
+        /* Reference as multi-column cards to save vertical space */
+        .reference-table {
+            border-top: 2px solid rgba(58, 170, 220, 0.5);
+            border-bottom: 2px solid rgba(58, 170, 220, 0.5);
+            background: rgba(15, 23, 42, 0.6);
+            padding: 6px 0 10px 0; /* tightened */
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 220px 1fr 300px;
+            padding: 8px 18px; /* reduced */
+            border-bottom: 1px solid rgba(58, 170, 220, 0.3);
+            background: rgba(58, 170, 220, 0.05);
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .entries {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* three columns to reduce vertical rows */
+            gap: 10px 12px;
+            padding: 10px 18px; /* slightly tighter */
+        }
+
+        .entry {
+            background: transparent;
+            border-left: 2px solid rgba(58,170,220,0.06);
+            padding: 8px 10px; /* compact */
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 8px;
+        }
+
+        .entry .td-quality { font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #ffffff; font-weight: 500; display: flex; align-items: center; gap: 12px; }
+        .entry .td-quality::before { content: '>'; color: #f59e0b; font-weight: 600; }
+
+        .entry .td-meaning { font-size: 18px; color: #94a3b8; line-height: 1.4; }
+
+        .entry .td-test { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #f59e0b; background: rgba(245,158,11,0.08); padding: 6px 10px; border-left: 2px solid #f59e0b; align-self: start; }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">APPENDIX</div>
+            <h1>The Five Qualities of a Commons</h1>
+        </div>
+
+        <div class="content-area">
+            <p class="intro-text">A canonical reference for the five non-negotiable qualities that define a modern commons.</p>
+            
+            <div class="reference-table">
+                <div class="table-header">
+                    <div>Quality</div>
+                    <div>Meaning</div>
+                    <div>Test Question</div>
+                </div>
+
+                <div class="entries">
+                    <div class="entry">
+                        <div class="td-quality">Systematically</div>
+                        <div class="td-meaning">Value is produced by the system design and patterns, not by individuals.</div>
+                        <div class="td-test">Repeatable without exceptional individuals?</div>
+                    </div>
+
+                    <div class="entry">
+                        <div class="td-quality">Alive</div>
+                        <div class="td-meaning">Regenerates through use: adapts, grows, or declines with attention.</div>
+                        <div class="td-test">Does this make the system more resilient?</div>
+                    </div>
+
+                    <div class="entry">
+                        <div class="td-quality">Shared</div>
+                        <div class="td-meaning">Belongs to participants collectively; value is distributed among creators.</div>
+                        <div class="td-test">Serves those who enable it?</div>
+                    </div>
+
+                    <div class="entry">
+                        <div class="td-quality">Just</div>
+                        <div class="td-meaning">Fairness across participation, purpose, and production; prevents enclosure.</div>
+                        <div class="td-test">Does architecture serve everyone fairly?</div>
+                    </div>
+
+                    <div class="entry">
+                        <div class="td-quality">Built to last</div>
+                        <div class="td-meaning">Designed for longevity: rotating stewardship and documented knowledge.</div>
+                        <div class="td-test">Would it survive and thrive without us?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">>_ REFERENCE_LOADED: CANONICAL_COMMONS_DEFINITION</div>
+    </div>
+</body>
+</html>

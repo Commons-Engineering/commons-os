@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Content Area - refreshed to side-by-side layout to save vertical space */
+        .content-area {
+            display: flex;
+            flex-direction: row; /* switched from column to row */
+            flex: 1;
+            padding: 20px 80px; /* keep horizontal padding */
+            gap: 20px; /* gap between left definition and right table */
+            z-index: 10;
+            align-items: flex-start;
+        }
+
+        /* Definition Block (shrink inner padding) */
+        .definition-block {
+            border-left: 4px solid #3aaadc;
+            padding-left: 20px;
+            background: linear-gradient(90deg, rgba(58, 170, 220, 0.1) 0%, transparent 100%);
+            padding-top: 12px;
+            padding-bottom: 12px;
+            width: 360px; /* fixed column width so table can use remaining space */
+            flex-shrink: 0;
+        }
+        .definition-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .definition-text {
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 1.4;
+            color: #ffffff;
+        }
+        .definition-text strong {
+            font-weight: 600;
+            color: #f59e0b;
+        }
+
+        /* Technical Table - stays in the right column and uses remaining width */
+        .tech-table {
+            display: grid;
+            grid-template-columns: 1fr; /* single column list to keep consistent row layout */
+            gap: 12px; /* row-gap */
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            border-bottom: 1px solid rgba(58, 170, 220, 0.3);
+            align-items: start;
+            padding: 0 0 0 0;
+            width: calc(100% - 360px);
+        }
+        
+        .table-header {
+            display: grid;
+            grid-template-columns: 200px 1fr 180px;
+            padding: 8px 12px; /* reduced padding */
+            border-bottom: 1px solid rgba(58, 170, 220, 0.3);
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+        
+        .th-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #3aaadc;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Each table-row is a compact horizontal row */
+        .table-row {
+            display: grid;
+            grid-template-columns: 180px 1fr 160px;
+            padding: 10px; /* slightly reduced padding */
+            border-bottom: 1px solid rgba(58, 170, 220, 0.05);
+            align-items: center;
+            background-clip: padding-box;
+        }
+
+        .table-row:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .td-quality {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        
+        .td-meaning {
+            font-size: 18px;
+            color: #94a3b8;
+            line-height: 1.5;
+            padding-right: 12px; /* slightly reduced */
+        }
+        
+        .td-test {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #f59e0b;
+            background-color: rgba(245, 158, 11, 0.1);
+            padding: 6px 10px; /* slightly reduced */
+            border-left: 2px solid #f59e0b;
+            justify-self: start;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">01 // THE DIAGNOSIS</div>
+            <h1>What Is a Commons?</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="definition-block">
+                <div class="definition-label">Canonical Definition</div>
+                <div class="definition-text">
+                    A commons systematically creates value that is <strong>alive, shared, just, and built to last.</strong>
+                </div>
+            </div>
+
+            <div class="tech-table">
+                <div class="table-header">
+                    <div class="th-cell">Quality</div>
+                    <div class="th-cell">Meaning</div>
+                    <div class="th-cell">Test Question</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="td-quality">Systematically</div>
+                    <div class="td-meaning">Through design, architecture, and patterns, not individual heroics.</div>
+                    <div class="td-test">Is this repeatable?</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="td-quality">Alive</div>
+                    <div class="td-meaning">Regenerates through use. Grows, adapts, and dies when untended.</div>
+                    <div class="td-test">Does this make the system more vital?</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="td-quality">Shared</div>
+                    <div class="td-meaning">Belongs to its participants collectively. Neither private nor state.</div>
+                    <div class="td-test">Does value serve all who enable it?</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="td-quality">Just</div>
+                    <div class="td-meaning">Fair. Pervades all dimensions. Prevents Enclosure as Code.</div>
+                    <div class="td-test">Does this serve all fairly?</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="td-quality">Built to last</div>
+                    <div class="td-meaning">Outlasts its founders. Stewardship rotates. Knowledge is documented.</div>
+                    <div class="td-test">Would this survive without us?</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
