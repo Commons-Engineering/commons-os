@@ -17,7 +17,6 @@
             flex-direction: column;
         }
         
-        /* Background Grid */
         .bg-grid {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -28,14 +27,13 @@
             z-index: 1;
         }
 
-        /* Header */
         .header {
-            padding-top: 60px;
+            padding-top: 50px;
             padding-left: 80px;
             padding-right: 80px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 10;
         }
         .slide-number {
@@ -51,25 +49,23 @@
             letter-spacing: -0.5px;
         }
 
-        /* Main Content Area */
         .content-area {
             display: flex;
             flex: 1;
-            padding: 40px 80px 60px 80px;
+            padding: 28px 80px 0 80px;
             gap: 60px;
             z-index: 10;
         }
 
-        /* Left Column - Text */
         .text-col {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
         }
         
         .intro-text {
-            font-size: 22px;
+            font-size: 20px;
             color: #ffffff;
             line-height: 1.4;
             font-weight: 300;
@@ -82,32 +78,30 @@
         .feature-list {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            margin-top: 10px;
+            gap: 16px;
         }
         
         .feature-item {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding-left: 20px;
+            gap: 4px;
+            padding-left: 18px;
             border-left: 2px solid rgba(245, 158, 11, 0.3);
         }
         
         .feature-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 14px;
             color: #3aaadc;
             letter-spacing: 1px;
         }
         
         .feature-desc {
-            font-size: 16px;
+            font-size: 15px;
             color: #94a3b8;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
-        /* Right Column - Visual */
         .visual-col {
             flex: 1;
             display: flex;
@@ -119,23 +113,21 @@
         .diagram-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 380px;
             display: flex;
             align-items: center;
         }
 
-        /* Timeline Base */
         .timeline-axis {
             position: absolute;
             top: 50%;
-            left: 40px;
-            right: 40px;
+            left: 20px;
+            right: 20px;
             height: 2px;
             background: rgba(58, 170, 220, 0.3);
             transform: translateY(-50%);
         }
 
-        /* Nodes */
         .node {
             position: absolute;
             top: 50%;
@@ -143,12 +135,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         
         .node-point {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background: #0f172a;
             border: 3px solid;
             border-radius: 50%;
@@ -158,41 +150,42 @@
 
         .node-label {
             position: absolute;
-            top: 30px;
+            top: 28px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 12px;
             white-space: nowrap;
             text-align: center;
         }
         .node-title {
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .node-sub {
-            font-size: 12px;
+            font-size: 10px;
             color: #94a3b8;
         }
 
-        /* Domain Node */
-        .node-domain { left: 80px; }
+        .node-domain { left: 60px; }
         .node-domain .node-point { border-color: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
         .node-domain .node-title { color: #ffffff; }
 
-        /* Game Node */
-        .node-game { left: 320px; }
+        .node-os { left: 180px; }
+        .node-os .node-point { border-color: #3aaadc; box-shadow: 0 0 15px rgba(58, 170, 220, 0.3); background: #3aaadc; }
+        .node-os .node-title { color: #3aaadc; }
+
+        .node-game { left: 310px; }
         .node-game .node-point { border-color: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); background: #f59e0b; }
         .node-game .node-title { color: #f59e0b; }
 
-        /* Delta Bracket */
         .delta-bracket {
             position: absolute;
             top: 50%;
-            left: 80px;
-            width: 240px;
-            height: 60px;
+            left: 60px;
+            width: 250px;
+            height: 50px;
             border: 1px solid rgba(58, 170, 220, 0.5);
             border-bottom: none;
-            transform: translateY(-100px);
+            transform: translateY(-90px);
         }
         .delta-bracket::before, .delta-bracket::after {
             content: ''; position: absolute; bottom: 0; width: 1px; height: 10px; background: rgba(58, 170, 220, 0.5);
@@ -202,39 +195,38 @@
         
         .delta-label {
             position: absolute;
-            top: -24px;
+            top: -22px;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 12px;
             color: #3aaadc;
             background: #0f172a;
-            padding: 0 10px;
+            padding: 0 8px;
             letter-spacing: 1px;
         }
 
-        /* Scenario Branches */
         .branches {
             position: absolute;
             top: 50%;
-            left: 320px;
-            width: 160px;
-            height: 200px;
+            left: 310px;
+            width: 140px;
+            height: 180px;
             transform: translateY(-50%);
         }
         
         .branch {
             position: absolute;
             left: 0;
-            width: 140px;
+            width: 120px;
             border-top: 2px dashed rgba(245, 158, 11, 0.6);
             transform-origin: left center;
         }
         
-        .branch-1 { top: 100px; transform: rotate(-35deg); }
-        .branch-2 { top: 100px; transform: rotate(-15deg); }
-        .branch-3 { top: 100px; transform: rotate(15deg); }
-        .branch-4 { top: 100px; transform: rotate(35deg); }
+        .branch-1 { top: 90px; transform: rotate(-30deg); }
+        .branch-2 { top: 90px; transform: rotate(-10deg); }
+        .branch-3 { top: 90px; transform: rotate(10deg); }
+        .branch-4 { top: 90px; transform: rotate(30deg); }
         
         .branch-dot {
             position: absolute;
@@ -248,9 +240,9 @@
 
         .scenario-label {
             position: absolute;
-            right: -60px;
+            right: -55px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
+            font-size: 9px;
             color: #94a3b8;
             background: rgba(15, 23, 42, 0.8);
             padding: 2px 4px;
@@ -261,22 +253,22 @@
         .sl-3 { top: -12px; }
         .sl-4 { top: -12px; }
 
-        /* Bottom Bar */
         .bottom-bar {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 56px;
             background-color: rgba(58, 170, 220, 0.1);
             border-top: 1px solid rgba(58, 170, 220, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 15px;
             color: #ffffff;
             letter-spacing: 1px;
+            z-index: 20;
         }
     </style>
 </head>
@@ -299,19 +291,19 @@
                     <div class="feature-item">
                         <div class="feature-title">RUNNING YEARS AHEAD</div>
                         <div class="feature-desc">
-                            While the Domain fork operates in the present, the Game fork is configured to run years into the future, testing the limits of your current architecture.
+                            The Domain fork is the present. The OS fork is the shared infrastructure. The Game fork runs years into the future, testing the limits of your architecture.
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-title">MULTIPLE DIMENSIONS</div>
+                        <div class="feature-title">SCENARIO INJECTION</div>
                         <div class="feature-desc">
-                            Simulating regulatory shifts, demographic changes, technology disruptions, and funding crises. Forcing the system to adapt, survive, and thrive.
+                            Regulatory shifts, demographic changes, technology disruptions, funding crises. Forcing the system to adapt, survive, and thrive.
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-title">THE CONSTRUCTION MANUAL</div>
+                        <div class="feature-title">THE DELTA</div>
                         <div class="feature-desc">
-                            The Game and the Domain are two halves of one feedback loop. What breaks in simulation becomes a pattern that strengthens the real operating system.
+                            What breaks in simulation becomes a pattern that strengthens the real operating system. The gap between Game and Domain is the construction manual.
                         </div>
                     </div>
                 </div>
@@ -330,6 +322,14 @@
                         <div class="node-label">
                             <div class="node-title">DOMAIN FORK</div>
                             <div class="node-sub">T = 0 (Present)</div>
+                        </div>
+                    </div>
+
+                    <div class="node node-os">
+                        <div class="node-point"></div>
+                        <div class="node-label">
+                            <div class="node-title">OS FORK</div>
+                            <div class="node-sub">Shared Infra</div>
                         </div>
                     </div>
                     

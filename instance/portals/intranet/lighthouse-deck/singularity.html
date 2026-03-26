@@ -19,12 +19,12 @@
         
         /* Header */
         .header {
-            padding-top: 60px;
+            padding-top: 50px;
             padding-left: 80px;
             padding-right: 80px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 10;
         }
         .slide-number {
@@ -44,9 +44,10 @@
         .content-area {
             display: flex;
             flex: 1;
-            padding-top: 60px;
+            padding-top: 20px;
             padding-left: 80px;
             padding-right: 80px;
+            padding-bottom: 60px;
             gap: 60px;
             z-index: 10;
         }
@@ -56,7 +57,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 32px;
         }
         
         .point {
@@ -71,15 +72,15 @@
             padding-top: 4px;
         }
         .point-content h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: #ffffff;
         }
         .point-content p {
-            font-size: 18px;
+            font-size: 16px;
             color: #94a3b8;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         .highlight {
             color: #f59e0b;
@@ -92,14 +93,15 @@
             position: relative;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 10px;
         }
 
         /* CSS Diagram: Concentric Rings */
         .diagram-container {
             position: relative;
-            width: 500px;
-            height: 500px;
+            width: 440px;
+            height: 440px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -123,9 +125,9 @@
             justify-content: center;
         }
         
-        .ring-1 { width: 150px; height: 150px; border-color: rgba(58, 170, 220, 0.8); }
-        .ring-2 { width: 300px; height: 300px; border-color: rgba(58, 170, 220, 0.5); border-style: dashed; }
-        .ring-3 { width: 450px; height: 450px; border-color: rgba(245, 158, 11, 0.6); }
+        .ring-1 { width: 140px; height: 140px; border-color: rgba(58, 170, 220, 0.8); }
+        .ring-2 { width: 280px; height: 280px; border-color: rgba(58, 170, 220, 0.5); border-style: dashed; }
+        .ring-3 { width: 420px; height: 420px; border-color: rgba(245, 158, 11, 0.6); }
 
         .ring-label {
             position: absolute;
@@ -138,6 +140,25 @@
         }
         .ring-1 .ring-label { color: #3aaadc; }
         .ring-3 .ring-label { color: #f59e0b; }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            z-index: 20;
+        }
 
         /* Background Grid */
         .bg-grid {
@@ -199,6 +220,10 @@
                     <div class="center-point"></div>
                 </div>
             </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ THREE COMPRESSIONS. ONE EXPANSION. THIS IS OUR MOMENT.
         </div>
     </div>
 </body>

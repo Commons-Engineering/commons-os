@@ -19,12 +19,12 @@
         
         /* Header */
         .header {
-            padding-top: 60px;
+            padding-top: 50px;
             padding-left: 80px;
             padding-right: 80px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 10;
         }
         .slide-number {
@@ -41,11 +41,10 @@
         }
 
         /* Main Content Area */
-        /* Reduced vertical padding to bring total height under 720px */
         .content-area {
             display: flex;
             flex: 1;
-            padding: 0px 80px 8px 80px;
+            padding: 8px 80px 0 80px;
             gap: 60px;
             z-index: 10;
         }
@@ -55,14 +54,14 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
         
         .dim-item {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             align-items: flex-start;
-            padding: 16px;
+            padding: 12px 14px;
             border: 1px solid rgba(58, 170, 220, 0.2);
             background: rgba(15, 23, 42, 0.5);
             position: relative;
@@ -74,24 +73,24 @@
         
         .dim-id {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 14px;
             color: #ffffff;
             background-color: rgba(58, 170, 220, 0.2);
             border: 1px solid #3aaadc;
-            padding: 4px 8px;
-            min-width: 42px;
+            padding: 3px 7px;
+            min-width: 38px;
             text-align: center;
         }
         
         .dim-text h3 {
-            font-size: 20px;
+            font-size: 18px;
             color: #ffffff;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             font-weight: 600;
         }
         
         .dim-text p {
-            font-size: 15px;
+            font-size: 14px;
             color: #94a3b8;
             line-height: 1.4;
         }
@@ -99,37 +98,36 @@
         .justice-note {
             font-family: 'JetBrains Mono', monospace;
             color: #f59e0b;
-            font-size: 14px;
-            padding: 16px;
+            font-size: 13px;
+            padding: 10px 14px;
             border-left: 2px solid #f59e0b;
             background: rgba(245, 158, 11, 0.05);
             margin-top: 4px;
-            margin-bottom: 4px;
         }
 
         .extensions {
-            margin-top: 8px;
+            margin-top: 4px;
         }
         
         .ext-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 11px;
             color: #94a3b8;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
         
         .ext-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
         }
         
         .ext-tags span {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            font-size: 11px;
             color: #ffffff;
-            padding: 6px 12px;
+            padding: 4px 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.05);
         }
@@ -145,8 +143,8 @@
 
         .spiral-container {
             position: relative;
-            width: 460px;
-            height: 460px;
+            width: 420px;
+            height: 420px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -166,28 +164,28 @@
         }
         
         .ring-d4 {
-            width: 420px; height: 420px;
+            width: 400px; height: 400px;
             border-top: 2px solid #3aaadc;
             border-right: 2px solid #3aaadc;
             transform: rotate(15deg);
         }
         
         .ring-d3 {
-            width: 300px; height: 300px;
+            width: 280px; height: 280px;
             border-bottom: 2px solid #f59e0b;
             border-left: 2px solid #f59e0b;
             transform: rotate(15deg);
         }
         
         .ring-d2 {
-            width: 180px; height: 180px;
+            width: 170px; height: 170px;
             border-top: 2px solid #3aaadc;
             border-left: 2px solid #3aaadc;
             transform: rotate(15deg);
         }
         
         .center-core {
-            width: 80px; height: 80px;
+            width: 70px; height: 70px;
             border-radius: 50%;
             border: 2px solid #ffffff;
             background-color: rgba(255, 255, 255, 0.1);
@@ -195,7 +193,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 20px;
+            font-size: 18px;
             color: #ffffff;
             z-index: 10;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
@@ -204,15 +202,34 @@
         .label {
             position: absolute;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 12px;
             background: #0f172a;
-            padding: 2px 8px;
+            padding: 2px 6px;
             z-index: 20;
         }
         
-        .l-d4 { top: 40px; right: 80px; color: #3aaadc; border: 1px solid #3aaadc; }
-        .l-d3 { bottom: 80px; left: 60px; color: #f59e0b; border: 1px solid #f59e0b; }
-        .l-d2 { top: 120px; left: 160px; color: #3aaadc; border: 1px solid #3aaadc; }
+        .l-d4 { top: 30px; right: 70px; color: #3aaadc; border: 1px solid #3aaadc; }
+        .l-d3 { bottom: 70px; left: 50px; color: #f59e0b; border: 1px solid #f59e0b; }
+        .l-d2 { top: 110px; left: 150px; color: #3aaadc; border: 1px solid #3aaadc; }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            z-index: 20;
+        }
 
         /* Background Grid */
         .bg-grid {
@@ -297,6 +314,10 @@
                     <div class="label l-d2">D2: PARTICIPATION</div>
                 </div>
             </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ FOUR DIMENSIONS. ONE ARCHITECTURE. JUSTICE PERVADES ALL.
         </div>
     </div>
 </body>

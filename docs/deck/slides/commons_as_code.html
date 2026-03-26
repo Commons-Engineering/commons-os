@@ -28,12 +28,12 @@
         }
 
         .header {
-            padding-top: 60px;
+            padding-top: 50px;
             padding-left: 80px;
             padding-right: 80px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 10;
         }
         .slide-number {
@@ -52,23 +52,22 @@
         .content-area {
             display: flex;
             flex: 1;
-            padding-top: 40px;
+            padding-top: 28px;
             padding-left: 80px;
             padding-right: 80px;
             gap: 60px;
             z-index: 10;
         }
 
-        /* Left Column */
         .text-col {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
         }
         
         .intro-text {
-            font-size: 24px;
+            font-size: 22px;
             color: #ffffff;
             line-height: 1.4;
             font-weight: 300;
@@ -81,32 +80,30 @@
         .feature-list {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            margin-top: 10px;
+            gap: 16px;
         }
         
         .feature-item {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding-left: 20px;
+            gap: 4px;
+            padding-left: 18px;
             border-left: 2px solid rgba(245, 158, 11, 0.3);
         }
         
         .feature-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 14px;
             color: #f59e0b;
             letter-spacing: 1px;
         }
         
         .feature-desc {
-            font-size: 16px;
+            font-size: 15px;
             color: #94a3b8;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
-        /* Right Column - Visual */
         .visual-col {
             flex: 1;
             display: flex;
@@ -118,24 +115,23 @@
         .lens-container {
             position: relative;
             width: 400px;
-            height: 460px;
+            height: 420px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Lenses */
         .lens-stack {
             position: relative;
             width: 300px;
-            height: 240px;
+            height: 220px;
             perspective: 1000px;
         }
 
         .lens {
             position: absolute;
             width: 260px;
-            height: 140px;
+            height: 130px;
             left: 20px;
             border: 2px solid;
             background: rgba(15, 23, 42, 0.8);
@@ -144,7 +140,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 1px;
             box-shadow: -10px 10px 20px rgba(0,0,0,0.5);
@@ -172,12 +168,11 @@
             z-index: 1;
         }
 
-        /* Connection Lines */
         .data-lines {
             position: absolute;
-            top: 220px;
+            top: 200px;
             width: 100px;
-            height: 80px;
+            height: 70px;
             display: flex;
             justify-content: space-between;
         }
@@ -187,14 +182,13 @@
             background: linear-gradient(to bottom, rgba(58, 170, 220, 0.5), rgba(245, 158, 11, 0.5));
         }
 
-        /* AI Context Window */
         .ai-window {
             position: absolute;
-            bottom: 20px;
-            width: 360px;
+            bottom: 30px;
+            width: 340px;
             background: rgba(15, 23, 42, 0.9);
             border: 1px solid rgba(245, 158, 11, 0.5);
-            padding: 20px;
+            padding: 16px;
             text-align: center;
         }
         .ai-window::before {
@@ -202,13 +196,13 @@
         }
         .ai-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 15px;
             color: #f59e0b;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .ai-desc {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 11px;
             color: #94a3b8;
         }
 
@@ -217,16 +211,17 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 56px;
             background-color: rgba(58, 170, 220, 0.1);
             border-top: 1px solid rgba(58, 170, 220, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 15px;
             color: #ffffff;
             letter-spacing: 1px;
+            z-index: 20;
         }
     </style>
 </head>
@@ -242,26 +237,26 @@
         <div class="content-area">
             <div class="text-col">
                 <p class="intro-text">
-                    Every Commons is a <strong>lens</strong> on any type of value creation — of any piece of reality or fiction. Because it is built as code, you can merge entire pathways into a single context window.
+                    Every Commons is a <strong>lens</strong> on any type of value creation. Because it is built as code, you can merge entire pathways into a single context window.
                 </p>
                 
                 <div class="feature-list">
                     <div class="feature-item">
                         <div class="feature-title">THE LENS</div>
                         <div class="feature-desc">
-                            A Commons models a specific view of value creation — reality or fiction. Model a hospital as it is today, or as it could be in 2035. Model a city district, an ecological zone, or a "maybe reality." As many views as desired.
+                            Model a hospital as it is today, or as it could be in 2035. A city district, an ecological zone, or a "maybe reality." As many views as desired.
                         </div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-title">AS CODE</div>
                         <div class="feature-desc">
-                            Because these models are written as code (not just static documents), they are fully machine-readable, composable, and interoperable.
+                            Written as code, not static documents. Fully machine-readable, composable, and interoperable.
                         </div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-title">THE CONTEXT WINDOW</div>
                         <div class="feature-desc">
-                            Merge reality and fiction into a single AI context window. Your present state, your projections, your maybe-realities — entire pathways side by side. The AI gains a multi-dimensional understanding across time, domain, and possibility.
+                            Merge reality and fiction into a single AI context window. Present state, projections, maybe-realities &mdash; the AI gains multi-dimensional understanding.
                         </div>
                     </div>
                 </div>
