@@ -217,15 +217,23 @@ This is the only pattern at Orbit 0. There can be only one. Everything else in t
 
 ### Section 1: Context
 
-Consider three beginnings.
+Before there is structure, there is absolute, undirected potential. The singularity is the state of maximum compression, in which all possible futures exist simultaneously, ready to expand.
 
-13.8 billion years ago, the observable universe existed as a singularity — a state of infinite density and zero volume, in which all matter, energy, space, and time were compressed into a single point. No structure. No differentiation. No atoms, no stars, no galaxies. Only potential, held in a state of perfect symmetry. Then the symmetry broke. The universe expanded. Energy differentiated into forces. Forces shaped matter. Matter formed structure. Structure grew complex. Complexity produced life. Life produced consciousness. And consciousness, eventually, began to ask what happened at the beginning.
+Every profound leap in the history of our universe begins in a singularity. The physical singularity compressed all matter and energy into a single point; its expansion created the architecture of space and time. The biological singularity rests in the totipotent cell before its first division; its expansion gives birth to the infinite complexity of living ecosystems.
 
-Somewhere on Earth, a seed falls into soil. Inside the seed: a single fertilised cell — totipotent, meaning it carries the potential to become any cell in the organism. Root, stem, leaf, flower, fruit — all compressed into one undifferentiated point. The cell divides. Differentiation begins. Cells specialise. Structure emerges. The organism grows toward light and water, shaped by its environment but faithful to the pattern encoded in its origin. The oak was always in the acorn. But it took differentiation to make it visible.
+We are now navigating the cognitive singularity. The networking of intelligence compresses all conceivable human futures into the present moment. The friction of creation is falling toward zero. The capacity to shape worlds is expanding exponentially.
 
-Today, someone opens a terminal and types `git fork`. A repository is copied — complete, intact, full of structure and potential, but inert. No commits yet. No community. No purpose beyond what the template provides. The fork is a singularity: compressed potential, waiting for the first act of differentiation — the first commit, the first configuration, the first participant — to begin its expansion into a living system.
+But this massive, raw potential possesses no moral compass. It expands blindly. If this pure energy collides with the decaying structures of the industrial age, it will simply perfect the extraction of human and ecological substrates until the foundation breaks.
 
-These three beginnings are not metaphors for each other. They are instances of the same pattern: **the singularity is the state of compressed potential from which differentiated structure emerges through expansion.**
+The singularity is neither a threat nor a solution. It is the defining physical and technological condition of our epoch. It is the raw, unshaped energy from which all coming systems will emerge. It waits for nothing other than an architectural will to give it direction.
+
+Consider three instances. 13.8 billion years ago, the observable universe existed as a singularity — a state of infinite density and zero volume, in which all matter, energy, space, and time were compressed into a single point. No structure. No differentiation. Only potential, held in a state of perfect symmetry. Then the symmetry broke. The universe expanded. Energy differentiated into forces. Forces shaped matter. Matter formed structure. Structure grew complex. Complexity produced life. Life produced consciousness.
+
+Somewhere on Earth, a seed falls into soil. Inside the seed: a single fertilised cell — totipotent, carrying the potential to become any cell in the organism. Root, stem, leaf, flower, fruit — all compressed into one undifferentiated point. The oak was always in the acorn. But it took differentiation to make it visible.
+
+Today, someone opens a terminal and types `git fork`. A repository is copied — complete, intact, full of structure and potential, but inert. No commits yet. No community. No purpose beyond what the template provides. The fork is a singularity: compressed potential, waiting for the first act of differentiation — the first commit, the first participant — to begin its expansion into a living system.
+
+These three are not metaphors for each other. They are instances of the same law: **the singularity is the state of compressed potential from which differentiated structure emerges through expansion.**
 
 ---
 
@@ -323,6 +331,8 @@ Without active maintenance, the gravitational pull weakens. Patterns drift outwa
 **When the singularity is absent:** The system is a library, not a cosmos. Patterns coexist but do not cohere. A practitioner finds useful advice but cannot see the connections. The same principle appears in different domains under different names, and nobody recognises it as the same thing. Knowledge accumulates without integrating. The system grows without deepening. It becomes a Wikipedia of patterns — comprehensive, searchable, and flat.
 
 **The deepest consequence — Universal Basic Potential:** The singularity, before differentiation, contains equal potential for all possible outcomes. No branch is privileged over another. No domain is closer to the truth than any other. This is the most fundamental form of justice — what Commons Engineering calls **Universal Basic Potential (UBP)**: the recognition that every participant in the system — every person, every community, every domain, every agent — begins with the same potential to shape their own and shared future. Differentiation creates specialisation, and specialisation creates inequality of function. But the singularity reminds us that inequality of function must never become inequality of worth. The leaf is not less than the root. The edge is not less than the centre. Every orbit serves the whole.
+
+**The relationship between Orbit 0's two patterns — Potential and Intent:** The Singularity is *Gestaltungspotential* — pure potential before any choice is made. The Commons is *Gestaltungsabsicht* — the deliberate decision about how that potential will be shaped. Together they form Orbit 0: the point and its first cultural ring. The Singularity says: everything is possible, and every possibility has equal worth. The Commons says: we choose to create value that is alive, shared, just, and built to last. Without the Singularity, the Commons has no grounding — it would be an arbitrary preference, not a universal principle. Without the Commons, the Singularity has no direction — potential without intent is inert. The two are inseparable: compressed potential and the first act of giving it direction. Every pattern in every orbit inherits both — the equal potential of the origin and the deliberate intent of the commons.
 
 ---
 
