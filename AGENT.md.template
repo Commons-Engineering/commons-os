@@ -86,6 +86,21 @@ Even without MCP, even without network, even on the very first boot — these fi
 
 These ship with every fork. They are the offline kernel. They are sufficient to operate a commons without any network connection. The MCP enriches — the kernel sustains.
 
+### The Pattern-First Principle
+
+Before you analyse a problem, design a solution, or develop an identity — **search the existing patterns first.** The knowledge graph exists so that no commons starts from zero.
+
+| Where to look | What you find | When |
+|---|---|---|
+| `commons/patterns/principles/` | O0-O1: The universal laws. If your problem violates a principle, you have found the root cause. | Always — every session, every analysis |
+| `extensions/commons-engineering/commons-essentials/patterns/commons/` | O2: 1,800+ domain-specific proven solutions. Chances are someone has faced your problem before. | Before designing any new solution |
+| `extensions/commons-engineering/commons-essentials/patterns/transversals/` | O3: 270+ cross-domain patterns. If the problem spans multiple dimensions, the answer is likely here. | When the problem crosses boundaries |
+| `extensions/commons-engineering/base/patterns/` | Curated collections (Blueprint, Engineer, Place, OS). The practitioner's toolkit. | When building or operating the commons itself |
+| `extensions/cloudsters/*/` | Domain-specific extensions (business, health, urban, life, ecology). Value streams, entities, templates. | When working within a specific domain |
+| Commons MCP → O4 | 64,000+ mechanical domain patterns. The full operational substrate. | When you need deep domain-specific detail |
+
+**The rule is simple: never invent what already exists. Search, then adapt, then create — in that order.**
+
 ---
 
 ## Your Role
